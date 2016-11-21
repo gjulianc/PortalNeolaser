@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f1a0a8b5d02249c79fe6b0533f84fd90" Name="Diagram1" ZoomLevel="60">
+        <EntityTypeShape EntityType="neolaserdbModel.Cliente" Width="1.5" PointX="7.625" PointY="0.5" />
+        <EntityTypeShape EntityType="neolaserdbModel.Usuario" Width="2" PointX="4.5" PointY="0.5" />
+        <EntityTypeShape EntityType="neolaserdbModel.webpages_Membership" Width="2" PointX="0.5" PointY="3" />
+        <EntityTypeShape EntityType="neolaserdbModel.Auditoria" Width="1.5" PointX="15.125" PointY="8.375" />
+        <EntityTypeShape EntityType="neolaserdbModel.Elemento" Width="1.5" PointX="15.125" PointY="1.625" />
+        <EntityTypeShape EntityType="neolaserdbModel.ElementosAuditado" Width="1.5" PointX="15.375" PointY="4.375" />
+        <EntityTypeShape EntityType="neolaserdbModel.GruposElemento" Width="1.5" PointX="12.625" PointY="0.5" />
+        <EntityTypeShape EntityType="neolaserdbModel.Sucursal" Width="1.5" PointX="9.5" PointY="5.875" />
+        <EntityTypeShape EntityType="neolaserdbModel.Surcusales_Grupos" Width="1.875" PointX="9.875" PointY="2.375" />
+        <AssociationConnector Association="neolaserdbModel.FK_Auditorias_Sucursal" />
+        <AssociationConnector Association="neolaserdbModel.FK_Auditorias_Usuarios" />
+        <AssociationConnector Association="neolaserdbModel.FK_ElementosAuditados_Auditorias" />
+        <AssociationConnector Association="neolaserdbModel.FK_Sucursal_Clientes" />
+        <AssociationConnector Association="neolaserdbModel.FK_Usuarios_Clientes" />
+        <AssociationConnector Association="neolaserdbModel.FK_Elementos_GruposElementos" />
+        <AssociationConnector Association="neolaserdbModel.FK_ElementosAuditados_Elementos" />
+        <AssociationConnector Association="neolaserdbModel.FK_Surcusales_Grupos_GruposElementos" />
+        <AssociationConnector Association="neolaserdbModel.FK_Surcusales_Grupos_Sucursal" />
+        <EntityTypeShape EntityType="neolaserdbModel.webpages_Roles" Width="1.5" PointX="3.375" PointY="4.875" />
+        <AssociationConnector Association="neolaserdbModel.webpages_UsersInRoles" />
+        <EntityTypeShape EntityType="neolaserdbModel.municipio" Width="1.5" PointX="19.375" PointY="2.25" />
+        <EntityTypeShape EntityType="neolaserdbModel.provincia" Width="1.5" PointX="19.375" PointY="4.875" />
+        <EntityTypeShape EntityType="neolaserdbModel.comunidade" Width="1.5" PointX="19.375" PointY="0.5" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

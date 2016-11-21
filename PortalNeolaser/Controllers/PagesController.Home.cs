@@ -1,4 +1,5 @@
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace PortalNeolaser.Controllers
 {
@@ -7,6 +8,6 @@ namespace PortalNeolaser.Controllers
         public ActionResult Home()
         {
             return View();
-        }
+        }        
     }
 }

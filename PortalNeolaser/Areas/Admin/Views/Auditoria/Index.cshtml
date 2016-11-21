@@ -1,0 +1,22 @@
+﻿@model IEnumerable<PortalNeolaser.Models.Auditoria>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <div class="col-lg-10">
+        <h2><spam class="label label-primary">Listado de Auditorias</spam></h2>
+        <br />
+    </div>
+    
+    <div>
+        <p>
+            @Html.ActionLink("Nuevo Auditoria", "Create")
+        </p>
+        <div>
+            @Html.Action("GridViewAuditoriaPartial")
+        </div>
+    </div>
+</div>
+

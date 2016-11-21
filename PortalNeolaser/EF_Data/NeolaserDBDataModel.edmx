@@ -1,0 +1,731 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="neolaserdbModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tAuditorias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaInicio" Type="datetime" Precision="0" />
+          <Property Name="FechaFin" Type="datetime" Precision="0" />
+          <Property Name="FkUsuario" Type="int" />
+          <Property Name="FkSucursal" Type="int" />
+        </EntityType>
+        <EntityType Name="tClientes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cif" Type="varchar" MaxLength="10" />
+          <Property Name="Nombre" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="Logo" Type="varchar" MaxLength="255" />
+          <Property Name="Direccion" Type="varchar" MaxLength="255" />
+          <Property Name="Poblacion" Type="varchar" MaxLength="100" />
+          <Property Name="Provincia" Type="varchar" MaxLength="100" />
+          <Property Name="codPostal" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="tItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tItemsAuditados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="bool" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="Imagen" Type="varchar" MaxLength="255" />
+          <Property Name="FkAuditoria" Type="int" />
+          <Property Name="FkSubItem" Type="int" />
+        </EntityType>
+        <EntityType Name="tRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripion" Type="varchar" MaxLength="255" />
+          <Property Name="Nombre" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tSubItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="FkItem" Type="int" />
+        </EntityType>
+        <EntityType Name="tSucursales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodSAP" Type="varchar" MaxLength="45" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="Poblacion" Type="varchar" MaxLength="100" />
+          <Property Name="Provincia" Type="varchar" MaxLength="100" />
+          <Property Name="CodPostal" Type="varchar" MaxLength="5" />
+          <Property Name="FkCliente" Type="int" />
+        </EntityType>
+        <EntityType Name="tSucursalItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FkSucursal" Type="int" />
+          <Property Name="FkItem" Type="int" />
+        </EntityType>
+        <EntityType Name="tUsuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido1" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido2" Type="varchar" MaxLength="50" />
+          <Property Name="Telefono" Type="varchar" MaxLength="9" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="User" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Foto" Type="varchar" MaxLength="255" />
+          <Property Name="FkRol" Type="int" Nullable="false" />
+          <Property Name="FkCliente" Type="int" />
+        </EntityType>
+        <Association Name="Fk_Auditoria_Sucursal">
+          <End Role="tSucursales" Type="Self.tSucursales" Multiplicity="0..1" />
+          <End Role="tAuditorias" Type="Self.tAuditorias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tSucursales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tAuditorias">
+              <PropertyRef Name="FkSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Item_SubItem">
+          <End Role="tItems" Type="Self.tItems" Multiplicity="0..1" />
+          <End Role="tSubItems" Type="Self.tSubItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tItems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tSubItems">
+              <PropertyRef Name="FkItem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Item_SucursalItem">
+          <End Role="tItems" Type="Self.tItems" Multiplicity="0..1" />
+          <End Role="tSucursalItem" Type="Self.tSucursalItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tItems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tSucursalItem">
+              <PropertyRef Name="FkItem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_ItemAuditado_Subitem">
+          <End Role="tSubItems" Type="Self.tSubItems" Multiplicity="0..1" />
+          <End Role="tItemsAuditados" Type="Self.tItemsAuditados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tSubItems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tItemsAuditados">
+              <PropertyRef Name="FkSubItem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_ItemsAuditados_Auditorias">
+          <End Role="tAuditorias" Type="Self.tAuditorias" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tItemsAuditados" Type="Self.tItemsAuditados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tAuditorias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tItemsAuditados">
+              <PropertyRef Name="FkAuditoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Sucursal_SucursalItem">
+          <End Role="tSucursales" Type="Self.tSucursales" Multiplicity="0..1" />
+          <End Role="tSucursalItem" Type="Self.tSucursalItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tSucursales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tSucursalItem">
+              <PropertyRef Name="FkSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Sucursales_Clientes">
+          <End Role="tClientes" Type="Self.tClientes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tSucursales" Type="Self.tSucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tClientes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tSucursales">
+              <PropertyRef Name="FkCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Usuario_Auditoria">
+          <End Role="tUsuarios" Type="Self.tUsuarios" Multiplicity="0..1" />
+          <End Role="tAuditorias" Type="Self.tAuditorias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tUsuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tAuditorias">
+              <PropertyRef Name="FkUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Usuarios_Clientes">
+          <End Role="tClientes" Type="Self.tClientes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tUsuarios" Type="Self.tUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tClientes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tUsuarios">
+              <PropertyRef Name="FkCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Usuarios_Roles">
+          <End Role="tRoles" Type="Self.tRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tUsuarios" Type="Self.tUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tUsuarios">
+              <PropertyRef Name="FkRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spElementosAuditarBySucursal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="neolaserdb">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="neolaserdbModelStoreContainer">
+          <EntitySet Name="tAuditorias" EntityType="Self.tAuditorias" Schema="neolaserdb" store:Type="Tables" />
+          <EntitySet Name="tClientes" EntityType="Self.tClientes" Schema="neolaserdb" store:Type="Tables" />
+          <EntitySet Name="tItems" EntityType="Self.tItems" Schema="neolaserdb" store:Type="Tables" />
+          <EntitySet Name="tItemsAuditados" EntityType="Self.tItemsAuditados" Schema="neolaserdb" store:Type="Tables" />
+          <EntitySet Name="tRoles" EntityType="Self.tRoles" Schema="neolaserdb" store:Type="Tables" />
+          <EntitySet Name="tSubItems" EntityType="Self.tSubItems" Schema="neolaserdb" store:Type="Tables" />
+          <EntitySet Name="tSucursales" EntityType="Self.tSucursales" Schema="neolaserdb" store:Type="Tables" />
+          <EntitySet Name="tSucursalItem" EntityType="Self.tSucursalItem" Schema="neolaserdb" store:Type="Tables" />
+          <EntitySet Name="tUsuarios" EntityType="Self.tUsuarios" Schema="neolaserdb" store:Type="Tables" />
+          <AssociationSet Name="Fk_Auditoria_Sucursal" Association="Self.Fk_Auditoria_Sucursal">
+            <End Role="tSucursales" EntitySet="tSucursales" />
+            <End Role="tAuditorias" EntitySet="tAuditorias" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Item_SubItem" Association="Self.Fk_Item_SubItem">
+            <End Role="tItems" EntitySet="tItems" />
+            <End Role="tSubItems" EntitySet="tSubItems" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Item_SucursalItem" Association="Self.Fk_Item_SucursalItem">
+            <End Role="tItems" EntitySet="tItems" />
+            <End Role="tSucursalItem" EntitySet="tSucursalItem" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_ItemAuditado_Subitem" Association="Self.Fk_ItemAuditado_Subitem">
+            <End Role="tSubItems" EntitySet="tSubItems" />
+            <End Role="tItemsAuditados" EntitySet="tItemsAuditados" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_ItemsAuditados_Auditorias" Association="Self.Fk_ItemsAuditados_Auditorias">
+            <End Role="tAuditorias" EntitySet="tAuditorias" />
+            <End Role="tItemsAuditados" EntitySet="tItemsAuditados" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Sucursal_SucursalItem" Association="Self.Fk_Sucursal_SucursalItem">
+            <End Role="tSucursales" EntitySet="tSucursales" />
+            <End Role="tSucursalItem" EntitySet="tSucursalItem" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Sucursales_Clientes" Association="Self.Fk_Sucursales_Clientes">
+            <End Role="tClientes" EntitySet="tClientes" />
+            <End Role="tSucursales" EntitySet="tSucursales" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Usuario_Auditoria" Association="Self.Fk_Usuario_Auditoria">
+            <End Role="tUsuarios" EntitySet="tUsuarios" />
+            <End Role="tAuditorias" EntitySet="tAuditorias" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Usuarios_Clientes" Association="Self.Fk_Usuarios_Clientes">
+            <End Role="tClientes" EntitySet="tClientes" />
+            <End Role="tUsuarios" EntitySet="tUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Usuarios_Roles" Association="Self.Fk_Usuarios_Roles">
+            <End Role="tRoles" EntitySet="tRoles" />
+            <End Role="tUsuarios" EntitySet="tUsuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="neolaserdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tAuditoria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaInicio" Type="DateTime" />
+          <Property Name="FechaFin" Type="DateTime" />
+          <Property Name="FkUsuario" Type="Int32" />
+          <Property Name="FkSucursal" Type="Int32" />
+          <NavigationProperty Name="tSucursale" Relationship="Self.Fk_Auditoria_Sucursal" FromRole="tAuditorias" ToRole="tSucursales" />
+          <NavigationProperty Name="tItemsAuditados" Relationship="Self.Fk_ItemsAuditados_Auditorias" FromRole="tAuditorias" ToRole="tItemsAuditados" />
+          <NavigationProperty Name="tUsuario" Relationship="neolaserdbModel.Fk_Usuario_Auditoria" FromRole="tAuditoria" ToRole="tUsuario" />
+        </EntityType>
+        <EntityType Name="tCliente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cif" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Logo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Poblacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Provincia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="codPostal" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tSucursales" Relationship="Self.Fk_Sucursales_Clientes" FromRole="tClientes" ToRole="tSucursales" />
+          <NavigationProperty Name="tUsuarios" Relationship="neolaserdbModel.Fk_Usuarios_Clientes" FromRole="tCliente" ToRole="tUsuario" />
+        </EntityType>
+        <EntityType Name="tItemsAuditado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FkAuditoria" Type="Int32" />
+          <Property Name="FkSubItem" Type="Int32" />
+          <NavigationProperty Name="tAuditoria" Relationship="Self.Fk_ItemsAuditados_Auditorias" FromRole="tItemsAuditados" ToRole="tAuditorias" />
+          <NavigationProperty Name="tSubItem" Relationship="Self.Fk_ItemAuditado_Subitem" FromRole="tItemsAuditados" ToRole="tSubItems" />
+        </EntityType>
+        <EntityType Name="tSubItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FkItem" Type="Int32" />
+          <NavigationProperty Name="tItemsAuditados" Relationship="Self.Fk_ItemAuditado_Subitem" FromRole="tSubItems" ToRole="tItemsAuditados" />
+          <NavigationProperty Name="tItem" Relationship="neolaserdbModel.Fk_Item_SubItem" FromRole="tSubItem" ToRole="tItem" />
+        </EntityType>
+        <EntityType Name="tSucursale">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodSAP" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Poblacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Provincia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CodPostal" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="FkCliente" Type="Int32" />
+          <NavigationProperty Name="tAuditorias" Relationship="Self.Fk_Auditoria_Sucursal" FromRole="tSucursales" ToRole="tAuditorias" />
+          <NavigationProperty Name="tCliente" Relationship="Self.Fk_Sucursales_Clientes" FromRole="tSucursales" ToRole="tClientes" />
+          <NavigationProperty Name="tSucursalItems" Relationship="Self.Fk_Sucursal_SucursalItem" FromRole="tSucursales" ToRole="tSucursalItem" />
+        </EntityType>
+        <EntityType Name="tSucursalItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FkSucursal" Type="Int32" />
+          <Property Name="FkItem" Type="Int32" />
+          <NavigationProperty Name="tSucursale" Relationship="Self.Fk_Sucursal_SucursalItem" FromRole="tSucursalItem" ToRole="tSucursales" />
+          <NavigationProperty Name="tItem" Relationship="neolaserdbModel.Fk_Item_SucursalItem" FromRole="tSucursalItem" ToRole="tItem" />
+        </EntityType>
+        <Association Name="Fk_Auditoria_Sucursal">
+          <End Role="tSucursales" Type="Self.tSucursale" Multiplicity="0..1" />
+          <End Role="tAuditorias" Type="Self.tAuditoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tSucursales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tAuditorias">
+              <PropertyRef Name="FkSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_ItemsAuditados_Auditorias">
+          <End Role="tAuditorias" Type="Self.tAuditoria" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tItemsAuditados" Type="Self.tItemsAuditado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tAuditorias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tItemsAuditados">
+              <PropertyRef Name="FkAuditoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Sucursales_Clientes">
+          <End Role="tClientes" Type="Self.tCliente" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tSucursales" Type="Self.tSucursale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tClientes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tSucursales">
+              <PropertyRef Name="FkCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_ItemAuditado_Subitem">
+          <End Role="tSubItems" Type="Self.tSubItem" Multiplicity="0..1" />
+          <End Role="tItemsAuditados" Type="Self.tItemsAuditado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tSubItems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tItemsAuditados">
+              <PropertyRef Name="FkSubItem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Sucursal_SucursalItem">
+          <End Role="tSucursales" Type="Self.tSucursale" Multiplicity="0..1" />
+          <End Role="tSucursalItem" Type="Self.tSucursalItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tSucursales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tSucursalItem">
+              <PropertyRef Name="FkSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="neolaserdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tAuditorias" EntityType="Self.tAuditoria" />
+          <EntitySet Name="tClientes" EntityType="Self.tCliente" />
+          <EntitySet Name="tItemsAuditados" EntityType="Self.tItemsAuditado" />
+          <EntitySet Name="tSubItems" EntityType="Self.tSubItem" />
+          <EntitySet Name="tSucursales" EntityType="Self.tSucursale" />
+          <EntitySet Name="tSucursalItems" EntityType="Self.tSucursalItem" />
+          <AssociationSet Name="Fk_Auditoria_Sucursal" Association="Self.Fk_Auditoria_Sucursal">
+            <End Role="tSucursales" EntitySet="tSucursales" />
+            <End Role="tAuditorias" EntitySet="tAuditorias" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_ItemsAuditados_Auditorias" Association="Self.Fk_ItemsAuditados_Auditorias">
+            <End Role="tAuditorias" EntitySet="tAuditorias" />
+            <End Role="tItemsAuditados" EntitySet="tItemsAuditados" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Sucursales_Clientes" Association="Self.Fk_Sucursales_Clientes">
+            <End Role="tClientes" EntitySet="tClientes" />
+            <End Role="tSucursales" EntitySet="tSucursales" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_ItemAuditado_Subitem" Association="Self.Fk_ItemAuditado_Subitem">
+            <End Role="tSubItems" EntitySet="tSubItems" />
+            <End Role="tItemsAuditados" EntitySet="tItemsAuditados" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Sucursal_SucursalItem" Association="Self.Fk_Sucursal_SucursalItem">
+            <End Role="tSucursales" EntitySet="tSucursales" />
+            <End Role="tSucursalItem" EntitySet="tSucursalItems" />
+          </AssociationSet>
+          <FunctionImport Name="spElementosAuditarBySucursal" ReturnType="Collection(neolaserdbModel.spElementosAuditarBySucursal_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="tItems" EntityType="neolaserdbModel.tItem" />
+          <EntitySet Name="tRoles" EntityType="neolaserdbModel.tRole" />
+          <EntitySet Name="tUsuarios" EntityType="neolaserdbModel.tUsuario" />
+          <AssociationSet Name="Fk_Usuario_Auditoria" Association="neolaserdbModel.Fk_Usuario_Auditoria">
+            <End Role="tUsuario" EntitySet="tUsuarios" />
+            <End Role="tAuditoria" EntitySet="tAuditorias" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Usuarios_Clientes" Association="neolaserdbModel.Fk_Usuarios_Clientes">
+            <End Role="tCliente" EntitySet="tClientes" />
+            <End Role="tUsuario" EntitySet="tUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Item_SubItem" Association="neolaserdbModel.Fk_Item_SubItem">
+            <End Role="tItem" EntitySet="tItems" />
+            <End Role="tSubItem" EntitySet="tSubItems" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Item_SucursalItem" Association="neolaserdbModel.Fk_Item_SucursalItem">
+            <End Role="tItem" EntitySet="tItems" />
+            <End Role="tSucursalItem" EntitySet="tSucursalItems" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Usuarios_Roles" Association="neolaserdbModel.Fk_Usuarios_Roles">
+            <End Role="tRole" EntitySet="tRoles" />
+            <End Role="tUsuario" EntitySet="tUsuarios" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="spElementosAuditarBySucursal_Result" />
+        <EntityType Name="tItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tSubItems" Relationship="neolaserdbModel.Fk_Item_SubItem" FromRole="tItem" ToRole="tSubItem" />
+          <NavigationProperty Name="tSucursalItems" Relationship="neolaserdbModel.Fk_Item_SucursalItem" FromRole="tItem" ToRole="tSucursalItem" />
+        </EntityType>
+        <EntityType Name="tRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tUsuarios" Relationship="neolaserdbModel.Fk_Usuarios_Roles" FromRole="tRole" ToRole="tUsuario" />
+        </EntityType>
+        <EntityType Name="tUsuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="User" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Foto" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FkRol" Type="Int32" Nullable="false" />
+          <Property Name="FkCliente" Type="Int32" />
+          <NavigationProperty Name="tAuditorias" Relationship="neolaserdbModel.Fk_Usuario_Auditoria" FromRole="tUsuario" ToRole="tAuditoria" />
+          <NavigationProperty Name="tCliente" Relationship="neolaserdbModel.Fk_Usuarios_Clientes" FromRole="tUsuario" ToRole="tCliente" />
+          <NavigationProperty Name="tRole" Relationship="neolaserdbModel.Fk_Usuarios_Roles" FromRole="tUsuario" ToRole="tRole" />
+        </EntityType>
+        <Association Name="Fk_Usuario_Auditoria">
+          <End Type="neolaserdbModel.tUsuario" Role="tUsuario" Multiplicity="0..1" />
+          <End Type="neolaserdbModel.tAuditoria" Role="tAuditoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tUsuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tAuditoria">
+              <PropertyRef Name="FkUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Usuarios_Clientes">
+          <End Type="neolaserdbModel.tCliente" Role="tCliente" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="neolaserdbModel.tUsuario" Role="tUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tCliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tUsuario">
+              <PropertyRef Name="FkCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Item_SubItem">
+          <End Type="neolaserdbModel.tItem" Role="tItem" Multiplicity="0..1" />
+          <End Type="neolaserdbModel.tSubItem" Role="tSubItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tSubItem">
+              <PropertyRef Name="FkItem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Item_SucursalItem">
+          <End Type="neolaserdbModel.tItem" Role="tItem" Multiplicity="0..1" />
+          <End Type="neolaserdbModel.tSucursalItem" Role="tSucursalItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tSucursalItem">
+              <PropertyRef Name="FkItem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Usuarios_Roles">
+          <End Type="neolaserdbModel.tRole" Role="tRole" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="neolaserdbModel.tUsuario" Role="tUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tUsuario">
+              <PropertyRef Name="FkRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="neolaserdbModelStoreContainer" CdmEntityContainer="neolaserdbEntities">
+          <EntitySetMapping Name="tAuditorias">
+            <EntityTypeMapping TypeName="neolaserdbModel.tAuditoria">
+              <MappingFragment StoreEntitySet="tAuditorias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="FkUsuario" ColumnName="FkUsuario" />
+                <ScalarProperty Name="FkSucursal" ColumnName="FkSucursal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tClientes">
+            <EntityTypeMapping TypeName="neolaserdbModel.tCliente">
+              <MappingFragment StoreEntitySet="tClientes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Cif" ColumnName="Cif" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Poblacion" ColumnName="Poblacion" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="codPostal" ColumnName="codPostal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tItemsAuditados">
+            <EntityTypeMapping TypeName="neolaserdbModel.tItemsAuditado">
+              <MappingFragment StoreEntitySet="tItemsAuditados">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="FkAuditoria" ColumnName="FkAuditoria" />
+                <ScalarProperty Name="FkSubItem" ColumnName="FkSubItem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tSubItems">
+            <EntityTypeMapping TypeName="neolaserdbModel.tSubItem">
+              <MappingFragment StoreEntitySet="tSubItems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FkItem" ColumnName="FkItem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tSucursales">
+            <EntityTypeMapping TypeName="neolaserdbModel.tSucursale">
+              <MappingFragment StoreEntitySet="tSucursales">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CodSAP" ColumnName="CodSAP" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Poblacion" ColumnName="Poblacion" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="CodPostal" ColumnName="CodPostal" />
+                <ScalarProperty Name="FkCliente" ColumnName="FkCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tSucursalItems">
+            <EntityTypeMapping TypeName="neolaserdbModel.tSucursalItem">
+              <MappingFragment StoreEntitySet="tSucursalItem">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FkSucursal" ColumnName="FkSucursal" />
+                <ScalarProperty Name="FkItem" ColumnName="FkItem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spElementosAuditarBySucursal" FunctionName="neolaserdbModel.Store.spElementosAuditarBySucursal">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="neolaserdbModel.spElementosAuditarBySucursal_Result" />
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tItems">
+            <EntityTypeMapping TypeName="neolaserdbModel.tItem">
+              <MappingFragment StoreEntitySet="tItems">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRoles">
+            <EntityTypeMapping TypeName="neolaserdbModel.tRole">
+              <MappingFragment StoreEntitySet="tRoles">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripion" ColumnName="Descripion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tUsuarios">
+            <EntityTypeMapping TypeName="neolaserdbModel.tUsuario">
+              <MappingFragment StoreEntitySet="tUsuarios">
+                <ScalarProperty Name="FkCliente" ColumnName="FkCliente" />
+                <ScalarProperty Name="FkRol" ColumnName="FkRol" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+                <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

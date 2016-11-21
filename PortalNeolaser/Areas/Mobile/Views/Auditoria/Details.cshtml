@@ -1,0 +1,50 @@
+﻿@model PortalNeolaser.Models.Auditoria
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Auditoria</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaFin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sucursal.CodigoSAP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sucursal.CodigoSAP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.UserName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

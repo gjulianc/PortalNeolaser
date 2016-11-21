@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PortalNeolaser.Models.ElementosAuditado>
+
+@{
+    ViewBag.Title = "Elementos";
+}
+
+<h2>Elementos para Auditar</h2>
+
+<ul data-role="listview" data-filter="true" data-filter-placeholder="Buscar elemento..." data-inset="true">
+    @foreach(var item in Model)
+    {
+        <li>
+            <a href="@Url.Action("Edit", new {item.Id})">
+                <div>
+                    <spam class="label label-success">@Html.DisplayFor(modelItem => item.Elemento.GruposElemento.Nombre )</spam>                    
+                </div> 
+                <br /> 
+                <div>
+                    <label><span>Elemento: @Html.DisplayFor(modelItem => item.Elemento.Nombre)</span></label>
+                </div>
+                <div>
+                    <span><label>Foto: @Html.DisplayFor(modelItem => item.Foto)</label></span>
+                </div>
+                <div>
+                    <small>Descripcion: @Html.DisplayFor(modelItem => item.Descripcion)</small>
+                </div>
+                
+                @*<span><label>@Html.CheckBoxFor(modelItem => (bool)item.Estado )</label></span>*@
+                
+                
+               
+
+            </a> 
+        </li>
+    }
+</ul>

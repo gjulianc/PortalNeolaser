@@ -1,0 +1,25 @@
+﻿@model IEnumerable<PortalNeolaser.Models.Elemento>
+
+@{
+    ViewBag.Title = "Elementos";
+}
+
+<div class="col-lg-10">
+    <h2><spam class="label label-primary">Listado de Elementos</spam></h2>
+    <br />
+
+</div>
+<div>
+    <p>
+        @Html.ActionLink("Nuevo Elemento", "Create")
+    </p>
+    <div>
+
+        @Html.Action("GridViewElementosPartial")
+
+    </div>
+</div>
+
+
+
+

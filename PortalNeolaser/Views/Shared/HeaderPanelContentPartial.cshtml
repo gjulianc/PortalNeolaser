@@ -1,6 +1,4 @@
-<div class='title'>
-   
-   
+<div class='title'>  
     <img src="~/Content/Images/Neolaser/logo2.png" />
 </div>
 <div class="panelContent">
@@ -11,36 +9,10 @@
            m.EnableAnimation = true;
            m.ControlStyle.CssClass = "navMenu";
            m.Styles.Item.Paddings.PaddingLeft = 22;
-           m.Styles.Item.Paddings.PaddingRight = 22;
-
-           
+           m.Styles.Item.Paddings.PaddingRight = 22;          
        }).GetHtml() 
         </div>
-        @if(ViewBag.ShowSearchEditor == null || ViewBag.ShowSearchEditor) {    
-        <div class="panelItem">
-            <script>
-                function OnSearchKeyUp(s, e) {
-                    if(e.htmlEvent.keyCode == 13) {
-                        OnSearchClick();
-                    }
-                }
-                function OnSearchClick(){
-                    $('#searchForm').submit();
-                }
-            </script>
-            @using(Html.BeginForm("Search", "Pages", FormMethod.Post, new { id = "searchForm" })) { 
-                Html.DevExpress().ButtonEdit(be => {
-                    be.Name = "Query";
-                    be.Properties.NullText = "Buscar";
-                    be.ControlStyle.CssClass = "searchBox";
-                    be.Properties.ButtonStyle.CssClass = "glyphicon glyphicon-search searchBoxButton";
-                    be.Properties.Buttons.Add();
-                    be.Properties.ClientSideEvents.ButtonClick = "OnSearchClick";
-                    be.Properties.ClientSideEvents.KeyUp = "OnSearchKeyUp";
-                }).Render();
-            } 
-        </div>
-        } 
+       
         <div class="panelItem">
             @Html.Partial("LogOnPartialView") 
         </div>

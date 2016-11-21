@@ -1,0 +1,140 @@
+﻿@model PortalNeolaser.Areas.Admin.Models.AuditoriaViewModel
+
+@{
+    ViewBag.Title = "Nueva Auditoría";
+}
+<h2>Nueva Auditoría</h2>
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+
+    Action<MVCxFormLayoutItem> AuthorizationDataTextBoxSettingsMethod = (item) =>
+    {
+        item.NestedExtension().TextBox(s =>
+        {
+            s.Properties.Password = s.Name.Contains("Password");
+            s.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Right;
+            s.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithText;
+            s.Properties.ValidationSettings.Display = Display.Dynamic;
+            s.ShowModelErrors = true;
+        });
+    };
+}
+<script type="text/javascript">
+$(document).ready(function () {
+    if(Boolean('@(ViewBag.SuccessValidation)'))
+        alert('La auditoria ha sido dado de alta');
+});
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "FormLayoutUsuario";
+
+    var groupItem = settings.Items.AddGroupItem(groupSettings =>
+    {
+        groupSettings.Caption = "Rellene los datos del Formulario para dar alta la nueva Auditoría";
+        groupSettings.ShowCaption = DefaultBoolean.True;
+        groupSettings.GroupBoxDecoration = GroupBoxDecoration.HeadingLine;
+    });
+
+    groupItem.SettingsItems.ShowCaption = DefaultBoolean.True;
+    groupItem.SettingsItemCaptions.Location = LayoutItemCaptionLocation.Left;
+
+    groupItem.SettingsItemHelpTexts.Position = HelpTextPosition.Auto;
+
+    groupItem.Items.Add(m => m.Sucursal, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Sucursal";
+        item.NestedExtension().ComboBox(s =>
+        {
+            s.Properties.DropDownStyle = DropDownStyle.DropDownList;
+            s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.StartsWith;
+            s.Properties.DataSource = ViewBag.FkSucursal;
+
+        });
+    });
+    groupItem.Items.Add(m => m.Usuario, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Usuario";
+        item.NestedExtension().ComboBox(s =>
+        {
+            s.Properties.DropDownStyle = DropDownStyle.DropDownList;
+            s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.StartsWith;
+            s.Properties.DataSource = ViewBag.FkUsuario;
+
+        });
+    });
+    groupItem.Items.Add(m => m.FechaInicio, item =>
+    {
+        item.HelpText = "";
+        item.NestedExtension().DateEdit(s =>
+        {
+            s.Properties.UseMaskBehavior = true;
+            s.Properties.EditFormat = EditFormat.Custom;
+            s.Properties.EditFormatString = "dd/MM/yyyy hh:mm tt";
+            s.Properties.TimeSectionProperties.Visible = true;
+            s.Properties.TimeSectionProperties.TimeEditProperties.EditFormat = EditFormat.Custom;
+            s.Properties.TimeSectionProperties.TimeEditProperties.EditFormatString = "hh:mm tt";
+        });
+    });
+
+    groupItem.Items.Add(m => m.FechaFin, item =>
+    {
+        item.HelpText = "";
+        item.NestedExtension().DateEdit(s =>
+        {
+            s.Properties.UseMaskBehavior = true;
+            s.Properties.EditFormat = EditFormat.Custom;
+            s.Properties.EditFormatString = "dd/MM/yyyy hh:mm tt";
+            s.Properties.TimeSectionProperties.Visible = true;
+            s.Properties.TimeSectionProperties.TimeEditProperties.EditFormat = EditFormat.Custom;
+            s.Properties.TimeSectionProperties.TimeEditProperties.EditFormatString = "hh:mm tt";
+        });
+    });
+
+
+    groupItem.Items.Add(i =>
+    {
+        i.Caption = " ";
+        i.NestedExtension().Button(s =>
+        {
+            s.Name = "btnEnviar";
+            s.Text = "Enviar";
+            s.UseSubmitBehavior = true;
+
+
+
+        });
+
+        
+
+
+    });
+    groupItem.Items.Add(i =>
+    {
+        i.Caption = " ";
+        i.NestedExtension().Button(s =>
+        {
+            s.Name = "btnComenzar";
+            s.Text = "Comenzar";
+            Html.ActionLink("Comenzar", "NewAuditoria", Model, new { @class = "btn btn-white" });
+            Html.ActionLink("Volver", "Index");
+        });
+
+    });
+
+
+}).GetHtml()
+
+}
+<div>
+    @Html.ActionLink("Comenzar", "NewAuditoria", Model, new { @class = "btn btn-white" });
+</div>

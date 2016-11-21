@@ -1,3 +1,4 @@
+using DevExpress.Web.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,12 @@ namespace PortalNeolaser.Controllers {
                 if(WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe.Value)) {
 
                     //Obtener el usuario y logica para redirigirle al area correspondiente
-                    return Redirect(returnUrl ?? "/");
+                    if (Roles.IsUserInRole(model.UserName, "Administrador"))                       
+                        return RedirectToAction("Index", "Dashboard", new { Area = "Admin" });
+                    else if (Roles.IsUserInRole(model.UserName, "Mantenimiento"))
+                        return RedirectToAction("Index", "Sucursal", new { Area = "Mobile" });
+                    else if (Roles.IsUserInRole(model.UserName, "Gestor"))
+                        return Redirect(returnUrl ?? "/");
                 }
                 ViewBag.ErrorMessage = "El nombre de usuario o contraseña introducido no es válido";
             }
@@ -159,5 +165,25 @@ namespace PortalNeolaser.Controllers {
             }
         }
         #endregion
+
+        public ActionResult Acceder()
+        {
+            if (User.Identity.IsAuthenticated == true)
+            {
+                if (Roles.IsUserInRole(User.Identity.Name, "Administrador"))
+                    return RedirectToAction("Index", "Dashboard", new { Area = "Admin" });
+                else if (Roles.IsUserInRole(User.Identity.Name, "Mantenimiento"))
+                    return RedirectToAction("Index", "Sucursal", new { Area = "Mobile" });
+                else if (Roles.IsUserInRole(User.Identity.Name, "Gestor"))
+                    return Redirect("/");
+                else
+                    return Redirect("/");
+
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
     }
 }

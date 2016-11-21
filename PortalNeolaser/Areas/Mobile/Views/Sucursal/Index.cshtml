@@ -1,0 +1,29 @@
+﻿@model IEnumerable<PortalNeolaser.Models.Sucursal>
+
+@{
+    ViewBag.Title = "Sucursales - Mobile";
+}
+
+<ul data-role="listview" data-filter="true" data-filter-placeholder="Busqueda Sucursal" class="my_class_list">
+    
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="@Url.Action("Details", new {item.Id})">
+                <div>
+                    <spam class="label label-success pull-right">@Html.DisplayFor(modelItem => item.Cliente.Nombre)</spam>
+                </div>            
+                <h3>@Html.DisplayFor(modelItem => item.CodigoSAP)</h3>
+                <p>@Html.DisplayFor(modelItem => item.Descripcion)</p>
+               
+            </a>
+            @*<div>
+                <a href="@Url.Action("Details", "Auditoria", new { idSucursal = item.Id    })" class="ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-icon-eye ui-btn-icon-left">Auditar</a>
+            </div>*@
+                        
+        </li>
+
+    }
+</ul>
+
+    

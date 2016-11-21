@@ -1,0 +1,89 @@
+﻿@model PortalNeolaser.Models.Sucursal
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Sucursal</h2>
+
+<div>
+    <h4>Info. Sucursal</h4>
+    <hr />
+    <dl class="dl-horizontal" >
+        <dt style="margin-top:5px">
+           Codigo SAP:
+        </dt>
+
+        <dd style="margin-top:5px">
+            @Html.DisplayFor(model => model.CodigoSAP)
+        </dd>
+        <dt style="margin-top:5px">
+            Descripción: 
+        </dt>
+        
+        <dd style="margin-top:5px">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt style="margin-top:5px"> 
+            Dirección: 
+        </dt>
+
+        <dd style="margin-top:5px">
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+        <dt style="margin-top:10px">
+            Población:
+        </dt>
+
+        <dd style="margin-top:10px">
+            @Html.DisplayFor(model => model.Poblacion)
+        </dd>
+
+        <dt style="margin-top:10px">
+            Provincia:
+        </dt>
+
+        <dd style="margin-top:10px">
+            @Html.DisplayFor(model => model.Provincia)
+        </dd>
+
+        <dt style="margin-top:10px">
+            Fecha de Alta:
+        </dt>
+
+        <dd style="margin-top:10px">
+            @*@Model.FechaAlta.Value.ToShortDateString()*@
+        </dd>
+
+        <dt style="margin-top:10px">
+            C. Autónoma:
+        </dt>
+
+        <dd style="margin-top:10px">
+            @Html.DisplayFor(model => model.ComunidadAutonoma)
+        </dd>
+
+        <dt style="margin-top:10px">
+            Codigo Postal:
+        </dt>
+
+        <dd style="margin-top:10px">
+            @Html.DisplayFor(model => model.CodPostal)
+        </dd>
+
+        <dt style="margin-top:10px">
+            CIF: 
+        </dt>
+
+        <dd style="margin-top:10px">
+            @Html.DisplayFor(model => model.Cliente.Cif)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <spam><a href="@Url.Action("Index", "Sucursal")" data-transition="flip" class="ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left">Volver</a></spam>
+    <spam><a href="@Url.Action("Details", "Auditoria", new { idSucursal = Model.Id})" data-transition="slidedown" class="ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-icon-eye ui-btn-icon-left">Comenzar Auditoría</a></spam>
+</p>

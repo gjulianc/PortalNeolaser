@@ -1,0 +1,12 @@
+﻿@Html.DevExpress().UploadControl(settings =>
+{
+    settings.Name = "Foto";
+    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+    settings.ValidationSettings.MaxFileSize = 1000000; //1MB
+    settings.ShowProgressPanel = true;
+    settings.ValidationSettings.MaxFileSizeErrorText = "El tamaño de la imagen seleccionada excede el tamaño máximo permitido.";
+    settings.ValidationSettings.ErrorStyle.BackColor = System.Drawing.Color.Yellow;
+    settings.ValidationSettings.ErrorStyle.ForeColor = System.Drawing.Color.Black;
+    
+}).GetHtml()
+

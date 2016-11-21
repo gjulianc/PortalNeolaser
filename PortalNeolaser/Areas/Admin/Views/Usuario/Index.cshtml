@@ -1,0 +1,38 @@
+﻿
+@model IEnumerable<PortalNeolaser.Models.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<script type="text/javascript">
+    function CustomButtonClick(s, e, url) {
+        var key = s.GetRowKey(e.visibleIndex);
+        alert("Key Value is " + key);
+
+        if (e.buttonID === "btnGetKey") {
+            var destUrl = url;
+            alert("Destination Url is: " + destUrl);
+
+            window.location.href = destUrl;
+        }
+    }
+</script>
+
+<div>
+    <div class="col-lg-10">
+        <h2><spam class="label label-primary">Listado Usuarios</spam></h2>
+        <br/>
+
+    </div>
+    <div>
+        <p>
+            @Html.ActionLink("Nuevo Usuario", "Create")
+        </p>
+        @Html.Action("GridViewUsuariosPartial")
+
+    </div>
+</div>
+
+

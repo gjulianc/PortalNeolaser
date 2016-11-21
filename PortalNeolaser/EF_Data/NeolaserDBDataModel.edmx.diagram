@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="87306affd26d4ef7bdfa382005b3061e" Name="Diagram1">
+        <EntityTypeShape EntityType="neolaserdbModel.tAuditoria" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="neolaserdbModel.tCliente" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="neolaserdbModel.tItemsAuditado" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="neolaserdbModel.tSubItem" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="neolaserdbModel.tSucursale" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="neolaserdbModel.tSucursalItem" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="neolaserdbModel.Fk_Auditoria_Sucursal" ManuallyRouted="false" />
+        <AssociationConnector Association="neolaserdbModel.Fk_ItemsAuditados_Auditorias" ManuallyRouted="false" />
+        <AssociationConnector Association="neolaserdbModel.Fk_Sucursales_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="neolaserdbModel.Fk_ItemAuditado_Subitem" ManuallyRouted="false" />
+        <AssociationConnector Association="neolaserdbModel.Fk_Sucursal_SucursalItem" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="neolaserdbModel.tItem" Width="1.5" PointX="2.75" PointY="15" />
+        <EntityTypeShape EntityType="neolaserdbModel.tRole" Width="1.5" PointX="0.5" PointY="15.5" />
+        <EntityTypeShape EntityType="neolaserdbModel.tUsuario" Width="1.5" PointX="2.75" PointY="5.875" />
+        <AssociationConnector Association="neolaserdbModel.Fk_Usuario_Auditoria" />
+        <AssociationConnector Association="neolaserdbModel.Fk_Usuarios_Clientes" />
+        <AssociationConnector Association="neolaserdbModel.Fk_Item_SubItem" />
+        <AssociationConnector Association="neolaserdbModel.Fk_Item_SucursalItem" />
+        <AssociationConnector Association="neolaserdbModel.Fk_Usuarios_Roles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

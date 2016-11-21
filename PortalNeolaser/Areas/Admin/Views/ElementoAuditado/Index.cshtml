@@ -1,0 +1,63 @@
+﻿@model IEnumerable<PortalNeolaser.Models.ElementosAuditado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    @*<div class="col-lg-10">
+        <h2><spam class="label label-primary">Elementos auditados</spam></h2>
+        <br />
+    </div>*@
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div>
+                    <h5><span class="label label-success pull-right">@ViewData["Cliente"]</span></h5>
+                </div>
+                <div>
+                    <ul style="list-style:none">
+                        <li><h4><span class="label label-info">@ViewData["CodigoSAP"]</span></h4></li>
+                        <li>Comunidad Autónoma: <strong>@ViewData["ComunidadAutonoma"]</strong> </li>
+                        <li>Provincia: <strong>@ViewData["Provincia"]</strong></li>
+                        <li>Población: <strong>@ViewData["Poblacion"]</strong>  Código Postal: <strong>@ViewData["CP"]</strong></li>
+                        <li>Dirección: <strong>@ViewData["Direccion"]</strong></li>
+                    </ul>
+                </div>
+                
+                
+                @*<div>
+                    <p><strong>13/38</strong></p>
+                    <div class="stat-percent font-bold text-success">Sucursal: Toledo</div>
+                </div>*@
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div>
+                    <h5><span class="label label-success pull-right">Auditoria Realizada por: @ViewData["Empleado"]</span></h5>
+                </div>
+                <div>
+                    <ul style="list-style:none">
+                        <li><h4><strong>Fecha</strong></h4></li>
+                        <li>Comienzo: <strong>@ViewData["Inicio"]</strong> </li>
+                        <li>Finalización: <strong>@ViewData["Fin"]</strong></li>
+                        <li>Duración: <strong>@ViewData["Duracion"]</strong> (d.HH:mm:ss)</li>
+                        <li><br /></li>
+                    </ul>
+                </div>
+
+
+                @*<div>
+                        <p><strong>13/38</strong></p>
+                        <div class="stat-percent font-bold text-success">Sucursal: Toledo</div>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+    <div>
+        @Html.Action("GridViewElementosAuditadosPartial", new { ID = ViewBag.ID_Auditoria })
+    </div>
+</div>

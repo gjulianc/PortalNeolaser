@@ -1,0 +1,22 @@
+﻿@model IEnumerable<PortalNeolaser.Models.GruposElemento>
+
+@{
+    ViewBag.Title = "Grupos de Elementos";
+}
+
+<div class="col-lg-10">
+    <h2><spam class="label label-primary">Listado de Grupos de Elementos</spam></h2>
+    <br />
+
+</div>
+<div>
+    <p>
+        @Html.ActionLink("Nuevo Grupo", "Create")
+    </p>
+    <div>
+
+        @Html.Action("GridViewGrupoElementosPartial")
+
+
+    </div>
+</div>

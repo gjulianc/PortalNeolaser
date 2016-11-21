@@ -1,0 +1,115 @@
+﻿@model PortalNeolaser.Areas.Admin.Models.ClienteViewModel
+
+@{
+    ViewBag.Title = "Nuevo Cliente";
+}
+
+<h2>Nuevo Cliente</h2>
+
+
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+
+    Action<MVCxFormLayoutItem> AuthorizationDataTextBoxSettingsMethod = (item) =>
+    {
+        item.NestedExtension().TextBox(s =>
+        {
+            s.Properties.Password = s.Name.Contains("Password");
+            s.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Right;
+            s.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithText;
+            s.Properties.ValidationSettings.Display = Display.Dynamic;
+            s.ShowModelErrors = true;
+        });
+    };
+}
+<script type="text/javascript">
+$(document).ready(function () {
+    if(Boolean('@(ViewBag.SuccessValidation)'))
+        alert('El cliente ha sido dado de alta');
+});
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "FormLayoutUsuario";
+
+    var groupItem = settings.Items.AddGroupItem(groupSettings =>
+    {
+        groupSettings.Caption = "Rellene los datos del Formulario para dar alta al nuevo Cliente";
+        groupSettings.ShowCaption = DefaultBoolean.True;
+        groupSettings.GroupBoxDecoration = GroupBoxDecoration.HeadingLine;
+    });
+
+    groupItem.SettingsItems.ShowCaption = DefaultBoolean.True;
+    groupItem.SettingsItemCaptions.Location = LayoutItemCaptionLocation.Left;
+
+    groupItem.SettingsItemHelpTexts.Position = HelpTextPosition.Auto;
+
+    groupItem.Items.Add(m => m.Cif, item =>
+    {
+        item.HelpText = "";
+    });
+    groupItem.Items.Add(m => m.Nombre, item =>
+    {
+        item.HelpText = "";
+    });
+    groupItem.Items.Add(m => m.Direccion, item =>
+    {
+        item.HelpText = "";
+    });
+    groupItem.Items.Add(m => m.Poblacion, item =>
+    {
+        item.HelpText = "";
+    });
+
+    groupItem.Items.Add(m => m.Provincia, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Provincia";
+        //item.NestedExtension().ComboBox(s =>
+        //{
+        //    s.Properties.DropDownStyle = DropDownStyle.DropDownList;
+        //    s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.StartsWith;
+        //    s.Properties.DataSource = //lo que sea;
+
+        //});
+    });
+    groupItem.Items.Add(m => m.CodPostal, item =>
+    {
+        item.HelpText = "";
+    });
+    groupItem.Items.Add(m => m.Telefono, item =>
+    {
+        item.HelpText = "";
+    });
+
+    groupItem.Items.Add(m => m.Email, item =>
+    {
+        item.HelpText = "";
+    });
+
+    groupItem.Items.Add(i =>
+    {
+        i.Caption = " ";
+        i.NestedExtension().Button(s =>
+        {
+            s.Name = "btnEnviar";
+            s.Text = "Enviar";
+            s.UseSubmitBehavior = true;
+
+        });
+        @Html.ActionLink("Volver", "Index");
+
+
+    });
+
+
+
+}).GetHtml()
+}

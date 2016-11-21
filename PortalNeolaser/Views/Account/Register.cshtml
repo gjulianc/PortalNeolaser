@@ -2,53 +2,45 @@
 @{Layout = "~/Views/Shared/_LayoutWithContiner.cshtml";}
 
 <div class="accountHeader">
-    <h2>Create a New Account</h2>
-    <p>Use the form below to create a new account.</p>
+    <h2>Crear Nuevo Usuario</h2>
+    <p>Rellena el siguiente formulario para crear un nuevo usuario.</p>
 </div>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
 
-    @Html.DevExpress().TextBoxFor(m => m.UserName, tb => {
-        tb.Properties.Caption = "User Name";
-        tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
-        tb.ShowModelErrors = true;
-        tb.Properties.ValidationSettings.Display = Display.Dynamic;
-        tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.Text;
-        tb.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
-    }).GetHtml()
-    
-    @Html.DevExpress().TextBoxFor(m => m.Email, tb => {
-        tb.Properties.Caption = "Email";
-        tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
-        tb.ShowModelErrors = true;
-        tb.Properties.ValidationSettings.Display = Display.Dynamic;
-        tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.Text;
-        tb.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
-    }).GetHtml()
-    
-    @Html.DevExpress().TextBoxFor(m => m.Password, tb => {
-        tb.Properties.Caption = "Password";
-        tb.Properties.Password = true;
-        tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
-        tb.ShowModelErrors = true;
-        tb.Properties.ValidationSettings.Display = Display.Dynamic;
-        tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.Text;
-        tb.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
-    }).GetHtml()
+@Html.DevExpress().FormLayout(settings =>
+{
+    settings.Width = Unit.Percentage(100);
+    settings.Name = "flUsuario";
+    settings.Items.AddGroupItem(groupSettings =>
+    {
+        groupSettings.Caption = "Usuarios";
+        groupSettings.Items.Add(m => m.UserName);
+        groupSettings.Items.Add(m => m.Email, itemsettings =>
+        {
+            itemsettings.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox;
 
-    @Html.DevExpress().TextBoxFor(m => m.ConfirmPassword, tb => {
-        tb.Properties.Caption = "Confirm Password";
-        tb.Properties.Password = true;
-        tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
-        tb.ShowModelErrors = true;
-        tb.Properties.ValidationSettings.Display = Display.Dynamic;
-        tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.Text;
-        tb.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
-    }).GetHtml()
-    <br />
-    @Html.DevExpress().Button(b => {
-        b.Name = "Button";
-        b.Text = "Register";
-        b.UseSubmitBehavior = true;
-    }).GetHtml()
-}
+        }
+        );
+
+        groupSettings.Items.Add(m => m.Password, itemSettings =>
+        {
+            itemSettings.NestedExtensionType =
+              FormLayoutNestedExtensionItemType.Memo;
+        });
+        groupSettings.Items.Add(m => m.ConfirmPassword);
+
+
+    });
+    settings.Items.Add(i =>
+    {
+        i.Caption = " ";
+        i.NestedExtension().Button(s =>
+        {
+            s.Name = "Alta";
+            s.Text = "Dar Alta";
+            s.UseSubmitBehavior = true;
+        });
+    });
+
+
+
+}).GetHtml()

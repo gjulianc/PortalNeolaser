@@ -1,0 +1,38 @@
+﻿@model PortalNeolaser.Areas.Mobile.Models.ElementoAuditadoViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edición Elemento</h2>
+
+
+<div id="elementoAuditadoForm" data-role="page" data-theme="a">
+    <div data-role="header" data-theme="a"></div>
+    <h1>Formulario Elemento Auditado</h1>
+    <div data-role="content" data-theme="a">
+        @using (Html.BeginForm())
+        {
+            <label>ID:</label>
+            @Html.DisplayTextFor(model => model.Id)
+            <div class="ui-field contain">
+                <label for="descripcion">Notas:</label>
+                @Html.TextAreaFor(model => model.Descripcion)
+            </div>
+
+            <fieldset data-role="controlgroup">
+                <legend>Seleccion Estado:</legend>
+                @Html.Label("correcto", "Correcto")
+                @Html.RadioButtonFor(model => model.Estado, "true", new { id = "correcto" })
+                @Html.Label("incorrecto", "Inorrecto")
+                @Html.RadioButtonFor(model => model.Estado, "false", new { id = "incorrecto" })
+
+            </fieldset>
+            <button type="submit">Guardar</button>
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

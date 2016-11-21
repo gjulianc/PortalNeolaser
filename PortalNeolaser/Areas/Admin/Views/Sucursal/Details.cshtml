@@ -1,0 +1,74 @@
+﻿@model PortalNeolaser.Models.Sucursal
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sucursal</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoSAP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoSAP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Poblacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Poblacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Provincia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Provincia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodPostal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodPostal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Cif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Cif)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

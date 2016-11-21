@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8" />
@@ -49,7 +49,7 @@ new Script { ExtensionSuite = ExtensionSuite.TreeList }
                     p.Styles.ExpandedPanel.CssClass = "expandedPanel";
                 
                     p.SetExpandBarTemplateContent(c => { 
-                        ViewContext.Writer.Write("<div class='title'><a href='" + Url.Action("Home", "Pages") + "'>DX BLOG</a><p class='small'>Mobile friendly</p></div>");
+                        ViewContext.Writer.Write("<div class='title'><a href='" + Url.Action("Home", "Pages") + "'>NEOLASER</a><p class='small'>Fabricamos tus ideas</p></div>");
                     });
                     p.SetContent(() => { Html.RenderPartial("HeaderPanelContentPartial"); });
                 }).GetHtml()
@@ -66,24 +66,23 @@ new Script { ExtensionSuite = ExtensionSuite.TreeList }
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-                            <h4>DevExpress</h4>
-                            <p>DevExpress engineers feature-complete Presentation Controls, IDE Productivity Tools, Business Application Frameworks, and Reporting Systems for Visual Studio.</p>
-                        </div>
-                        <div class="col-md-offset-1 col-md-4">
-                            <h4>Latest Posts</h4>
-                            <ul class="list-unstyled latestPosts">
-                                <li><a href="#">Upcoming webinar: Give AdHoc Query Powers to Your ASP.NET Grid Users</a></li>
-                                <li><a href="#">HTML5 Chart and Data Visualization Widgets - Enhancements</a></li>
-                                <li><a href="#">HTML5 Form Layout Widget</a></li>
+                            <h4>NEOlaser S.L.</h4>
+                            <ul class="list-unstyled">
+                                <li>C/ Camino de Puente viejo, 10</li>
+                                <li>C/ Bilbao, 3</li>
+                                <li>Arganda del Rey 28500</li>
+                                <li>Madrid</li>
                             </ul>
                         </div>
+                        <div class="col-md-offset-1 col-md-4">
+                            
+                            
+                        </div>
                         <div class="col-md-offset-1 col-md-3">
-                            <h4>Contact Us</h4>
-                            <ul class="list-unstyled">
-                                <li>505 N. Brand Blvd</li>
-                                <li>Glendale CA 91203 USA</li>
-                                <li>Phone: + 1 (818) 844 3383</li>
-                                <li>Mail: <a href="#">clientservices@devexpress.com</a></li>
+                            <h4>Contacto</h4>
+                            <ul class="list-unstyled">                                
+                                <li>Telf: 91 870 32 34</li>
+                                <li>Mail: <a href="#">info@neolaser.es</a></li>
                             </ul>
                         </div>
                     </div>
@@ -91,7 +90,7 @@ new Script { ExtensionSuite = ExtensionSuite.TreeList }
             </div>
             <div class="footerDown">
                 <div class="container">
-                    <p>@DateTime.Today.Year.ToString() &copy; All Rights Reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                    <p>@DateTime.Today.Year.ToString() &copy; <a href="http://www.neolaser.es">NEOlaser</a> <small class="col-md-offset-7">Desarrollo realizado por <a href="http://www.qualimove.es">QUALIMOVE SL</a></small></p>
                 </div>
             </div>
         </footer>

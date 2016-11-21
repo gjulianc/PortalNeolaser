@@ -1,25 +1,26 @@
 @if(!Request.IsAuthenticated) { 
-    <a href="@Url.Action("Login", "Account")" class="btn btn-default loginButton loginButton-small pull-right" title="Login">
+   
+    @*<a href="@Url.Action("Login", "Account",new { area=""})" class="btn btn-default loginButton loginButton-small pull-right" title="Login">
         <span class="glyphicon glyphicon-log-in"></span>
     </a>
-    <a href="@Url.Action("Login", "Account")" class="btn btn-default loginButton loginButton-large pull-right">
+    <a href="@Url.Action("Login", "Account",new { area=""})" class="btn btn-default loginButton loginButton-large pull-right">
         <span class="glyphicon glyphicon-log-in"></span> Entrar
-    </a>
+    </a>*@
 } else { 
     <div class="dropdown loginButton loginButton-small pull-right">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="@User.Identity.Name">
+        <label style="color:lightgray">Bienvenido <strong>@User.Identity.Name</strong></label>
+        <label role="separator"></label>
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" 
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="@User.Identity.Name">
             <span class="glyphicon glyphicon-user"></span>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="@Url.Action("ChangePassword", "Account")"><span class="glyphicon glyphicon-cog"></span> Cambiar Contraseña</a></li>
+            <li><a href="@Url.Action("ChangePassword", "Account",new { area=""})"><span class="glyphicon glyphicon-cog"></span> Cambiar Contraseña</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="@Url.Action("LogOff", "Account")"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
+            <li><a href="@Url.Action("LogOff", "Account",new { area=""})"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
         </ul>
-    </div>
-    <a href="@Url.Action("ChangePassword", "Account")" class="btn btn-default loginButton loginButton-large">
-        <span class="glyphicon glyphicon-cog"></span> Cambiar Contraseña
-    </a>
-    <a href="@Url.Action("LogOff", "Account")" class="btn btn-default loginButton loginButton-large" title="Logout">
-        <span class="glyphicon glyphicon-log-out"></span> Salir
-    </a>
+        <a href="@Url.Action("LogOff", "Account", new { area=""})" class="btn btn-default loginButton loginButton-large" title="Logout">
+            <span class="glyphicon glyphicon-log-out"></span> Salir
+        </a>
+    </div>    
 }

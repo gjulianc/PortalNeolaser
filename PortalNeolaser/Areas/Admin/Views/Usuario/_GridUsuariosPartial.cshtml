@@ -1,0 +1,50 @@
+@{
+    var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridUsuarios";
+        settings.CallbackRouteValues = new { Controller = "Usuario", Action = "GridUsuariosPartial" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Usuario", Action = "GridUsuariosPartialAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Usuario", Action = "GridUsuariosPartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Usuario", Action = "GridUsuariosPartialDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+
+
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButton = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+        settings.KeyFieldName = "Id";
+
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = true;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+        settings.Columns.Add("Id");
+        settings.Columns.Add("Nombre");
+        settings.Columns.Add("Apellido1");
+        settings.Columns.Add("Apellido2");
+        settings.Columns.Add("Telefono");
+        settings.Columns.Add("Email");
+        settings.Columns.Add("User");
+        settings.Columns.Add("Password");
+        settings.Columns.Add("Foto");
+        settings.Columns.Add("FkRol.Nombre");
+        settings.Columns.Add("FkCliente.Nombre");
+        
+    });
+    if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

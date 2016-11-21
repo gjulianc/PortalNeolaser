@@ -8,7 +8,7 @@ body {
 header {
     flex: none;
     border-bottom: 1px solid #c7c7c7;
-    background:#fff;
+    background:#525252;
     width: 100%;
     -webkit-transition: all 0.5s ease-out 0s;
     -moz-transition: all 0.5s ease-out 0s;
@@ -45,6 +45,7 @@ header.shrink {
     display: none;
 }
 .panelContent {
+
     padding-top: 15px;
 }
 .expandedPanel .pull-right  {
@@ -124,6 +125,9 @@ header.shrink {
     background: #6f6f6f;
 }
 .footerDown {
+    width:100%;
+    bottom:0;
+    position:fixed;
     background: #525252;
 }
 .footerDown p {

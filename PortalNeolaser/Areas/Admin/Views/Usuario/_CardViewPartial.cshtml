@@ -1,0 +1,53 @@
+@{
+	var cardView = Html.DevExpress().CardView(settings => {
+        settings.Name = "CardView";
+        settings.CallbackRouteValues = new { Controller = "Usuario", Action = "CardViewPartial" };
+
+				settings.SettingsEditing.AddNewCardRouteValues = new { Controller = "Usuario", Action = "CardViewPartialAddNew" };
+        settings.SettingsEditing.UpdateCardRouteValues = new { Controller = "Usuario", Action = "CardViewPartialUpdate" };
+        settings.SettingsEditing.DeleteCardRouteValues = new { Controller = "Usuario", Action = "CardViewPartialDelete" };
+        settings.SettingsEditing.Mode = CardViewEditingMode.EditForm;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+		settings.KeyFieldName = "Id";
+
+		settings.SettingsPager.Visible = true;
+				settings.Settings.ShowHeaderPanel = true;
+		settings.Settings.ShowHeaderFilterButton = true;
+				settings.SettingsBehavior.AllowSelectByCardClick = true;
+
+				settings.Columns.Add("Id");
+				settings.Columns.Add("Nombre");
+				settings.Columns.Add("Apellido1");
+				settings.Columns.Add("Apellido2");
+				settings.Columns.Add("Telefono");
+				settings.Columns.Add("Email");
+				settings.Columns.Add("User");
+				settings.Columns.Add("Password");
+				settings.Columns.Add("Foto");
+				settings.Columns.Add("FkRol");
+				settings.Columns.Add("FkCliente");
+
+				settings.CardLayoutProperties.Items.AddCommandItem(i => {
+			i.ShowNewButton = true;
+			i.ShowEditButton = true;
+			i.ShowDeleteButton = true;
+		});
+		settings.CardLayoutProperties.Items.AddEditModeCommandItem();
+						settings.CardLayoutProperties.Items.Add("Id");
+				settings.CardLayoutProperties.Items.Add("Nombre");
+				settings.CardLayoutProperties.Items.Add("Apellido1");
+				settings.CardLayoutProperties.Items.Add("Apellido2");
+				settings.CardLayoutProperties.Items.Add("Telefono");
+				settings.CardLayoutProperties.Items.Add("Email");
+				settings.CardLayoutProperties.Items.Add("User");
+				settings.CardLayoutProperties.Items.Add("Password");
+				settings.CardLayoutProperties.Items.Add("Foto");
+				settings.CardLayoutProperties.Items.Add("FkRol");
+				settings.CardLayoutProperties.Items.Add("FkCliente");
+			});
+		if (ViewData["EditError"] != null){
+        cardView.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@cardView.Bind(Model).GetHtml()

@@ -1,0 +1,22 @@
+﻿@model IEnumerable<PortalNeolaser.Models.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div class="col-lg-10">
+        <h2><spam class="label label-primary">Listado de Clientes</spam></h2>
+        <br />
+
+    </div>
+    <div>
+        <p>
+            @Html.ActionLink("Nuevo Cliente", "Create")
+        </p>
+        <div>
+            @Html.Action("GridViewClientePartial")
+        </div>
+    </div>
+
+
+

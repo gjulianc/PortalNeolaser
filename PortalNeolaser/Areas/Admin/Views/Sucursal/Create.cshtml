@@ -1,0 +1,140 @@
+﻿@model PortalNeolaser.Areas.Admin.Models.SucursalViewModel
+
+@{
+    ViewBag.Title = "Nueva Sucursal";
+}
+
+<h2>Nueva Sucursal</h2>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    if(Boolean('@(ViewBag.SuccessValidation)'))
+        alert('La sucursal ha sido dada de alta');
+});
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "FormLayoutSucursal";
+
+    var groupItem = settings.Items.AddGroupItem(groupSettings =>
+    {
+        groupSettings.Caption = "Rellene los datos del Formulario para dar alta la nueva Sucursal";
+        groupSettings.ShowCaption = DefaultBoolean.True;
+        groupSettings.GroupBoxDecoration = GroupBoxDecoration.HeadingLine;
+    });
+
+    groupItem.SettingsItems.ShowCaption = DefaultBoolean.True;
+    groupItem.SettingsItemCaptions.Location = LayoutItemCaptionLocation.Left;
+
+    groupItem.SettingsItemHelpTexts.Position = HelpTextPosition.Auto;
+
+    groupItem.Items.Add(m => m.CodigoSAP, item =>
+    {
+        item.HelpText = "";
+    });
+
+    groupItem.Items.Add(m => m.Descripcion, item =>
+    {
+        item.HelpText = "";
+    });
+
+    groupItem.Items.Add(m => m.FechaAlta, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Fecha Alta";
+
+    });
+
+    groupItem.Items.Add(m => m.Cliente, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Cliente";
+        item.NestedExtension().ComboBox(s =>
+        {
+            s.Properties.DropDownStyle = DropDownStyle.DropDownList;
+            s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.StartsWith;
+            s.Properties.DataSource = ViewBag.FkCliente;
+
+        });
+    });
+
+    groupItem.Items.Add(m => m.ComunidadAutonoma, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Com. Autónoma";
+        item.NestedExtension().ComboBox(s =>
+        {
+            s.Properties.DropDownStyle = DropDownStyle.DropDownList;
+            s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.StartsWith;
+            s.Properties.DataSource = ViewBag.Comunidad;
+      
+        });
+    });
+
+    groupItem.Items.Add(m => m.Provincia , item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Provincia";
+        item.NestedExtension().ComboBox(s =>
+        {
+            s.Properties.DropDownStyle = DropDownStyle.DropDownList;
+            s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.StartsWith;
+            s.Properties.DataSource = ViewBag.Provincia;
+
+        });
+    });
+
+    groupItem.Items.Add(m => m.Poblacion, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Poblacion";
+        item.NestedExtension().ComboBox(s =>
+        {
+            s.Properties.DropDownStyle = DropDownStyle.DropDownList;
+            s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.StartsWith;
+            s.Properties.DataSource = ViewBag.Municipio;
+
+        });
+    });
+
+    groupItem.Items.Add(m => m.Direccion, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Direccion";
+
+    });
+
+    groupItem.Items.Add(m => m.CodPostal, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Código Postal";
+    });
+
+    groupItem.Items.Add(i =>
+    {
+        i.Caption = " ";
+        i.NestedExtension().Button(s =>
+        {
+            s.Name = "btnEnviar";
+            s.Text = "Enviar";
+            s.UseSubmitBehavior = true;
+
+        });
+        @Html.ActionLink("Volver", "Index");
+
+
+    });
+
+
+
+}).GetHtml()
+}
+
+<div>
+    @Html.ActionLink("Volver", "Index")
+</div>

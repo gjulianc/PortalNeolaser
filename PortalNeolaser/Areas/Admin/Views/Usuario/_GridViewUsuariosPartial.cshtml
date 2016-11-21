@@ -1,0 +1,125 @@
+@{
+    var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridViewUsuarios";
+        //settings.Theme = "BlackGlass";
+        settings.CallbackRouteValues = new { Controller = "Usuario", Action = "GridViewUsuariosPartial" };
+
+
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Usuario", Action = "GridViewUsuariosPartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Usuario", Action = "GridViewUsuariosPartialDelete" };
+
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+        //settings.Styles.Table.Font.Size = 10    ;
+
+        //Command Column
+        settings.CommandColumn.Caption = "Acciones";
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.Width = System.Web.UI.WebControls.Unit.Pixel(81);
+        settings.CommandColumn.ShowNewButton = false;
+        settings.CommandColumn.ShowEditButton = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+        
+        settings.SettingsCommandButton.EditButton.Image.IconID = IconID.EditEdit16x16gray;
+        settings.SettingsCommandButton.DeleteButton.Image.IconID = IconID.ActionsDelete16x16gray;
+
+        
+        //settings.CommandColumn.CustomButtons.Add(new GridViewCommandColumnCustomButton() { ID = "btnGetKey", Text = "Nuevo" });
+  
+        settings.KeyFieldName = "UserId";
+
+
+        settings.SettingsPager.Visible = true;
+        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+        settings.Styles.AlternatingRow.Enabled = 0;
+
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+        //paginacion
+        settings.SettingsPager.Position = System.Web.UI.WebControls.PagerPosition.Bottom;
+        settings.SettingsPager.FirstPageButton.Visible = true;
+        settings.SettingsPager.LastPageButton.Visible = true;
+        settings.SettingsPager.PageSize = 10;
+        settings.SettingsPager.PageSizeItemSettings.Items = new string[] { "10", "25" };
+        settings.SettingsPager.AlwaysShowPager = true;
+
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "UserId";
+            col.Caption = "Id";
+            col.CellStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+            col.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+            col.ReadOnly = true;
+            col.Visible = false;
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.Caption = "Usuario";
+            column.ReadOnly = true;
+            column.FieldName = "UserName";
+        });
+        settings.Columns.Add("Email");
+
+        settings.Columns.Add(column =>
+        {
+            column.Caption = "Cliente";
+            column.ReadOnly = true;
+            column.FieldName = "Cliente.Nombre";
+            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+            column.Width = System.Web.UI.WebControls.Unit.Pixel(100);
+            column.EditorProperties().ComboBox(p =>
+            {
+
+                p.TextField = "Nombre";
+                p.ValueField = "Id";
+                p.DataSource = new PortalNeolaser.Models.neolaserdbEntities().Clientes.ToList();
+            });
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.ReadOnly = true;
+            // "FieldName" contains a unique value that does not refer to any field in the GridView's data model.  
+            column.FieldName = "Roles";
+            // The column contains string values. 
+            column.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+            column.Width = System.Web.UI.WebControls.Unit.Pixel(100);
+            column.EditorProperties().ComboBox(p =>
+            {
+                p.TextField = "RoleName";
+                p.ValueField = "RoleId";
+                p.DataSource = new PortalNeolaser.Models.neolaserdbEntities().webpages_Roles.ToList();
+            });
+        });
+
+
+
+        settings.ClientSideEvents.CustomButtonClick =
+        string.Format("function(s, e) {{ CustomButtonClick(s, e, '{0}'); }}", Url.Action("Create", "Usuario"));
+
+        settings.CustomUnboundColumnData = (s, e) =>
+        {
+            if (e.Column.FieldName == "Roles")
+            {
+                string usuario = e.GetListSourceFieldValue("UserName").ToString();
+                var result = Roles.GetRolesForUser(usuario);
+                e.Value = result[0].ToString();
+
+            };
+        };
+
+    });
+    if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

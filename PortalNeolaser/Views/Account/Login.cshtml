@@ -2,10 +2,9 @@
 @{Layout = "~/Views/Shared/_LayoutWithContiner.cshtml";}
 
 <div class="accountHeader">
-    <h2>Log In</h2>
+    <h2>Iniciar Sesión</h2>
     <p>
-        Please enter your username and password. @Html.ActionLink("Register", "Register")
-        if you don't have an account.
+        Por favor, introduce el nombre de usuario y la contraseña.
     </p>
     <p style="color:red">@ViewBag.ErrorMessage</p>
 </div>
@@ -13,7 +12,7 @@
     @Html.AntiForgeryToken()
 
     @Html.DevExpress().TextBoxFor(m => m.UserName, tb => {
-        tb.Properties.Caption = "User Name";
+        tb.Properties.Caption = "Nombre Usuario";
         tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
         tb.ShowModelErrors = true;
         tb.Properties.ValidationSettings.Display = Display.Dynamic;
@@ -22,7 +21,7 @@
     }).GetHtml()
     
     @Html.DevExpress().TextBoxFor(m => m.Password, tb => {
-        tb.Properties.Caption = "Password";
+        tb.Properties.Caption = "Contraseña";
         tb.Properties.Password = true;
         tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
         tb.ShowModelErrors = true;
@@ -33,12 +32,12 @@
     
     @Html.DevExpress().CheckBox(cb => {
         cb.Name = "RememberMe";
-        cb.Text = "Remember me?";
+        cb.Text = "Recordar";
     }).GetHtml()
     <br />
     @Html.DevExpress().Button(b => {
         b.Name = "Button";
-        b.Text = "Log On";
+        b.Text = "Acceder";
         b.UseSubmitBehavior = true;
     }).GetHtml()
 }

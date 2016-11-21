@@ -1,0 +1,97 @@
+@{
+    var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridViewAuditorias";
+        //settings.Theme = "Material";
+        settings.CallbackRouteValues = new { Controller = "Auditoria", Action = "GridViewAuditoriaPartial" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Auditoria", Action = "GridViewAuditoriaPartialAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Auditoria", Action = "GridViewAuditoriaPartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Auditoria", Action = "GridViewAuditoriaPartialDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButton = false;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+        settings.CommandColumn.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+
+        settings.Styles.AlternatingRow.Enabled = 0;
+        settings.CommandColumn.Caption = "Acciones";
+        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+
+        settings.KeyFieldName = "Id";
+
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = true;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+        settings.SettingsPager.Position = System.Web.UI.WebControls.PagerPosition.Bottom;
+        settings.SettingsPager.FirstPageButton.Visible = true;
+        settings.SettingsPager.LastPageButton.Visible = true;
+        settings.SettingsPager.PageSize = 10;
+        settings.SettingsPager.PageSizeItemSettings.Items = new string[] { "10", "25", "50", "100" };
+        settings.SettingsPager.AlwaysShowPager = true;
+
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Id";
+            col.CellStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+            col.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+            col.ReadOnly = true;
+            col.Width = 50;
+            col.Visible = false;
+        });
+        settings.Columns.Add("FechaInicio");
+        settings.Columns.Add("FechaFin");
+        //settings.Columns.Add("FkUsuario.Nombre");
+
+        settings.Columns.Add(column =>
+        {
+            column.Caption = "Sucursal";
+            column.FieldName = "FkSucursal";
+
+            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+
+            column.EditorProperties().ComboBox(p =>
+            {
+                p.DropDownStyle = DropDownStyle.DropDownList;
+                p.TextField = "CodigoSAP";
+                p.ValueField = "Id";
+                p.DataSource = new PortalNeolaser.Models.neolaserdbEntities().Sucursals.ToList();
+            });
+        });
+
+        settings.Columns.Add("Usuario.UserName");
+
+        settings.Columns.Add(column =>
+        {
+            column.Caption = "Acciones";
+            column.SetDataItemTemplateContent(container =>
+            {
+                Html.DevExpress().HyperLink(hyperlink =>
+                {
+                    var visibleIndex = container.VisibleIndex;
+                    var keyValue = container.KeyValue;
+
+
+                    hyperlink.Name = "hl" + keyValue.ToString();
+                    hyperlink.Properties.Text = "+Info";
+                    hyperlink.NavigateUrl = Url.Action("Index", "ElementoAuditado", new { idAuditoria = keyValue });
+                }).Render();
+            });
+
+        });
+    });
+    if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()
