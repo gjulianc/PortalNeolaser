@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PortalNeolaser.Models;
 using PortalNeolaser.Areas.Mobile.Models;
+using System.IO;
 
 namespace PortalNeolaser.Areas.Mobile.Controllers
 {
@@ -18,6 +19,8 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
         // GET: Mobile/ElementoAuditado
         public ActionResult Index(int idAuditoria)
         {
+            //Obtiene los elementos auditados de la auditoria con id => idAuditoria
+           
             var elementosAuditados = db.ElementosAuditados.Include(e => e.Auditoria).Include(e => e.Elemento).Where(e=>e.FkAuditoria == idAuditoria);
             return View(elementosAuditados.ToList());
         }
@@ -37,41 +40,7 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
             return View(elementosAuditado);
         }
 
-        // GET: Mobile/ElementoAuditado/Create
-        public ActionResult Create()
-        {
-            ViewBag.FkAuditoria = new SelectList(db.Auditorias, "Id", "Id");
-            ViewBag.FkElemento = new SelectList(db.Elementos, "Id", "Nombre");
-            return View();
-        }
 
-        // POST: Mobile/ElementoAuditado/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Estado,Descripcion,Foto,FkAuditoria,FkElemento")] ElementoAuditadoViewModel item)
-        {
-            ElementosAuditado e = new ElementosAuditado
-            {
-                Id = item.Id,
-                Descripcion = item.Descripcion,
-                Estado = item.Estado
-                //Foto = item.Foto,
-                //FkAuditoria = item.FkAuditoria,
-                //FkElemento = item.FkElemento
-            };
-            if (ModelState.IsValid)
-            {
-                db.ElementosAuditados.Add(e);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            //ViewBag.FkAuditoria = new SelectList(db.Auditorias, "Id", "Id", item.FkAuditoria);
-            //ViewBag.FkElemento = new SelectList(db.Elementos, "Id", "Nombre", item.FkElemento);
-            return View(item);
-        }
 
         // GET: Mobile/ElementoAuditado/Edit/5
         public ActionResult Edit(int? id)
@@ -85,39 +54,50 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
             viewmodel.Id = elementosAuditado.Id;
             viewmodel.Estado = elementosAuditado.Estado;
             viewmodel.Descripcion = elementosAuditado.Descripcion;
-            
+            viewmodel.FkAuditoria = elementosAuditado.FkAuditoria;
+            viewmodel.FkElemento = elementosAuditado.FkElemento;
+
+
             if (elementosAuditado == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.IdAuditoria = elementosAuditado.FkAuditoria;
             ViewBag.FkAuditoria = new SelectList(db.Auditorias, "Id", "Id", elementosAuditado.FkAuditoria);
             ViewBag.FkElemento = new SelectList(db.Elementos, "Id", "Nombre", elementosAuditado.FkElemento);
             return View(viewmodel);
         }
 
-        // POST: Mobile/ElementoAuditado/Edit/5 ,Foto,FkAuditoria,FkElemento
+        // POST: Mobile/ElementoAuditado/Edit/5  [Bind(Include = "Id,Estado,Descripcion")]
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Estado,Descripcion")] ElementoAuditadoViewModel item)
+        public ActionResult Edit(ElementoAuditadoViewModel model)
         {
             if (ModelState.IsValid)
             {
+                if (model.Foto != null && model.Foto.ContentLength > 0)
+                {
+                    var filename = Path.GetFileName(model.Foto.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/uploads/fotos_auditorias"), filename);
+                    model.Foto.SaveAs(path);
+                }
                 ElementosAuditado e = new ElementosAuditado();
-                e.Id = item.Id;
-                e.Estado = item.Estado;
-                //e.Foto = item.Foto;
-                //e.FkElemento = item.FkElemento;
-                //e.FkAuditoria = item.FkAuditoria;
+                e.Id = model.Id;
+                e.Estado = model.Estado;
+                e.Descripcion = model.Descripcion;
+                e.Foto = model.Foto.FileName;
+                e.FkElemento = model.FkElemento;
+                e.FkAuditoria = model.FkAuditoria;
 
                 db.Entry(e).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { idAuditoria = e.FkAuditoria });
             }
-            //ViewBag.FkAuditoria = new SelectList(db.Auditorias, "Id", "Id", item.FkAuditoria);
-            //ViewBag.FkElemento = new SelectList(db.Elementos, "Id", "Nombre", item.FkElemento);
-            return View(item);
+            ViewBag.FkAuditoria = model.FkAuditoria;
+            ViewBag.FkElemento = model.FkElemento;
+            return View(model);
         }
 
         // GET: Mobile/ElementoAuditado/Delete/5

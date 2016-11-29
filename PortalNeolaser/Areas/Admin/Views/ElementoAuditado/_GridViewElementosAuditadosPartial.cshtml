@@ -73,7 +73,18 @@
             col.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
             col.SetDataItemTemplateContent(c =>
             {
-                var srcImage = (c.Text == "True" ? "~/Content/Images/color_green.png" : "~/Content/Images/color_red.png");
+                //var srcImage = (c.Text == "True" ? "~/Content/Images/color_green.png" : "~/Content/Images/color_red.png");
+                var srcImage = "";
+
+                if (c.Text == "True")
+                    srcImage = "~/Content/Images/color_green.png";
+                else if (c.Text == "False")
+                    srcImage = "~/Content/Images/color_red.png";
+                else
+                    srcImage = "~/Content/Images/color_null.png";
+
+
+
                 //ViewContext.Writer.Write( c.Text == "True" ? "This is true!" : "This is not true");
                 Html.DevExpress().Image(imgsettings =>
                 {
@@ -90,22 +101,35 @@
             col.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
             col.SetDataItemTemplateContent(c =>
             {
+
                 var celltext = c.Text;
 
                 //ViewContext.Writer.Write(c.Text);
-
-                Html.DevExpress().ImageZoom(imgSettings =>
+                if (celltext == "&nbsp;")
                 {
-                    imgSettings.Name = "zimg" + c.KeyValue;
-                    imgSettings.ShowHintText = false;
-                    imgSettings.SettingsZoomMode.ZoomWindowWidth = System.Web.UI.WebControls.Unit.Pixel(500);
-                    imgSettings.SettingsZoomMode.ZoomWindowHeight = System.Web.UI.WebControls.Unit.Pixel(350);
-                    imgSettings.ImageUrl = Url.Content(celltext.ToString());
-                    imgSettings.LargeImageUrl = Url.Content(celltext.ToString());
-                    imgSettings.Height = 30;
-                    imgSettings.Width = 30;
+                    Html.DevExpress().Image(imgSettings =>
+                    {
+                        imgSettings.ImageUrl = Url.Content("~/Content/Images/unknown_photo.png");
+                        imgSettings.Height = 30;
+                        imgSettings.Width = 30;
 
-                }).Render();
+                    }).Render();
+                }
+                else
+                {
+                    Html.DevExpress().ImageZoom(imgSettings =>
+                    {
+                        imgSettings.Name = "zimg" + c.KeyValue;
+                        imgSettings.ShowHintText = false;
+                        imgSettings.SettingsZoomMode.ZoomWindowWidth = System.Web.UI.WebControls.Unit.Pixel(500);
+                        imgSettings.SettingsZoomMode.ZoomWindowHeight = System.Web.UI.WebControls.Unit.Pixel(350);
+                        imgSettings.ImageUrl = Url.Content(celltext.ToString());
+                        imgSettings.LargeImageUrl = Url.Content(celltext.ToString());
+                        imgSettings.Height = 30;
+                        imgSettings.Width = 30;
+
+                    }).Render();
+                }
 
 
             });

@@ -8,6 +8,9 @@ namespace PortalNeolaser.Areas.Mobile.Models
 {
     public class ElementoAuditadoViewModel
     {
+        public HttpPostedFileBase Foto { get; set; }
+
+
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Debe introducir la Descripción")]
@@ -17,13 +20,13 @@ namespace PortalNeolaser.Areas.Mobile.Models
         [Required(ErrorMessage = "Debe introducir el nuevo estado")]
         public bool? Estado { get; set; }
 
-        //public string Foto { get; set; }
-
-        //[Required(ErrorMessage = "Debe asignarle una auditoria")]
-        //public int? FkAuditoria { get; set; }
 
 
-        //[Required(ErrorMessage = "Debe asignarle un elemento")]
-        //public int? FkElemento { get; set; }
+        [Required(ErrorMessage = "Debe asignarle una auditoria")]
+        public int? FkAuditoria { get; set; }
+
+
+        [Required(ErrorMessage = "Debe asignarle un elemento")]
+        public int? FkElemento { get; set; }
     }
 }

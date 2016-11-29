@@ -7,29 +7,52 @@
 <h2>Elementos para Auditar</h2>
 
 <ul data-role="listview" data-filter="true" data-filter-placeholder="Buscar elemento..." data-inset="true">
-    @foreach(var item in Model)
+    @foreach (var item in Model)
     {
         <li>
-            <a href="@Url.Action("Edit", new {item.Id})">
-                <div>
-                    <spam class="label label-success">@Html.DisplayFor(modelItem => item.Elemento.GruposElemento.Nombre )</spam>                    
-                </div> 
-                <br /> 
-                <div>
-                    <label><span>Elemento: @Html.DisplayFor(modelItem => item.Elemento.Nombre)</span></label>
-                </div>
-                <div>
-                    <span><label>Foto: @Html.DisplayFor(modelItem => item.Foto)</label></span>
-                </div>
-                <div>
-                    <small>Descripcion: @Html.DisplayFor(modelItem => item.Descripcion)</small>
-                </div>
-                
-                @*<span><label>@Html.CheckBoxFor(modelItem => (bool)item.Estado )</label></span>*@
-                
-                
-               
+            <a href="@Url.Action("Edit", new { item.Id })">
+                <div class="ui-grid responsive">
+                    <div>
+                        @{
+                            if (item.Estado == true)
+                            {
+                                <img src="/Content/Images/color_green.png" />
+                            }
+                            else
+                            {
+                                if (item.Estado == false)
+                                {
+                                    <img src="/Content/Images/color_red.png" />
+                                }
+                                else
+                                {
+                                    <img src="/Content/Images/color_null.png" />
+                                }
+                            }
 
+                        }
+                        <spam class="label label-success">@Html.DisplayFor(modelItem => item.Elemento.GruposElemento.Nombre)</spam>  
+                    </div>
+                    <div class="ui-block-a" style="padding:15px;">
+                        @{
+                            if (item.Foto == null)
+                            {
+                                <img src="~/Content/Images/unknown_photo.png" width="40" height="40" />
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => item.Foto)
+                            }
+                        }
+
+                    </div>   
+                    <div class="ui-block-b" style="padding-top:15px;">
+
+                        <div>Elemento: @Html.DisplayFor(modelItem => item.Elemento.Nombre)</div>
+                        <div><small>Descripcion: @Html.DisplayFor(modelItem => item.Elemento.Descripcion)</small></div>
+
+                    </div>                                             
+                </div> 
             </a> 
         </li>
     }
