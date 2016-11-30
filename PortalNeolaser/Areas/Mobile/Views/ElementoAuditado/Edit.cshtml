@@ -1,18 +1,17 @@
-﻿@model PortalNeolaser.Areas.Mobile.Models.ElementoAuditadoViewModel
+﻿
+@model PortalNeolaser.Models.FormElementoAuditado
 @{
     ViewBag.Title = "Edit";
 }
 
 @using (Html.BeginForm("Edit", "ElementoAuditado", FormMethod.Post, new { enctype="multipart/form-data" }))
 {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
-
+   
     <ul data-role="listview" data-inset="true">
         <li data-role="list-divider">Detalles</li>
 
         <li data-role="fieldcontain">
-            @Html.LabelFor(m => m.Id)
+            @Html.LabelFor(m => m.Id )
             @Html.TextBoxFor(model => model.Id)
         </li>
         <li data-role="fieldcontain">
@@ -20,11 +19,11 @@
             @Html.TextBoxFor(model => model.FkAuditoria)
         </li>
         <li data-role="fieldcontain">
-            @Html.LabelFor(model => model.FkElemento)
+            @Html.LabelFor(m => m.FkElemento)
             @Html.TextBoxFor(model => model.FkElemento)
         </li>
         <li data-role="fieldcontain">
-            @Html.LabelFor(model => model.Descripcion)
+            @Html.LabelFor(m => m.Descripcion)
             @Html.TextAreaFor(model => model.Descripcion)
         </li>
         <li data-role="fieldcontain">
@@ -37,10 +36,9 @@
             </fieldset>
         </li>
         <li data-role="fieldcontain">
-            @Html.LabelFor(model => model.Foto )
-            @*<input type="file" id="image" name="Foto" />*@
-            @Html.TextBoxFor(model=>model.Foto, new { type = "file" })
-            
+            @Html.LabelFor(m => m.Foto )
+            <input type="file" id="image" name="Foto" />
+            @*@Html.TextBoxFor(model=>model.Foto, new { type = "file" })*@  
         </li>
         <li data-role="fieldcontain">
             <input type="submit" data-inline="true" value="Guardar">

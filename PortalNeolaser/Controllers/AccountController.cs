@@ -38,6 +38,8 @@ namespace PortalNeolaser.Controllers {
                     else if (Roles.IsUserInRole(model.UserName, "Mantenimiento"))
                         return RedirectToAction("Index", "Sucursal", new { Area = "Mobile" });
                     else if (Roles.IsUserInRole(model.UserName, "Gestor"))
+                        return RedirectToAction("Index", "Dashboard", new { Area = "Client" });
+                    else
                         return Redirect(returnUrl ?? "/");
                 }
                 ViewBag.ErrorMessage = "El nombre de usuario o contraseña introducido no es válido";
@@ -175,9 +177,9 @@ namespace PortalNeolaser.Controllers {
                 else if (Roles.IsUserInRole(User.Identity.Name, "Mantenimiento"))
                     return RedirectToAction("Index", "Sucursal", new { Area = "Mobile" });
                 else if (Roles.IsUserInRole(User.Identity.Name, "Gestor"))
-                    return Redirect("/");
+                    return RedirectToAction("Index", "Dashboard", new { Area = "Client" });
                 else
-                    return Redirect("/");
+                   return Redirect("/");
 
             }
             else

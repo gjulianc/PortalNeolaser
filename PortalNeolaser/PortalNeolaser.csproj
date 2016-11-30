@@ -264,7 +264,9 @@
     <Content Include="Areas\Admin\Views\Auditoria\NewAuditoria.cshtml" />
     <Content Include="Areas\Admin\Views\ElementoAuditado\_GridViewElementosAuditadosPartial.cshtml" />
     <Content Include="Areas\Admin\Views\ElementoAuditado\UploadControlPartial.cshtml" />
-    <Content Include="Areas\Mobile\Views\web.config" />
+    <Content Include="Areas\Mobile\Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\Mobile\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Mobile\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Mobile\Views\Sucursal\Details.cshtml" />
@@ -279,6 +281,9 @@
     <Content Include="Areas\Mobile\Views\ElementoAuditado\Details.cshtml" />
     <Content Include="Areas\Mobile\Views\ElementoAuditado\Edit.cshtml" />
     <Content Include="Areas\Mobile\Views\ElementoAuditado\Index.cshtml" />
+    <Content Include="Areas\Client\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Client\Views\Dashboard\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -381,6 +386,7 @@
     <Compile Include="Areas\Admin\Models\SucursalViewModel.cs" />
     <Compile Include="Areas\Admin\Models\UsuarioViewModel.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
+    <Compile Include="Areas\Client\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Mobile\Controllers\AuditoriaController.cs" />
     <Compile Include="Areas\Mobile\Controllers\ElementoAuditadoController.cs" />
     <Compile Include="Areas\Mobile\Controllers\SucursalController.cs" />
@@ -410,6 +416,7 @@
     <Compile Include="Models\ElementosAuditado.cs">
       <DependentUpon>neolaserDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FormElementoAuditado.cs" />
     <Compile Include="Models\GruposElemento.cs">
       <DependentUpon>neolaserDataModel.tt</DependentUpon>
     </Compile>
@@ -453,9 +460,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Client\Controllers\" />
-    <Folder Include="Areas\Client\Models\" />
-    <Folder Include="Areas\Client\Views\Shared\" />
+    <Folder Include="Areas\Client\Models\Dashboard\" />
     <Folder Include="Content\uploads\fotos_auditorias\" />
     <Folder Include="Content\uploads\fotos_usuarios\" />
   </ItemGroup>

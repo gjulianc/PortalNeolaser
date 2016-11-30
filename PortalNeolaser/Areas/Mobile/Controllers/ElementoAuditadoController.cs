@@ -50,13 +50,8 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ElementosAuditado elementosAuditado = db.ElementosAuditados.Find(id);
-            ElementoAuditadoViewModel viewmodel = new ElementoAuditadoViewModel();
-            viewmodel.Id = elementosAuditado.Id;
-            viewmodel.Estado = elementosAuditado.Estado;
-            viewmodel.Descripcion = elementosAuditado.Descripcion;
-            viewmodel.FkAuditoria = elementosAuditado.FkAuditoria;
-            viewmodel.FkElemento = elementosAuditado.FkElemento;
-
+            FormElementoAuditado viewmodel = new FormElementoAuditado(elementosAuditado);
+            
 
             if (elementosAuditado == null)
             {
@@ -68,12 +63,9 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
             return View(viewmodel);
         }
 
-        // POST: Mobile/ElementoAuditado/Edit/5  [Bind(Include = "Id,Estado,Descripcion")]
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(ElementoAuditadoViewModel model)
+       
+        [HttpPost]        
+        public ActionResult Edit(FormElementoAuditado model)
         {
             if (ModelState.IsValid)
             {
