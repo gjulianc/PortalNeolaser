@@ -1,0 +1,58 @@
+@{
+    var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridViewSucursales";
+        settings.CallbackRouteValues = new { Controller = "Sucursales", Action = "GridViewSucursalesPartial" };
+
+
+        settings.KeyFieldName = "Id";
+
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = false;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+        settings.SettingsDetail.AllowOnlyOneMasterRowExpanded = false;
+        settings.SettingsDetail.ShowDetailRow = true;
+
+        settings.Columns.Add("Id").Visible = false;
+        settings.Columns.Add("CodigoSAP");
+        settings.Columns.Add("Descripcion");
+        settings.Columns.Add("Direccion");
+        settings.Columns.Add("Poblacion");
+        settings.Columns.Add("Provincia");
+        //settings.Columns.Add("FkCliente");
+        settings.Columns.Add("FechaAlta");
+        settings.Columns.Add("ComunidadAutonoma");
+        settings.Columns.Add("CodPostal");
+        //settings.Columns.Add("Auditorias");
+        //settings.Columns.Add("Cliente");
+        //settings.Columns.Add("Surcusales_Grupos");
+
+        settings.SetDetailRowTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(
+
+                "Auditorias Realizadas en la Sucursal con Código SAP: <b>" + DataBinder.Eval(c.DataItem, "CodigoSAP") + /*"</b>, Fax: <b>" +*/
+                                                                                                                        //    DataBinder.Eval(c.DataItem, "Fax") + "</b>" +
+                "<br />" +
+                "<br />"
+            );
+            Html.RenderAction("GridViewAuditoriaDetailPartial", new { SucursalID = DataBinder.Eval(c.DataItem, "Id") });
+        });
+
+        settings.PreRender = (sender, e) =>
+        {
+            ((MVCxGridView)sender).DetailRows.ExpandRow(0);
+        };
+    });
+    if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

@@ -1,0 +1,48 @@
+@{
+    var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "detailGrid_" + ViewData["SucursalID"];
+        settings.Name = "GridViewAuditoriaDetail";
+        settings.CallbackRouteValues = new { Controller = "Sucursales", Action = "GridViewAuditoriaDetailPartial",
+            sucursalID = ViewData["SucursalID"]
+        };
+        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+
+        settings.KeyFieldName = "Id";
+
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = false;
+        settings.Settings.ShowFilterRow = false;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+        settings.Columns.Add("Id").Visible = false;
+        settings.Columns.Add("FechaInicio");
+        settings.Columns.Add("FechaFin").Visible = false;
+        settings.Columns.Add("Usuario.UserName");
+        settings.Columns.Add(column =>
+        {
+            column.Caption = "Acciones";
+            column.SetDataItemTemplateContent(container =>
+            {
+                Html.DevExpress().HyperLink(hyperlink =>
+                {
+                    var visibleIndex = container.VisibleIndex;
+                    var keyValue = container.KeyValue;
+
+
+                    hyperlink.Name = "hl" + keyValue.ToString();
+                    hyperlink.Properties.Text = "+Info";
+                    hyperlink.NavigateUrl = Url.Action("Index", "ElementosAuditados", new { idAuditoria = keyValue });
+                }).Render();
+            });
+
+        });
+
+    });
+}
+@grid.Bind(Model).GetHtml()

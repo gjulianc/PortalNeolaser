@@ -1,29 +1,23 @@
 @{
     var grid = Html.DevExpress().GridView(settings => {
-        settings.Name = "GridViewElementosAuditados";
-        //settings.Theme = "Material";
-        settings.CallbackRouteValues = new { Controller = "ElementoAuditado", Action = "GridViewElementosAuditadosPartial"};
+        settings.Name = "GridViewElementoAuditado";
+        settings.CallbackRouteValues = new { Controller = "ElementosAuditados", Action = "GridViewElementoAuditadoPartial" };
         settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
-
-        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Auditoria", Action = "GridViewElementosAuditadosPartialAddNew" };
-        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Auditoria", Action = "GridViewElementosAuditadosPartialUpdate" };
-        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Auditoria", Action = "GridViewElementosAuditadosPartialDelete" };
-        settings.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
-        settings.SettingsBehavior.ConfirmDelete = true;
-
-        settings.CommandColumn.Visible = false;
-        settings.CommandColumn.ShowNewButton = false;
-        settings.CommandColumn.ShowDeleteButton = false;
-        settings.CommandColumn.ShowEditButton = false;
 
         settings.KeyFieldName = "Id";
 
         settings.SettingsPager.Visible = true;
         settings.Settings.ShowGroupPanel = true;
-        settings.Settings.ShowFilterRow = false;
+        settings.Settings.ShowFilterRow = true;
         settings.SettingsBehavior.AllowSelectByRowClick = true;
-        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
-        settings.Styles.AlternatingRow.Enabled = 0;
+
+        //paginacion
+        settings.SettingsPager.Position = System.Web.UI.WebControls.PagerPosition.Bottom;
+        settings.SettingsPager.FirstPageButton.Visible = true;
+        settings.SettingsPager.LastPageButton.Visible = true;
+        settings.SettingsPager.PageSize = 10;
+        settings.SettingsPager.PageSizeItemSettings.Items = new string[] { "10", "25" };
+        settings.SettingsPager.AlwaysShowPager = true;
 
         settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
         settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
@@ -31,15 +25,7 @@
         settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
         settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
 
-        settings.SettingsPager.Position = System.Web.UI.WebControls.PagerPosition.Bottom;
-        settings.SettingsPager.FirstPageButton.Visible = true;
-        settings.SettingsPager.LastPageButton.Visible = true;
-        settings.SettingsPager.PageSize = 10;
-        settings.SettingsPager.PageSizeItemSettings.Items = new string[] { "10", "25", "50", "100" };
-        settings.SettingsPager.AlwaysShowPager = true;
-
-
-        settings.Columns.Add(col=>
+        settings.Columns.Add(col =>
         {
             col.FieldName = "Id";
             col.CellStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
@@ -47,25 +33,7 @@
             col.ReadOnly = true;
             col.Visible = false;
         });
-
         settings.Columns.Add("Descripcion");
-
-        //settings.Columns.Add("FkAuditoria");
-        //settings.Columns.Add("FkElemento");
-        //settings.Columns.Add("Auditoria");
-        settings.Columns.Add(col =>
-        {
-            col.FieldName = "Elemento.Nombre";
-            col.Caption = "Elemento";
-            col.ReadOnly = true;
-        });
-        settings.Columns.Add(col =>
-        {
-            col.FieldName = "Elemento.GruposElemento.Nombre";
-            col.Caption = "Grupo";
-
-            col.ReadOnly = true;
-        });
         settings.Columns.Add(col =>
         {
             col.FieldName = "Estado";
@@ -93,6 +61,7 @@
 
             });
         });
+
         settings.Columns.Add(col =>
         {
             col.Name = "imgElemento";
@@ -134,22 +103,13 @@
 
             });
         });
-
-        settings.Columns.Add(column =>
+        
+        settings.Columns.Add(col =>
         {
-            column.Caption = "Acciones";
-            column.CellStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
-            column.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
-            column.SetDataItemTemplateContent(c =>
-            {
-                ViewContext.Writer.Write(
-                    Html.ActionLink("Editar", "Edit", new { id = DataBinder.Eval(c.DataItem, "Id") }).ToHtmlString());
-            });
+            col.FieldName = "Elemento.Nombre";
+            col.Caption = "Elemento";
+            col.ReadOnly = true;
         });
-
     });
-    if (ViewData["EditError"] != null){
-        grid.SetEditErrorText((string)ViewData["EditError"]);
-    }
 }
 @grid.Bind(Model).GetHtml()

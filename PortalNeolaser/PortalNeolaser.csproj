@@ -284,6 +284,11 @@
     <Content Include="Areas\Client\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Client\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Client\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Sucursales\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Sucursales\_GridViewSucursalesPartial.cshtml" />
+    <Content Include="Areas\Client\Views\Sucursales\_GridViewAuditoriaDetailPartial.cshtml" />
+    <Content Include="Areas\Client\Views\ElementosAuditados\Index.cshtml" />
+    <Content Include="Areas\Client\Views\ElementosAuditados\_GridViewElementoAuditadoPartial.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -386,7 +391,10 @@
     <Compile Include="Areas\Admin\Models\SucursalViewModel.cs" />
     <Compile Include="Areas\Admin\Models\UsuarioViewModel.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
+    <Compile Include="Areas\Client\Controllers\AuditoriasController.cs" />
     <Compile Include="Areas\Client\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Client\Controllers\ElementosAuditadosController.cs" />
+    <Compile Include="Areas\Client\Controllers\SucursalesController.cs" />
     <Compile Include="Areas\Mobile\Controllers\AuditoriaController.cs" />
     <Compile Include="Areas\Mobile\Controllers\ElementoAuditadoController.cs" />
     <Compile Include="Areas\Mobile\Controllers\SucursalController.cs" />
@@ -461,6 +469,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Client\Models\Dashboard\" />
+    <Folder Include="Areas\Client\Views\Auditorias\" />
     <Folder Include="Content\uploads\fotos_auditorias\" />
     <Folder Include="Content\uploads\fotos_usuarios\" />
   </ItemGroup>
