@@ -1,0 +1,24 @@
+﻿@model IEnumerable<PortalNeolaser.Models.Sucursal>
+
+@{
+    ViewBag.Title = "Sucursales";
+}
+
+
+<div class="col-lg-10">
+    <h2><spam class="label label-primary">Sucursales de alta en el Sistema: </spam></h2>
+    <br />
+
+</div>
+<div>
+    <div>
+
+        @Html.Action("GridViewSucursalesPartial")
+
+
+        @*@Html.Action("GridViewAuditoriaDetailPartial")*@
+
+
+    </div>
+</div>
+
