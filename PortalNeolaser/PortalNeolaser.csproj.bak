@@ -44,7 +44,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.DataAccess.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DotNetOpenAuth.AspNet, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetOpenAuth.AspNet.4.1.4.12333\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
       <Private>True</Private>
@@ -147,20 +147,21 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Data.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Web.ASPxThemes.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.RichEdit.v16.1.Core, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Web.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Web.Mvc5.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v16.1.Web, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Web.Resources.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraReports.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraReports.v16.1.Web, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Web.ASPxTreeList.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.Mvc5.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v16.1.Web, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.Resources.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.CodeParser.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxTreeList.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.3.2.3\lib\net45\WebMatrix.Data.dll</HintPath>
       <Private>True</Private>
@@ -177,6 +178,9 @@
     <Content Include="Content\Images\Blog\image1.png" />
     <Content Include="Content\Images\Blog\image2.png" />
     <Content Include="Content\Images\Blog\image3.png" />
+    <Content Include="Content\Images\color_green.png" />
+    <Content Include="Content\Images\color_null.png" />
+    <Content Include="Content\Images\color_red.png" />
     <Content Include="Content\Images\Components\paper.jpg" />
     <Content Include="Content\Images\Customers\GaryRubio.jpg" />
     <Content Include="Content\Images\Customers\HeidiLopez.jpg" />
@@ -184,13 +188,13 @@
     <Content Include="Content\Images\Customers\RafaelRaje.jpg" />
     <Content Include="Content\Images\Delete.png" />
     <Content Include="Content\Images\EditContact_16x16.png" />
+    <Content Include="Content\Images\color_orange.png" />
     <Content Include="Content\Images\Neolaser\Slider\CUBOS-2.jpg" />
     <Content Include="Content\Images\Neolaser\Slider\cubos800.jpg" />
     <Content Include="Content\Images\Neolaser\logo2.png" />
-    <Content Include="Content\Images\Neolaser\Slider\NLBLOG.jpg" />
     <Content Include="Content\Images\Neolaser\Slider\pinturanew.jpg" />
-    <Content Include="Content\Images\Neolaser\Slider\poligon.jpg" />
     <Content Include="Content\Images\NewContact_16x16.png" />
+    <Content Include="Content\Images\unknown_photo.png" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\site.css" />
@@ -248,6 +252,38 @@
     <Content Include="Areas\Admin\Views\Elemento\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Elemento\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Elemento\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Elemento\_GridViewElementosPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Auditoria\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Auditoria\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Auditoria\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Auditoria\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Auditoria\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Auditoria\_GridViewAuditoriaPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\ElementoAuditado\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ElementoAuditado\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Auditoria\NewAuditoria.cshtml" />
+    <Content Include="Areas\Admin\Views\ElementoAuditado\_GridViewElementosAuditadosPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\ElementoAuditado\UploadControlPartial.cshtml" />
+    <Content Include="Areas\Mobile\Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Mobile\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Mobile\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Mobile\Views\Sucursal\Details.cshtml" />
+    <Content Include="Areas\Mobile\Views\Sucursal\Index.cshtml" />
+    <Content Include="Areas\Mobile\Views\Auditoria\Create.cshtml" />
+    <Content Include="Areas\Mobile\Views\Auditoria\Delete.cshtml" />
+    <Content Include="Areas\Mobile\Views\Auditoria\Details.cshtml" />
+    <Content Include="Areas\Mobile\Views\Auditoria\Edit.cshtml" />
+    <Content Include="Areas\Mobile\Views\Auditoria\Index.cshtml" />
+    <Content Include="Areas\Mobile\Views\ElementoAuditado\Create.cshtml" />
+    <Content Include="Areas\Mobile\Views\ElementoAuditado\Delete.cshtml" />
+    <Content Include="Areas\Mobile\Views\ElementoAuditado\Details.cshtml" />
+    <Content Include="Areas\Mobile\Views\ElementoAuditado\Edit.cshtml" />
+    <Content Include="Areas\Mobile\Views\ElementoAuditado\Index.cshtml" />
+    <Content Include="Areas\Client\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Client\Views\Dashboard\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -276,7 +312,9 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <None Include="Prod.pubxml" />
-    <None Include="Properties\PublishProfiles\Prod.pubxml" />
+    <None Include="Properties\PublishProfiles\Prod.pubxml">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -332,18 +370,28 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuditoriaController.cs" />
     <Compile Include="Areas\Admin\Controllers\ClienteController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ElementoAuditadoController.cs" />
     <Compile Include="Areas\Admin\Controllers\ElementoController.cs" />
     <Compile Include="Areas\Admin\Controllers\GrupoElementosController.cs" />
     <Compile Include="Areas\Admin\Controllers\SucursalController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsuarioController.cs" />
+    <Compile Include="Areas\Admin\Models\AuditoriaViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ClienteViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ElementoAuditadoViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ElementoViewModel.cs" />
     <Compile Include="Areas\Admin\Models\GrupoElementosViewModel.cs" />
     <Compile Include="Areas\Admin\Models\SucursalViewModel.cs" />
     <Compile Include="Areas\Admin\Models\UsuarioViewModel.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
+    <Compile Include="Areas\Client\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\AuditoriaController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\ElementoAuditadoController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\SucursalController.cs" />
+    <Compile Include="Areas\Mobile\MobileAreaRegistration.cs" />
+    <Compile Include="Areas\Mobile\Models\ElementoAuditadoViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\PagesController.Home.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -359,13 +407,20 @@
       <DependentUpon>neolaserDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\comunidade.cs">
+      <DependentUpon>neolaserDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Elemento.cs">
       <DependentUpon>neolaserDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ElementosAuditado.cs">
       <DependentUpon>neolaserDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FormElementoAuditado.cs" />
     <Compile Include="Models\GruposElemento.cs">
+      <DependentUpon>neolaserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\municipio.cs">
       <DependentUpon>neolaserDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\neolaserDataModel.Context.cs">
@@ -382,6 +437,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>neolaserDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\provincia.cs">
+      <DependentUpon>neolaserDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sucursal.cs">
       <DependentUpon>neolaserDataModel.tt</DependentUpon>
@@ -402,9 +460,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Client\Controllers\" />
-    <Folder Include="Areas\Client\Models\" />
-    <Folder Include="Areas\Client\Views\Shared\" />
+    <Folder Include="Areas\Client\Models\Dashboard\" />
     <Folder Include="Content\uploads\fotos_auditorias\" />
     <Folder Include="Content\uploads\fotos_usuarios\" />
   </ItemGroup>
