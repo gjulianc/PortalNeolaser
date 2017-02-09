@@ -4,9 +4,9 @@
     ViewBag.Title = "Edit";
 }
 
-@using (Html.BeginForm("Edit", "ElementoAuditado", FormMethod.Post, new { enctype="multipart/form-data" }))
+@using (Html.BeginForm("Edit", "ElementoAuditado", FormMethod.Post, new { enctype="multipart/form-data", @data_ajax = "false" }))
 {
-   
+
     <ul data-role="listview" data-inset="true">
         <li data-role="list-divider">Detalles</li>
 
@@ -37,7 +37,7 @@
         </li>
         <li data-role="fieldcontain">
             @Html.LabelFor(m => m.Foto )
-            <input type="file" id="image" name="Foto" />
+            <input type="file" id="image" name="Foto" maxlength="1000000"/>
             @*@Html.TextBoxFor(model=>model.Foto, new { type = "file" })*@  
         </li>
         <li data-role="fieldcontain">

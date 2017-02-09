@@ -1,0 +1,126 @@
+@{
+    var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridViewElementosMal";
+        settings.CallbackRouteValues = new { Controller = "ElementosAuditados", Action = "GridViewElementosMalPartial" };
+        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+
+        settings.KeyFieldName = "Id";
+
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = true;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Id";
+            col.CellStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+            col.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+            col.ReadOnly = true;
+            col.Visible = false;
+        });
+        settings.Columns.Add("Descripcion");
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Estado";
+            col.CellStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+            col.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+            col.SetDataItemTemplateContent(c =>
+            {
+                //var srcImage = (c.Text == "True" ? "~/Content/Images/color_green.png" : "~/Content/Images/color_red.png");
+                var srcImage = "";
+
+                if (c.Text == "True")
+                    srcImage = "~/Content/Images/color_green.png";
+                else if (c.Text == "False")
+                    srcImage = "~/Content/Images/color_red.png";
+                else
+                    srcImage = "~/Content/Images/color_null.png";
+
+
+
+                //ViewContext.Writer.Write( c.Text == "True" ? "This is true!" : "This is not true");
+                Html.DevExpress().Image(imgsettings =>
+                {
+                    imgsettings.ImageUrl = Url.Content(srcImage.ToString());
+                }).Render();
+
+            });
+        });
+
+        settings.Columns.Add(col =>
+        {
+            col.Name = "imgElemento";
+            col.FieldName = "Foto";
+            col.CellStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+            col.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+            col.SetDataItemTemplateContent(c =>
+            {
+
+                var celltext = c.Text;
+
+                //ViewContext.Writer.Write(c.Text);
+                if (celltext == "&nbsp;")
+                {
+                    Html.DevExpress().Image(imgSettings =>
+                    {
+                        imgSettings.ImageUrl = Url.Content("~/Content/Images/unknown_photo.png");
+                        imgSettings.Height = 30;
+                        imgSettings.Width = 30;
+
+                    }).Render();
+                }
+                else
+                {
+                    Html.DevExpress().ImageZoom(imgSettings =>
+                    {
+                        imgSettings.Name = "zimg" + c.KeyValue;
+                        imgSettings.ShowHintText = false;
+                        imgSettings.SettingsZoomMode.ZoomWindowWidth = System.Web.UI.WebControls.Unit.Pixel(500);
+                        imgSettings.SettingsZoomMode.ZoomWindowHeight = System.Web.UI.WebControls.Unit.Pixel(350);
+                        imgSettings.ImageUrl = Url.Content(celltext.ToString());
+                        imgSettings.LargeImageUrl = Url.Content(celltext.ToString());
+                        imgSettings.Height = 30;
+                        imgSettings.Width = 30;
+
+                    }).Render();
+                }
+
+
+            });
+        });
+
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Elemento.Nombre";
+            col.Caption = "Elemento";
+            col.ReadOnly = true;
+        });
+        //settings.Columns.Add("FkAuditoria");
+        settings.Columns.Add(column =>
+        {
+            column.Caption = "Acciones";
+            column.SetDataItemTemplateContent(container =>
+            {
+                Html.DevExpress().HyperLink(hyperlink =>
+                {
+                    var visibleIndex = container.VisibleIndex;
+                    var keyValue = container.KeyValue;
+
+
+                    hyperlink.Name = "hl" + keyValue.ToString();
+                    hyperlink.Properties.Text = "Ver Auditoría";
+                    hyperlink.NavigateUrl = Url.Action("Index", "ElementosAuditados", new { idAuditoria = DataBinder.Eval(container.DataItem, "FkAuditoria") });
+                }).Render();
+            });
+
+        });
+    });
+}
+@grid.Bind(Model).GetHtml()

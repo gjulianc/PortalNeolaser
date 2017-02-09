@@ -17,6 +17,9 @@ namespace PortalNeolaser.Models
             this.FkElemento = e.FkElemento;
             this.Foto = null;
         }
+        
+        public FormElementoAuditado()
+        { }
 
         public HttpPostedFileBase Foto { get; set; }
 

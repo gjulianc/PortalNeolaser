@@ -289,6 +289,8 @@
     <Content Include="Areas\Client\Views\Sucursales\_GridViewAuditoriaDetailPartial.cshtml" />
     <Content Include="Areas\Client\Views\ElementosAuditados\Index.cshtml" />
     <Content Include="Areas\Client\Views\ElementosAuditados\_GridViewElementoAuditadoPartial.cshtml" />
+    <Content Include="Areas\Client\Views\ElementosAuditados\ElementosEnMalEstado.cshtml" />
+    <Content Include="Areas\Client\Views\ElementosAuditados\_GridViewElementosMalPartial.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

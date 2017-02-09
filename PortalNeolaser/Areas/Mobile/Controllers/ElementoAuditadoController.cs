@@ -50,7 +50,12 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ElementosAuditado elementosAuditado = db.ElementosAuditados.Find(id);
-            FormElementoAuditado viewmodel = new FormElementoAuditado(elementosAuditado);
+            FormElementoAuditado viewmodel = new FormElementoAuditado();
+            viewmodel.Id = elementosAuditado.Id;
+            viewmodel.Estado = elementosAuditado.Estado;
+            viewmodel.Descripcion = elementosAuditado.Descripcion;
+            viewmodel.FkAuditoria = elementosAuditado.FkAuditoria;
+            viewmodel.FkElemento = elementosAuditado.FkElemento;
             
 
             if (elementosAuditado == null)
@@ -67,21 +72,28 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
         [HttpPost]        
         public ActionResult Edit(FormElementoAuditado model)
         {
-            if (ModelState.IsValid)
+            int tamaño = Request.ContentLength;
+            if (ModelState.IsValid || Request.ContentLength <= 4096)
             {
                 if (model.Foto != null && model.Foto.ContentLength > 0)
                 {
+
                     var filename = Path.GetFileName(model.Foto.FileName);
                     var path = Path.Combine(Server.MapPath("~/Content/uploads/fotos_auditorias"), filename);
                     model.Foto.SaveAs(path);
                 }
+           
                 ElementosAuditado e = new ElementosAuditado();
                 e.Id = model.Id;
                 e.Estado = model.Estado;
                 e.Descripcion = model.Descripcion;
+                if (model.Foto != null)
                 e.Foto = model.Foto.FileName;
+                else
+                    e.Foto = "unknown_photo.png"; 
                 e.FkElemento = model.FkElemento;
                 e.FkAuditoria = model.FkAuditoria;
+            
 
                 db.Entry(e).State = EntityState.Modified;
                 db.SaveChanges();

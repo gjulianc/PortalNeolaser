@@ -14,6 +14,7 @@
           <Property Name="FechaFin" Type="datetime" />
           <Property Name="FkUsuario" Type="int" />
           <Property Name="FkSucursal" Type="int" />
+          <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Clientes">
           <Key>
@@ -44,6 +45,7 @@
           <Property Name="Nombre" Type="varchar" MaxLength="50" />
           <Property Name="Descripcion" Type="varchar(max)" />
           <Property Name="FkGrupo" Type="int" />
+          <Property Name="Orden" Type="int" />
         </EntityType>
         <EntityType Name="ElementosAuditados">
           <Key>
@@ -63,6 +65,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" />
           <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="Orden" Type="int" />
         </EntityType>
         <EntityType Name="municipios">
           <Key>
@@ -186,7 +189,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ElementosAuditados_Auditorias">
-          <End Role="Auditorias" Type="Self.Auditorias" Multiplicity="0..1" />
+          <End Role="Auditorias" Type="Self.Auditorias" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ElementosAuditados" Type="Self.ElementosAuditados" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Auditorias">
@@ -465,6 +470,7 @@
           <NavigationProperty Name="Sucursal" Relationship="neolaserdbModel.FK_Auditorias_Sucursal" FromRole="Auditoria" ToRole="Sucursal" />
           <NavigationProperty Name="Usuario" Relationship="neolaserdbModel.FK_Auditorias_Usuarios" FromRole="Auditoria" ToRole="Usuario" />
           <NavigationProperty Name="ElementosAuditados" Relationship="neolaserdbModel.FK_ElementosAuditados_Auditorias" FromRole="Auditoria" ToRole="ElementosAuditado" />
+          <Property Name="Estado" Type="Boolean" />
         </EntityType>
         <EntityType Name="Elemento">
           <Key>
@@ -476,6 +482,7 @@
           <Property Name="FkGrupo" Type="Int32" />
           <NavigationProperty Name="GruposElemento" Relationship="neolaserdbModel.FK_Elementos_GruposElementos" FromRole="Elemento" ToRole="GruposElemento" />
           <NavigationProperty Name="ElementosAuditados" Relationship="neolaserdbModel.FK_ElementosAuditados_Elementos" FromRole="Elemento" ToRole="ElementosAuditado" />
+          <Property Name="Orden" Type="Int32" />
         </EntityType>
         <EntityType Name="ElementosAuditado">
           <Key>
@@ -499,6 +506,7 @@
           <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Elementos" Relationship="neolaserdbModel.FK_Elementos_GruposElementos" FromRole="GruposElemento" ToRole="Elemento" />
           <NavigationProperty Name="Surcusales_Grupos" Relationship="neolaserdbModel.FK_Surcusales_Grupos_GruposElementos" FromRole="GruposElemento" ToRole="Surcusales_Grupos" />
+          <Property Name="Orden" Type="Int32" />
         </EntityType>
         <EntityType Name="Sucursal">
           <Key>
@@ -732,6 +740,7 @@
           <EntitySetMapping Name="Auditorias">
             <EntityTypeMapping TypeName="neolaserdbModel.Auditoria">
               <MappingFragment StoreEntitySet="Auditorias">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="FkSucursal" ColumnName="FkSucursal" />
                 <ScalarProperty Name="FkUsuario" ColumnName="FkUsuario" />
                 <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
@@ -743,6 +752,7 @@
           <EntitySetMapping Name="Elementos">
             <EntityTypeMapping TypeName="neolaserdbModel.Elemento">
               <MappingFragment StoreEntitySet="Elementos">
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
                 <ScalarProperty Name="FkGrupo" ColumnName="FkGrupo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -765,6 +775,7 @@
           <EntitySetMapping Name="GruposElementos">
             <EntityTypeMapping TypeName="neolaserdbModel.GruposElemento">
               <MappingFragment StoreEntitySet="GruposElementos">
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

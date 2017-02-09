@@ -24,6 +24,7 @@ namespace PortalNeolaser.Models
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public Nullable<int> FkGrupo { get; set; }
+        public Nullable<int> Orden { get; set; }
     
         public virtual GruposElemento GruposElemento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

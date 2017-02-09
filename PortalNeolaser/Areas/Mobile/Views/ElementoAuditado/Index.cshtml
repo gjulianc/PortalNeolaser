@@ -35,13 +35,15 @@
                     </div>
                     <div class="ui-block-a" style="padding:15px;">
                         @{
-                            if (item.Foto == null)
+                            if (item.Foto != null)
                             {
-                                <img src="~/Content/Images/unknown_photo.png" width="40" height="40" />
+                                <img src="~/Content/uploads/fotos_auditorias/@item.Foto" with="40" height="40" />
                             }
                             else
                             {
-                                @Html.DisplayFor(modelItem => item.Foto)
+
+                                <img src="~/Content/Images/unknown_photo.png" width="40" height="40" />
+
                             }
                         }
 

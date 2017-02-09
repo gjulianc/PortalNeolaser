@@ -25,6 +25,7 @@ namespace PortalNeolaser.Models
         public Nullable<System.DateTime> FechaFin { get; set; }
         public Nullable<int> FkUsuario { get; set; }
         public Nullable<int> FkSucursal { get; set; }
+        public Nullable<bool> Estado { get; set; }
     
         public virtual Sucursal Sucursal { get; set; }
         public virtual Usuario Usuario { get; set; }
