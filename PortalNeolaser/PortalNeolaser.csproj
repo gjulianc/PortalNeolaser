@@ -194,6 +194,7 @@
     <Content Include="Content\Images\Neolaser\logo2.png" />
     <Content Include="Content\Images\Neolaser\Slider\pinturanew.jpg" />
     <Content Include="Content\Images\NewContact_16x16.png" />
+    <Content Include="Content\Images\smooth-ice.jpg" />
     <Content Include="Content\Images\unknown_photo.png" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.min.css" />
@@ -277,7 +278,7 @@
     <Content Include="Areas\Mobile\Views\Auditoria\Edit.cshtml" />
     <Content Include="Areas\Mobile\Views\Auditoria\Index.cshtml" />
     <Content Include="Areas\Mobile\Views\ElementoAuditado\Create.cshtml" />
-    <Content Include="Areas\Mobile\Views\ElementoAuditado\Delete.cshtml" />
+    <Content Include="Areas\Mobile\Views\ElementoAuditado\Finalizar.cshtml" />
     <Content Include="Areas\Mobile\Views\ElementoAuditado\Details.cshtml" />
     <Content Include="Areas\Mobile\Views\ElementoAuditado\Edit.cshtml" />
     <Content Include="Areas\Mobile\Views\ElementoAuditado\Index.cshtml" />

@@ -37,6 +37,7 @@ new Script { ExtensionSuite = ExtensionSuite.TreeList }
     
 </head>
 <body>
+   
     <header>
         <div class="container">
             @Html.DevExpress().Panel(p =>
@@ -122,11 +123,12 @@ new Script { ExtensionSuite = ExtensionSuite.TreeList }
     </div>
 
     <hr>
-    <div class="container body-content">
+    <div class="container body-content" style="background-image: url('~/Content/Images/smooth-ice.jpg')">
         @RenderBody()
         <hr />
         
     </div>
+
     <footer>
         <div class="footerDown" >
             <div class="container">

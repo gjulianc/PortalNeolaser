@@ -27,16 +27,32 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
         {
             Sucursal sucursal = db.Sucursals.Find(idSucursal);
             Usuario usuario = db.Usuarios.FirstOrDefault(e => e.UserName == User.Identity.Name);
-            Auditoria a = new Auditoria
+            //Si existe alguna auditoria abierta de esta sucursal, se presenta y bien sigue auditando o la cierra y luego abre otra.
+            Auditoria a = new Auditoria();
+            a = ExiteAuditoriaAbiertaBySucursal(idSucursal);
+            if (a == null)
             {
-                Usuario = usuario,
-                FechaInicio = DateTime.Now,
-                FechaFin = DateTime.Now,
-                Sucursal = sucursal
-            };
-            db.Auditorias.Add(a);
-            db.SaveChanges();
-            return RedirectToAction("NewAuditoria", a);
+                Auditoria tmp = new Auditoria();
+                tmp.Usuario = usuario;
+                tmp.FechaInicio = DateTime.Now;
+                tmp.FechaFin = DateTime.Now;
+                tmp.Sucursal = sucursal;
+                tmp.Estado = false;
+                a = tmp;
+                db.Auditorias.Add(a);
+                db.SaveChanges();
+                return RedirectToAction("NewAuditoria", a);
+            }
+            else
+            {
+                return RedirectToAction("OpenAuditoria", a);
+            }
+            
+        }
+
+        private Auditoria ExiteAuditoriaAbiertaBySucursal(int idSucursal)
+        {
+            return db.Auditorias.FirstOrDefault(e => e.Estado == false && e.FkSucursal == idSucursal);
         }
 
         // GET: Mobile/Auditoria/Create
@@ -52,6 +68,7 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
         //Comienzo de Auditoria
         public ActionResult NewAuditoria(Auditoria auditoria)
         {
+
             List<ElementosAuditado> listaElementos = new List<ElementosAuditado>();
             string cadenaConexion = (@"server=82.98.161.118;user id = qualimove;password=mzprAh1r;database = neolaserdb");
             SqlConnection conexion = new SqlConnection(cadenaConexion);
@@ -79,6 +96,19 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
             catch { }
 
             return RedirectToAction("Index", "ElementoAuditado", new { IdAuditoria = auditoria.Id });
+        }
+
+        //Continuacion de Auditoria
+        public ActionResult OpenAuditoria(Auditoria auditoria)
+        {
+            return RedirectToAction("Index", "ElementoAuditado", new { IdAuditoria = auditoria.Id });
+        }
+
+        public ActionResult FinalizarAuditoria(int idAuditoria)
+        {
+            //actualizar la auditoria a estado = true
+
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

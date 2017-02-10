@@ -22,26 +22,10 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
             //Obtiene los elementos auditados de la auditoria con id => idAuditoria
            
             var elementosAuditados = db.ElementosAuditados.Include(e => e.Auditoria).Include(e => e.Elemento).Where(e=>e.FkAuditoria == idAuditoria);
+            ViewBag.IdAuditoria = idAuditoria;
             return View(elementosAuditados.ToList());
         }
-
-        // GET: Mobile/ElementoAuditado/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ElementosAuditado elementosAuditado = db.ElementosAuditados.Find(id);
-            if (elementosAuditado == null)
-            {
-                return HttpNotFound();
-            }
-            return View(elementosAuditado);
-        }
-
-
-
+ 
         // GET: Mobile/ElementoAuditado/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -67,7 +51,6 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
             ViewBag.FkElemento = new SelectList(db.Elementos, "Id", "Nombre", elementosAuditado.FkElemento);
             return View(viewmodel);
         }
-
        
         [HttpPost]        
         public ActionResult Edit(FormElementoAuditado model)
@@ -88,7 +71,7 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
                 e.Estado = model.Estado;
                 e.Descripcion = model.Descripcion;
                 if (model.Foto != null)
-                e.Foto = model.Foto.FileName;
+                    e.Foto = model.Foto.FileName;
                 else
                     e.Foto = "unknown_photo.png"; 
                 e.FkElemento = model.FkElemento;
@@ -103,31 +86,31 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
             ViewBag.FkElemento = model.FkElemento;
             return View(model);
         }
+    
+        public ActionResult FinalizarAuditoria(int idAuditoria)
+        {
+            //actualizar la auditoria a estado = true
+            try
+            {
+                Auditoria a = new Auditoria();
+                a = db.Auditorias.Find(idAuditoria);
+                a.Estado = true;
+                db.SaveChanges();
+            }
+            catch
+            {
+                
+            }   
+            return RedirectToAction("Finalizar", new { id = idAuditoria });
+        }
 
-        // GET: Mobile/ElementoAuditado/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Finalizar(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ElementosAuditado elementosAuditado = db.ElementosAuditados.Find(id);
-            if (elementosAuditado == null)
-            {
-                return HttpNotFound();
-            }
-            return View(elementosAuditado);
-        }
-
-        // POST: Mobile/ElementoAuditado/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            ElementosAuditado elementosAuditado = db.ElementosAuditados.Find(id);
-            db.ElementosAuditados.Remove(elementosAuditado);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            }            
+            return View();
         }
 
         protected override void Dispose(bool disposing)

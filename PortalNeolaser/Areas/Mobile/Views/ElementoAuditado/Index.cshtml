@@ -2,9 +2,13 @@
 
 @{
     ViewBag.Title = "Elementos";
+    <br />
+   
 }
 
-<h2>Elementos para Auditar</h2>
+<h2>Elementos</h2>
+<p>Identificador de Auditoría: @ViewBag.idAuditoria </p>
+@Html.ActionLink("Finalizar Auditoria", "FinalizarAuditoria", "Auditoria", null, new { @class = "ui-btn ui-btn-inline ui-btn-corner-all ui-shadow" })
 
 <ul data-role="listview" data-filter="true" data-filter-placeholder="Buscar elemento..." data-inset="true">
     @foreach (var item in Model)
@@ -59,3 +63,7 @@
         </li>
     }
 </ul>
+<br />
+<a href="@Url.Action("FinalizarAuditoria", new { idAuditoria = ViewBag.idAuditoria })" class="ui-btn ui-btn-inline ui-btn-corner-all ui-shadow">Finalizar Auditoría</a>
+@Html.ActionLink("Finalizar Auditoria", "FinalizarAuditoria", "Auditoria", new { @class = "ui-btn ui-btn-inline ui-btn-corner-all ui-shadow" })
+@Html.ActionLink("Finalizar Auditoria", "FinalizarAuditoria", "ElementoAuditado", new { idAuditoria = ViewBag.idAuditoria })

@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Finalizar";
+}
+
+<h2>Finalización Auditoria</h2>
+
+<h3>La Auditoria finalizó correctamente</h3>
+<td></td>
+<div>
+    <h4>Realizada por @User.Identity.Name</h4>
+    <hr />
+  
+    @Html.ActionLink("Volver", "Index", "Sucursal")
+</div>

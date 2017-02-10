@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     -ms-overflow-style: scrollbar;
+    
 }
 header {
     flex: none;
@@ -47,6 +48,9 @@ header.shrink {
 .panelContent {
 
     padding-top: 15px;
+     background-image: url('Images/smooth-ice.jpg'); 
+    background-repeat: no-repeat; 
+    background-size: 100%; 
 }
 .expandedPanel .pull-right  {
     float: none !important;
@@ -141,6 +145,7 @@ header.shrink {
 .content {
     flex: 1 0 auto;
     margin-bottom: 40px;
+    
 }
 footer {
     flex: none;
