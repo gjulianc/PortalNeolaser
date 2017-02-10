@@ -61,7 +61,7 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
             cmd.Parameters.Add("@paramID", SqlDbType.Int);
             cmd.Parameters["@paramID"].Value = auditoria.FkSucursal;
             SqlDataReader reader = cmd.ExecuteReader();
-
+            //Controlar que no tenga pendientes autitorias abiertas.
             while (reader.Read())
             {
                 var item = new ElementosAuditado();
