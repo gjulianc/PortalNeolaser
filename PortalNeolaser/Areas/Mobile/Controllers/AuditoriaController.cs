@@ -19,6 +19,7 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
         public ActionResult Index()
         {
             var auditorias = db.Auditorias.Include(a => a.Sucursal).Include(a => a.Usuario);
+         
             return View(auditorias.ToList());
         }
 
@@ -41,10 +42,11 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
                 a = tmp;
                 db.Auditorias.Add(a);
                 db.SaveChanges();
+               
                 return RedirectToAction("NewAuditoria", a);
             }
             else
-            {
+            {              
                 return RedirectToAction("OpenAuditoria", a);
             }
             
@@ -95,13 +97,14 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
             }
             catch { }
 
-            return RedirectToAction("Index", "ElementoAuditado", new { IdAuditoria = auditoria.Id });
+            return RedirectToAction("Index", "ElementoAuditado", new { IdAuditoria = auditoria.Id, esNueva = true });
         }
 
         //Continuacion de Auditoria
         public ActionResult OpenAuditoria(Auditoria auditoria)
         {
-            return RedirectToAction("Index", "ElementoAuditado", new { IdAuditoria = auditoria.Id });
+            
+            return RedirectToAction("Index", "ElementoAuditado", new { IdAuditoria = auditoria.Id, esNueva = false });
         }
 
         public ActionResult FinalizarAuditoria(int idAuditoria)

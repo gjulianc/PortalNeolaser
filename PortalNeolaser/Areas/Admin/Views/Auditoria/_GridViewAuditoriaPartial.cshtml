@@ -24,7 +24,6 @@
 
         settings.SettingsPager.Visible = true;
         settings.Settings.ShowGroupPanel = true;
-        settings.Settings.ShowFilterRow = true;
         settings.SettingsBehavior.AllowSelectByRowClick = true;
 
         settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
@@ -39,6 +38,11 @@
         settings.SettingsPager.PageSize = 10;
         settings.SettingsPager.PageSizeItemSettings.Items = new string[] { "10", "25", "50", "100" };
         settings.SettingsPager.AlwaysShowPager = true;
+
+        //Filter
+        //Filter
+        settings.Settings.ShowHeaderFilterButton = true;
+        settings.SettingsSearchPanel.Visible = true;
 
         settings.Columns.Add(col =>
         {

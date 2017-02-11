@@ -17,12 +17,14 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
         private neolaserdbEntities db = new neolaserdbEntities();
 
         // GET: Mobile/ElementoAuditado
-        public ActionResult Index(int idAuditoria)
+        public ActionResult Index(int idAuditoria,bool esNueva)
         {
             //Obtiene los elementos auditados de la auditoria con id => idAuditoria
            
             var elementosAuditados = db.ElementosAuditados.Include(e => e.Auditoria).Include(e => e.Elemento).Where(e=>e.FkAuditoria == idAuditoria);
-            ViewBag.IdAuditoria = idAuditoria;
+            ViewBag.IdAuditoria = idAuditoria;           
+            ViewBag.Estado = esNueva;
+            
             return View(elementosAuditados.ToList());
         }
  

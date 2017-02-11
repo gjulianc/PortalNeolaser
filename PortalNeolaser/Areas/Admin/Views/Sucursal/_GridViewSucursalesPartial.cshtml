@@ -25,7 +25,6 @@
 
         settings.SettingsPager.Visible = true;
         settings.Settings.ShowGroupPanel = true;
-        settings.Settings.ShowFilterRow = true;
         settings.SettingsBehavior.AllowSelectByRowClick = true;
 
         settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
@@ -44,6 +43,7 @@
 
         //Filter
         settings.Settings.ShowHeaderFilterButton = true;
+        settings.SettingsSearchPanel.Visible = true;
 
         settings.Columns.Add("Id").Visible = false;
         settings.Columns.Add("Cliente.Nombre");

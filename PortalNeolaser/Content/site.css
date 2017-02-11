@@ -48,9 +48,7 @@ header.shrink {
 .panelContent {
 
     padding-top: 15px;
-     background-image: url('Images/smooth-ice.jpg'); 
-    background-repeat: no-repeat; 
-    background-size: 100%; 
+     
 }
 .expandedPanel .pull-right  {
     float: none !important;
@@ -208,4 +206,11 @@ footer h4 {
 }
 .user {
     font-size: 64px;
+}
+
+/*Layout Administración*/
+.fondoImagen{
+    background-image:url("Images/smooth-ice.jpg");
+    background-repeat: no-repeat; 
+    background-size: cover; 
 }

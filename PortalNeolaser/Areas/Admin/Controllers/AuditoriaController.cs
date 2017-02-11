@@ -58,7 +58,8 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                     FechaInicio = item.FechaInicio,
                     FechaFin = item.FechaFin,
                     FkSucursal = item.Sucursal,
-                    FkUsuario = item.Usuario
+                    FkUsuario = item.Usuario,
+                    Estado = false
                 };
                 db.Auditorias.Add(auditoria);
                 db.SaveChanges();

@@ -3,13 +3,23 @@
 @{
     ViewBag.Title = "Elementos";
     <br />
-   
+
 }
+@{
+    if (ViewBag.Estado == false)
+    {
+        <text>
+            <script type="text/javascript">
+                 alert('Por favor, continue y finalice con la auditoria.\nGracias!');
+            </script>
+        </text>
+    }
+}
+
 
 <h2>Elementos</h2>
 <p>Identificador de Auditoría: @ViewBag.idAuditoria </p>
-@Html.ActionLink("Finalizar Auditoria", "FinalizarAuditoria", "Auditoria", null, new { @class = "ui-btn ui-btn-inline ui-btn-corner-all ui-shadow" })
-
+<a href="@Url.Action("FinalizarAuditoria", new { idAuditoria = ViewBag.idAuditoria })" class="ui-btn ui-btn-inline ui-btn-corner-all ui-shadow">Finalizar Auditoría</a>
 <ul data-role="listview" data-filter="true" data-filter-placeholder="Buscar elemento..." data-inset="true">
     @foreach (var item in Model)
     {
@@ -65,5 +75,3 @@
 </ul>
 <br />
 <a href="@Url.Action("FinalizarAuditoria", new { idAuditoria = ViewBag.idAuditoria })" class="ui-btn ui-btn-inline ui-btn-corner-all ui-shadow">Finalizar Auditoría</a>
-@Html.ActionLink("Finalizar Auditoria", "FinalizarAuditoria", "Auditoria", new { @class = "ui-btn ui-btn-inline ui-btn-corner-all ui-shadow" })
-@Html.ActionLink("Finalizar Auditoria", "FinalizarAuditoria", "ElementoAuditado", new { idAuditoria = ViewBag.idAuditoria })
