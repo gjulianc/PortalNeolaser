@@ -74,9 +74,9 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
                 e.Estado = model.Estado;
                 e.Descripcion = model.Descripcion;
                 if (model.Foto != null)
-                    e.Foto = String.Format("~/Content/uploads/fotos_auditorias/{0}", model.Foto.FileName); 
+                    e.Foto = model.Foto.FileName; 
                 else
-                    e.Foto = String.Format("~/Content/uploads/fotos_auditorias/{0}","unknown_photo.png"); 
+                    e.Foto = "unknown_photo.png"; 
                 e.FkElemento = model.FkElemento;
                 e.FkAuditoria = model.FkAuditoria;
                 e.Observaciones = model.Observaciones;

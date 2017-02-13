@@ -80,7 +80,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Descripcion,Estado,Foto,FkAuditoria,FkElemento")] ElementoAuditadoViewModel item)
+        public ActionResult Edit([Bind(Include = "Id,Descripcion,Estado,Foto,FkAuditoria,FkElemento,Observaciones")] ElementoAuditadoViewModel item)
         {
             string fotoFileName = string.Empty;
             var model = db.ElementosAuditados;
@@ -94,7 +94,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                     item.Foto[0].SaveAs(Server.MapPath(fotoFileName));
                 }
 
-                modelItem.Foto =fotoFileName;
+                modelItem.Foto = item.Foto[0].FileName;
                 modelItem.Estado = item.Estado;
                 modelItem.FkAuditoria = item.FkAuditoria;
                 modelItem.FkElemento = item.FkElemento;

@@ -114,27 +114,10 @@ $(document).ready(function () {
 
         });
 
-        
-
-
     });
-    groupItem.Items.Add(i =>
-    {
-        i.Caption = " ";
-        i.NestedExtension().Button(s =>
-        {
-            s.Name = "btnComenzar";
-            s.Text = "Comenzar";
-            Html.ActionLink("Comenzar", "NewAuditoria", Model, new { @class = "btn btn-white" });
-            Html.ActionLink("Volver", "Index");
-        });
-
-    });
+    
 
 
 }).GetHtml()
 
 }
-<div>
-    @Html.ActionLink("Comenzar", "NewAuditoria", Model, new { @class = "btn btn-white" });
-</div>
