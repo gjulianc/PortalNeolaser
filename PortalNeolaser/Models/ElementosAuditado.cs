@@ -20,6 +20,7 @@ namespace PortalNeolaser.Models
         public string Foto { get; set; }
         public Nullable<int> FkAuditoria { get; set; }
         public Nullable<int> FkElemento { get; set; }
+        public string Observaciones { get; set; }
     
         public virtual Auditoria Auditoria { get; set; }
         public virtual Elemento Elemento { get; set; }

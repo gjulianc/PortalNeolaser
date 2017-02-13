@@ -123,7 +123,7 @@
                         imgSettings.ShowHintText = false;
                         imgSettings.SettingsZoomMode.ZoomWindowWidth = System.Web.UI.WebControls.Unit.Pixel(500);
                         imgSettings.SettingsZoomMode.ZoomWindowHeight = System.Web.UI.WebControls.Unit.Pixel(350);
-                        imgSettings.ImageUrl = Url.Content("~/Content/Images/" + celltext.ToString());
+                        imgSettings.ImageUrl = Url.Content(celltext.ToString());
                         imgSettings.LargeImageUrl = Url.Content(celltext.ToString());
                         imgSettings.Height = 30;
                         imgSettings.Width = 30;
@@ -134,7 +134,13 @@
 
             });
         });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Observaciones";
+            col.Caption = "Observaciones";
 
+            col.ReadOnly = true;
+        });
         settings.Columns.Add(column =>
         {
             column.Caption = "Acciones";

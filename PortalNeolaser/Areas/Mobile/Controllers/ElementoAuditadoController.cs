@@ -17,7 +17,7 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
         private neolaserdbEntities db = new neolaserdbEntities();
 
         // GET: Mobile/ElementoAuditado
-        public ActionResult Index(int idAuditoria,bool esNueva)
+        public ActionResult Index(int idAuditoria,bool? esNueva)
         {
             //Obtiene los elementos auditados de la auditoria con id => idAuditoria
            
@@ -42,6 +42,7 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
             viewmodel.Descripcion = elementosAuditado.Descripcion;
             viewmodel.FkAuditoria = elementosAuditado.FkAuditoria;
             viewmodel.FkElemento = elementosAuditado.FkElemento;
+            viewmodel.Observaciones = elementosAuditado.Observaciones;
             
 
             if (elementosAuditado == null)
@@ -73,11 +74,12 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
                 e.Estado = model.Estado;
                 e.Descripcion = model.Descripcion;
                 if (model.Foto != null)
-                    e.Foto = model.Foto.FileName;
+                    e.Foto = String.Format("~/Content/uploads/fotos_auditorias/{0}", model.Foto.FileName); 
                 else
-                    e.Foto = "unknown_photo.png"; 
+                    e.Foto = String.Format("~/Content/uploads/fotos_auditorias/{0}","unknown_photo.png"); 
                 e.FkElemento = model.FkElemento;
                 e.FkAuditoria = model.FkAuditoria;
+                e.Observaciones = model.Observaciones;
             
 
                 db.Entry(e).State = EntityState.Modified;

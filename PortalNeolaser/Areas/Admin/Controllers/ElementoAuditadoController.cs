@@ -94,7 +94,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                     item.Foto[0].SaveAs(Server.MapPath(fotoFileName));
                 }
 
-                modelItem.Foto = fotoFileName;
+                modelItem.Foto =fotoFileName;
                 modelItem.Estado = item.Estado;
                 modelItem.FkAuditoria = item.FkAuditoria;
                 modelItem.FkElemento = item.FkElemento;

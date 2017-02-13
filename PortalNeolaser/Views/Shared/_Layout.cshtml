@@ -90,7 +90,14 @@ new Script { ExtensionSuite = ExtensionSuite.TreeList }
             </div>
             <div class="footerDown">
                 <div class="container">
-                    <p>@DateTime.Today.Year.ToString() &copy; <a href="http://www.neolaser.es">NEOlaser</a> <small class="col-md-offset-7">Desarrollo realizado por <a href="http://www.qualimove.es">QUALIMOVE SL</a></small></p>
+                    <table class="container" style="width:100%">
+                        <tr>
+                            <th>@DateTime.Today.Year.ToString() &copy;<a href="http://www.neolaser.es">NEOlaser</a></th>
+                            <th><small class="col-md-offset-3">Desarrollo realizado por <a href="http://www.qualimove.es">QUALIMOVE SL</a></small></th>
+                            <th><small>Versión @ViewContext.HttpContext.ApplicationInstance.GetType().BaseType.Assembly.GetName().Version.ToString()</small></th>
+                        </tr>
+                    </table>
+                 
                 </div>
             </div>
         </footer>

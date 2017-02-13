@@ -57,6 +57,7 @@
           <Property Name="Foto" Type="varchar" MaxLength="255" />
           <Property Name="FkAuditoria" Type="int" />
           <Property Name="FkElemento" Type="int" />
+          <Property Name="Observaciones" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="GruposElementos">
           <Key>
@@ -496,6 +497,7 @@
           <Property Name="FkElemento" Type="Int32" />
           <NavigationProperty Name="Auditoria" Relationship="neolaserdbModel.FK_ElementosAuditados_Auditorias" FromRole="ElementosAuditado" ToRole="Auditoria" />
           <NavigationProperty Name="Elemento" Relationship="neolaserdbModel.FK_ElementosAuditados_Elementos" FromRole="ElementosAuditado" ToRole="Elemento" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="GruposElemento">
           <Key>
@@ -763,6 +765,7 @@
           <EntitySetMapping Name="ElementosAuditados">
             <EntityTypeMapping TypeName="neolaserdbModel.ElementosAuditado">
               <MappingFragment StoreEntitySet="ElementosAuditados">
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
                 <ScalarProperty Name="FkElemento" ColumnName="FkElemento" />
                 <ScalarProperty Name="FkAuditoria" ColumnName="FkAuditoria" />
                 <ScalarProperty Name="Foto" ColumnName="Foto" />

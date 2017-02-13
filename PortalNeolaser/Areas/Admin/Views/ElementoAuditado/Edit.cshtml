@@ -63,6 +63,10 @@ $(document).ready(function () {
         item.HelpText = "";
         item.Caption = "Correcto?";
     });
+    groupItem.Items.Add(m => m.Observaciones, item =>
+    {
+        item.HelpText = "";
+    });
     groupItem.Items.Add(item =>
     {
         item.Caption = "Foto";

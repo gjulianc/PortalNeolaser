@@ -19,7 +19,7 @@ namespace PortalNeolaser.Models
         {
             this.Auditorias = new HashSet<Auditoria>();
             this.Surcusales_Grupos = new HashSet<Surcusales_Grupos>();
-       }
+        }
     
         public int Id { get; set; }
         public string CodigoSAP { get; set; }

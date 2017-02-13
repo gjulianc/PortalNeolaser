@@ -40,5 +40,8 @@ namespace PortalNeolaser.Models
 
         [Required(ErrorMessage = "Debe asignarle un elemento")]
         public int? FkElemento { get; set; }
+
+        [Display(Name = "Observaciones")]
+        public string Observaciones { get; set; }
     }
 }
