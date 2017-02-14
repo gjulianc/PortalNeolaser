@@ -42,9 +42,12 @@ namespace PortalNeolaser.Areas.Admin.Controllers
         // GET: Admin/Auditoria/Create
         public ActionResult Create()
         {
+            AuditoriaViewModel model = new AuditoriaViewModel();
+            model.FechaInicio = DateTime.Now;
+            model.FechaFin = DateTime.Now;
             ViewBag.FkSucursal = new SelectList(db.Sucursals, "Id", "CodigoSAP");
             ViewBag.FkUsuario = new SelectList(db.Usuarios, "UserId", "UserName");
-            return View();
+            return View(model);
         }
 
         [HttpPost]

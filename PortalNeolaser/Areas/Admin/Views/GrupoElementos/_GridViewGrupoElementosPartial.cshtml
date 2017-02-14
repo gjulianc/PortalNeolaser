@@ -16,6 +16,10 @@
         settings.CommandColumn.ShowDeleteButton = true;
         settings.CommandColumn.ShowEditButton = true;
         settings.CommandColumn.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+        settings.CommandColumn.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+        //settings.CommandColumn.ButtonRenderMode = DevExpress.Web.GridCommandButtonRenderMode.Image;
+        settings.SettingsCommandButton.EditButton.Image.IconID = IconID.EditEdit16x16gray;
+        settings.SettingsCommandButton.DeleteButton.Image.IconID = IconID.ActionsDelete16x16gray;
 
         settings.Styles.AlternatingRow.Enabled = 0;
         settings.CommandColumn.Caption = "Acciones";

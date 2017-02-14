@@ -58,6 +58,11 @@ $(document).ready(function () {
         item.HelpText = "";
     });
 
+    groupItem.Items.Add(m => m.Orden, item =>
+    {
+        item.HelpText = "";
+    });
+
     groupItem.Items.Add(m => m.Grupo, item =>
     {
         item.HelpText = "Debe especificar un Grupo";

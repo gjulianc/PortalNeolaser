@@ -17,6 +17,7 @@ namespace PortalNeolaser.Areas.Admin.Models
         [Display(Name = "Descripción del Grupo")]
         public string Descripcion { get; set; }
 
-       
+        [Display(Name = "Orden")]
+        public int Orden { get; set; }
     }
 }

@@ -59,7 +59,10 @@ $(document).ready(function () {
     {
         item.HelpText = "";
     });
-
+    groupItem.Items.Add(m => m.Orden, item =>
+    {
+        item.HelpText = "";
+    });
     groupItem.Items.Add(i =>
     {
         i.Caption = " ";

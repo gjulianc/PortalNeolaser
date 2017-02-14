@@ -473,6 +473,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Client\Models\Dashboard\" />
     <Folder Include="Areas\Client\Views\Auditorias\" />
+    <Folder Include="Content\Logs\" />
     <Folder Include="Content\uploads\fotos_auditorias\" />
     <Folder Include="Content\uploads\fotos_usuarios\" />
   </ItemGroup>

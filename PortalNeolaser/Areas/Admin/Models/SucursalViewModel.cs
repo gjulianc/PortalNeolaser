@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PortalNeolaser.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -36,6 +37,8 @@ namespace PortalNeolaser.Areas.Admin.Models
 
         [Required(ErrorMessage = "Debe introducir el Cliente")]
         public int Cliente { get; set; }
-       
+
+        public virtual GruposElemento GruposElemento { get; set; }
+
     }
 }

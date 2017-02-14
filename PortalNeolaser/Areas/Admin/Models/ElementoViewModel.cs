@@ -19,5 +19,7 @@ namespace PortalNeolaser.Areas.Admin.Models
         [Required(ErrorMessage = "Debe introducir el Grupo al que pertence")]
         public int Grupo { get; set; }
 
+        [Display(Name = "Orden")]
+        public int Orden { get; set; }
     }
 }

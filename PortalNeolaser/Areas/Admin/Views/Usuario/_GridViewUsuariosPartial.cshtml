@@ -1,7 +1,6 @@
 @{
     var grid = Html.DevExpress().GridView(settings => {
-        settings.Name = "GridViewUsuarios";
-        //settings.Theme = "BlackGlass";
+        settings.Name = "GridViewUsuarios";       
         settings.CallbackRouteValues = new { Controller = "Usuario", Action = "GridViewUsuariosPartial" };
 
 
@@ -10,7 +9,7 @@
 
         settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
         settings.SettingsBehavior.ConfirmDelete = true;
-        //settings.Styles.Table.Font.Size = 10    ;
+       
 
         //Command Column
         settings.CommandColumn.Caption = "Acciones";
@@ -20,13 +19,13 @@
         settings.CommandColumn.ShowEditButton = true;
         settings.CommandColumn.ShowDeleteButton = true;
         settings.CommandColumn.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
-        
+        //settings.CommandColumn.ButtonRenderMode = DevExpress.Web.GridCommandButtonRenderMode.Image;
         settings.SettingsCommandButton.EditButton.Image.IconID = IconID.EditEdit16x16gray;
         settings.SettingsCommandButton.DeleteButton.Image.IconID = IconID.ActionsDelete16x16gray;
 
-        
+
         //settings.CommandColumn.CustomButtons.Add(new GridViewCommandColumnCustomButton() { ID = "btnGetKey", Text = "Nuevo" });
-  
+
         settings.KeyFieldName = "UserId";
 
 

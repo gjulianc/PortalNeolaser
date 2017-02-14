@@ -10,11 +10,16 @@
         settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
         settings.SettingsBehavior.ConfirmDelete = true;
 
+        //Command Column
         settings.CommandColumn.Visible = true;
         settings.CommandColumn.ShowNewButton = false;
         settings.CommandColumn.ShowDeleteButton = true;
         settings.CommandColumn.ShowEditButton = true;
         settings.CommandColumn.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+        settings.CommandColumn.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+        //settings.CommandColumn.ButtonRenderMode = DevExpress.Web.GridCommandButtonRenderMode.Image;
+        settings.SettingsCommandButton.EditButton.Image.IconID = IconID.EditEdit16x16gray;
+        settings.SettingsCommandButton.DeleteButton.Image.IconID = IconID.ActionsDelete16x16gray;
 
         settings.Styles.AlternatingRow.Enabled = 0;
         settings.CommandColumn.Caption = "Acciones";
@@ -55,8 +60,13 @@
         });
         settings.Columns.Add("FechaInicio");
         settings.Columns.Add("FechaFin");
-        settings.Columns.Add("Estado");
 
+        settings.Columns.Add(column =>
+        {
+            column.Caption = "Finalizada";
+            column.FieldName = "Estado";
+            column.ColumnType = MVCxGridViewColumnType.CheckBox;
+        });
         settings.Columns.Add(column =>
         {
             column.Caption = "Sucursal";
