@@ -42,11 +42,12 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
                 a = tmp;
                 db.Auditorias.Add(a);
                 db.SaveChanges();
-               
+                MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a la auditoria Abierta {2}.", DateTime.Now, User.Identity.Name, a.Id));
                 return RedirectToAction("NewAuditoria", a);
             }
             else
-            {              
+            {
+                MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a Elementos de Nueva Auditoria {2}.", DateTime.Now, User.Identity.Name,a.Id));
                 return RedirectToAction("OpenAuditoria", a);
             }
             
@@ -64,6 +65,7 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
             Auditoria a = new Auditoria { Usuario = usuario, FechaFin = DateTime.Now, Sucursal = sucursal };
             db.Auditorias.Add(a);
             db.SaveChanges();
+            MvcApplication.Log.WriteLog(String.Format("{0};Acceso Base Datos;{1};Crea nueva Auditoría Id {2}.", DateTime.Now, User.Identity.Name, a.Id));
             return View();
         }
 

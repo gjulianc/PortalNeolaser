@@ -24,7 +24,7 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
             var elementosAuditados = db.ElementosAuditados.Include(e => e.Auditoria).Include(e => e.Elemento).Where(e=>e.FkAuditoria == idAuditoria);
             ViewBag.IdAuditoria = idAuditoria;           
             ViewBag.Estado = esNueva;
-            
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a los elementos auditados de la Audioria {2}.", DateTime.Now, User.Identity.Name, idAuditoria));
             return View(elementosAuditados.ToList());
         }
  
@@ -52,6 +52,7 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
             ViewBag.IdAuditoria = elementosAuditado.FkAuditoria;
             ViewBag.FkAuditoria = new SelectList(db.Auditorias, "Id", "Id", elementosAuditado.FkAuditoria);
             ViewBag.FkElemento = new SelectList(db.Elementos, "Id", "Nombre", elementosAuditado.FkElemento);
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a editar elemento auditable.", DateTime.Now, User.Identity.Name));
             return View(viewmodel);
         }
        
@@ -84,6 +85,7 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
 
                 db.Entry(e).State = EntityState.Modified;
                 db.SaveChanges();
+                MvcApplication.Log.WriteLog(String.Format("{0};Acceso Base Datos;{1};Actualiza Elemento con Id {2}.", DateTime.Now, User.Identity.Name, e.Id));
                 return RedirectToAction("Index", new { idAuditoria = e.FkAuditoria });
             }
             ViewBag.FkAuditoria = model.FkAuditoria;
@@ -100,6 +102,7 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
                 a = db.Auditorias.Find(idAuditoria);
                 a.Estado = true;
                 db.SaveChanges();
+                MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Finaliza Auditoría la Audioria {2}.", DateTime.Now, User.Identity.Name, idAuditoria));
             }
             catch
             {

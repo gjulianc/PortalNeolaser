@@ -11,6 +11,7 @@ namespace PortalNeolaser.Areas.Client.Controllers
         // GET: Client/Auditorias
         public ActionResult Index()
         {
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a Auditorias.", DateTime.Now));
             return View();
         }
     }

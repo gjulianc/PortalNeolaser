@@ -5,3 +5,16 @@
 15/02/2017 1:22:35;Navegación;gabriel;Navega a Clientes
 15/02/2017 1:22:54;Navegación;gabriel;Navega a Listado de Grupos
 15/02/2017 1:23:11;Navegación;gabriel;Navega a Sucursales
+15/02/2017 1:35:32;------------NUEVO ACCESO AL PORTAL------------
+15/02/2017 1:35:32;Acceso;gabriel;Acceso al sistema.
+15/02/2017 1:35:32;Navegación;gabriel;Navega al Dashboard de Administración
+15/02/2017 1:35:42;Navegación;gabriel;Navega a Usuarios
+15/02/2017 1:35:58;Acceso Base Datos;gabriel;Actualiza Usuario sergio
+15/02/2017 1:36:04;Navegación;gabriel;Navega a Clientes
+15/02/2017 1:36:31;Acceso Base Datos;gabriel;Actualiza el Cliente 1
+15/02/2017 1:36:43;Acceso Base Datos;gabriel;Actualiza el Cliente 2
+15/02/2017 1:36:52;Acceso Base Datos;gabriel;Actualiza el Cliente 5
+15/02/2017 1:37:04;Acceso Base Datos;gabriel;Elimina el Cliente 5
+15/02/2017 1:37:19;Navegación;gabriel;Navega a Listado de Grupos
+15/02/2017 1:37:33;Navegación;gabriel;Navega a Sucursales
+15/02/2017 1:37:52;------------LOG OFF------------;gabriel

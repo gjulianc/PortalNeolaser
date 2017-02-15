@@ -17,7 +17,10 @@
         settings.CommandColumn.ShowEditButton = true;
         settings.CommandColumn.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
         settings.CommandColumn.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
-        //settings.CommandColumn.ButtonRenderMode = DevExpress.Web.GridCommandButtonRenderMode.Image;
+        //Command column solo con iconos
+        settings.CommandColumn.ButtonRenderMode = DevExpress.Web.GridCommandButtonRenderMode.Image;
+        settings.SettingsCommandButton.UpdateButton.RenderMode = GridCommandButtonRenderMode.Link;
+        settings.SettingsCommandButton.CancelButton.RenderMode = GridCommandButtonRenderMode.Link;
         settings.SettingsCommandButton.EditButton.Image.IconID = IconID.EditEdit16x16gray;
         settings.SettingsCommandButton.DeleteButton.Image.IconID = IconID.ActionsDelete16x16gray;
 

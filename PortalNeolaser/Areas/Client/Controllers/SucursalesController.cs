@@ -15,6 +15,7 @@ namespace PortalNeolaser.Areas.Client.Controllers
         // GET: Client/Sucursales
         public ActionResult Index()
         {
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a Sucursales.", DateTime.Now, User.Identity.Name));
             return View();
         }
 

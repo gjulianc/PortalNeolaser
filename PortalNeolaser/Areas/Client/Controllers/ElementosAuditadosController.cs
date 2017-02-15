@@ -34,6 +34,7 @@ namespace PortalNeolaser.Areas.Client.Controllers
                 ViewData["Fin"] = auditoria.FechaFin;
                 ViewData["Duracion"] = ts.Duration();
             }
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a los Elementos Auditados con incidencias.", DateTime.Now, User.Identity.Name));
             return View();
         }
 
