@@ -20,6 +20,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var elementos = db.Elementos.Include(e => e.GruposElemento);
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega Elementos", DateTime.Now, User.Identity.Name)); //Escribimos en el log
             return View(elementos.ToList());
         }
 
@@ -91,6 +92,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             {
                 db.Entry(elemento).State = EntityState.Modified;
                 db.SaveChanges();
+               
                 return RedirectToAction("Index");
             }
             ViewBag.FkGrupo = new SelectList(db.GruposElementos, "Id", "Nombre", elemento.FkGrupo);
@@ -155,6 +157,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                     {
                         this.UpdateModel(modelItem);
                         db.SaveChanges();
+                        MvcApplication.Log.WriteLog(String.Format("{0};Actualiza Base Datos;{1};Actualiza Elemento {2}", DateTime.Now, User.Identity.Name, item.Id)); //Escribimos en el log
                     }
                 }
                 catch (Exception e)
@@ -178,6 +181,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                     if (item != null)
                         model.Remove(item);
                     db.SaveChanges();
+                    MvcApplication.Log.WriteLog(String.Format("{0};Actualiza Base Datos;{1};Elimina Elemento {2}", DateTime.Now, User.Identity.Name, Id)); //Escribimos en el log
                 }
                 catch (Exception e)
                 {

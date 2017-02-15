@@ -40,7 +40,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             ViewData["Fin"] = auditoria.FechaFin;
             ViewData["Duracion"] = ts.Duration();
 
-
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega Comienzo de Auditoria ID {2}", DateTime.Now, User.Identity.Name,idAuditoria)); //Escribimos en el log
             return View();
         }
 
@@ -100,7 +100,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                 modelItem.FkElemento = item.FkElemento;
                 db.Entry(modelItem).State = EntityState.Modified;
                 db.SaveChanges();
-
+                MvcApplication.Log.WriteLog(String.Format("{0};Acceso Base Datos;{1};Actualiza Elemento Auditado", DateTime.Now, User.Identity.Name)); //Escribimos en el log
                 return RedirectToAction("Index", new { idAuditoria = modelItem.FkAuditoria });
             }
             

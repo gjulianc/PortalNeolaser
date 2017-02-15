@@ -47,6 +47,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             model.FechaFin = DateTime.Now;
             ViewBag.FkSucursal = new SelectList(db.Sucursals, "Id", "CodigoSAP");
             ViewBag.FkUsuario = new SelectList(db.Usuarios, "UserId", "UserName");
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a Nuevo Auditoria.", DateTime.Now, User.Identity.Name)); //Escribimos en el log
             return View(model);
         }
 
@@ -66,6 +67,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                 };
                 db.Auditorias.Add(auditoria);
                 db.SaveChanges();
+                MvcApplication.Log.WriteLog(String.Format("{0};Inserción en Base Datos;{1};Inserta Nuevo Auditoria", DateTime.Now)); //Escribimos en el log
                 return RedirectToAction("NewAuditoria", auditoria);
 
             }
@@ -89,6 +91,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             }
             ViewBag.FkSucursal = new SelectList(db.Sucursals, "Id", "CodigoSAP", auditoria.FkSucursal);
             ViewBag.FkUsuario = new SelectList(db.Usuarios, "UserId", "UserName", auditoria.FkUsuario);
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Edita Auditoria {2}", DateTime.Now,id)); //Escribimos en el log
             return View(auditoria);
         }
 
@@ -101,6 +104,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             {
                 db.Entry(auditoria).State = EntityState.Modified;
                 db.SaveChanges();
+                MvcApplication.Log.WriteLog(String.Format("{0};Actualiza Base Datos;{1};Gurda Edición Auditoria {2}", DateTime.Now, auditoria.Id)); //Escribimos en el log
                 return RedirectToAction("Index");
             }
             ViewBag.FkSucursal = new SelectList(db.Sucursals, "Id", "CodigoSAP", auditoria.FkSucursal);
@@ -120,6 +124,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Eliminacion Auditoria {2}", DateTime.Now, id)); //Escribimos en el log
             return View(auditoria);
         }
 
@@ -237,9 +242,11 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             try
             {
                 db.SaveChanges();
+                MvcApplication.Log.WriteLog(String.Format("{0};Actualización Base Datos;{1};Guarda Elementos Auditados de la Nueva Auditoria {2}", DateTime.Now, auditoria.Id)); //Escribimos en el log
             }
             catch { }
 
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a los elementos auditados de la Nueva Auditoria {2}", DateTime.Now, auditoria.Id)); //Escribimos en el log
             return RedirectToAction("Index", "ElementoAuditado", new { IdAuditoria = auditoria.Id });
         }
 

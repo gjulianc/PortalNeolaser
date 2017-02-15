@@ -23,11 +23,13 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             if (id != null)
             {
                 ViewBag.Titulo = "Listado de grupos asignados a la sucursal " + id;
+                MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a Grupo Elementos Asignados a Sucursal", DateTime.Now, User.Identity.Name)); //Escribimos en el log
                 return View(db.GruposElementos.ToList().Where(x => x.Id == id).ToList());
             }                
             else
             {
                 ViewBag.Titulo = "Listado de grupos";
+                MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a Listado de Grupos", DateTime.Now, User.Identity.Name)); //Escribimos en el log
                 return View(db.GruposElementos.ToList());
             }
                 
@@ -156,6 +158,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
 
                         this.UpdateModel(modelItem);
                         db.SaveChanges();
+                        MvcApplication.Log.WriteLog(String.Format("{0};Actualziación Base Datos;{1};Actualiza el Grupo {2}", DateTime.Now, User.Identity.Name, item.Id)); //Escribimos en el log
                     }
                 }
                 catch (Exception e)
@@ -179,6 +182,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                     if (item != null)
                         model.Remove(item);
                     db.SaveChanges();
+                    MvcApplication.Log.WriteLog(String.Format("{0};Actualización Base Datos;{1};Elimina elemento {2}", DateTime.Now, User.Identity.Name, Id)); //Escribimos en el log
                 }
                 catch (Exception e)
                 {

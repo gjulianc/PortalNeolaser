@@ -1,3 +1,4 @@
+using PortalNeolaser.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,11 @@ namespace PortalNeolaser
 
     public class MvcApplication : System.Web.HttpApplication
     {
+        public static LogHelper Log = new LogHelper();
+
         protected void Application_Start()
-        {
+        {          
+
             AreaRegistration.RegisterAllAreas();
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
@@ -25,7 +29,11 @@ namespace PortalNeolaser
             ModelBinders.Binders.DefaultBinder = new DevExpress.Web.Mvc.DevExpressEditorsBinder();
 
             DevExpress.Web.ASPxWebControl.CallbackError += Application_Error;
+
+            
         }
+
+        
 
         protected void Application_Error(object sender, EventArgs e) 
         {

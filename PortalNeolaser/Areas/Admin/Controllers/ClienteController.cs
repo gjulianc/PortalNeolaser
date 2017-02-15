@@ -19,6 +19,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
         // GET: Admin/Cliente
         public ActionResult Index()
         {
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a Clientes", DateTime.Now, User.Identity.Name)); //Escribimos en el log
             return View(db.Clientes.ToList());
         }
 
@@ -57,6 +58,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
 
                 db.Clientes.Add(cliente);
                 db.SaveChanges();
+                MvcApplication.Log.WriteLog(String.Format("{0};Acceso Base Datos;{1};Crea el Cliente {2}", DateTime.Now, User.Identity.Name, item.Cif)); //Escribimos en el log
                 return RedirectToAction("Index");
             }
 
@@ -148,6 +150,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                 {
                     this.UpdateModel(modelItem);
                     db.SaveChanges();
+                    MvcApplication.Log.WriteLog(String.Format("{0};Acceso Base Datos;{1};Actualiza el Cliente {2}", DateTime.Now, User.Identity.Name, item.Id)); //Escribimos en el log
                 }
                 catch (Exception e)
                 {
@@ -170,6 +173,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                     if (item != null)
                         model.Remove(item);
                     db.SaveChanges();
+                    MvcApplication.Log.WriteLog(String.Format("{0};Acceso Base Datos;{1};Elimina el Cliente {2}", DateTime.Now, User.Identity.Name, Id)); //Escribimos en el log
                 }
                 catch (Exception e)
                 {

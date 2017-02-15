@@ -20,6 +20,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var sucursals = db.Sucursals.Include(s => s.Cliente);
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a Sucursales", DateTime.Now, User.Identity.Name)); //Escribimos en el log
             return View(sucursals.ToList());
         }
 
@@ -47,6 +48,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             ViewBag.Provincia = new SelectList(db.provincias, "nombre", "nombre");
             ViewBag.Municipio = new SelectList(db.municipios, "nombre", "nombre");
             ViewBag.FkCliente = new SelectList(db.Clientes, "Id", "Nombre");
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a Nueva Sucursal", DateTime.Now, User.Identity.Name)); //Escribimos en el log
             return View();
         }
 
@@ -70,6 +72,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                 };
                 db.Sucursals.Add(sucursal);
                 db.SaveChanges();
+                MvcApplication.Log.WriteLog(String.Format("{0};Acceso Base Datos;{1};Crea Nueva Sucursal codigo SAP: {2}", DateTime.Now, User.Identity.Name, item.CodigoSAP)); //Escribimos en el log
                 return RedirectToAction("Index");
             }
 
@@ -142,6 +145,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                         try
                         {
                             this.UpdateModel(modelItem);
+                            MvcApplication.Log.WriteLog(String.Format("{0};Acceso Base Datos;{1};Acutaliza Sucursal ID: {2}", DateTime.Now, User.Identity.Name, item.Id)); //Escribimos en el log
                             db.SaveChanges();
                         }
                         catch (Exception e)
@@ -173,6 +177,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                     Sucursal sucursal = db.Sucursals.Find(Id);
                     db.Sucursals.Remove(sucursal);
                     db.SaveChanges();
+                    MvcApplication.Log.WriteLog(String.Format("{0};Acceso Base Datos;{1};Elimina Sucursal ID: {2}", DateTime.Now, User.Identity.Name, Id)); //Escribimos en el log
                     return RedirectToAction("Index");
                 }
                 catch (Exception e)

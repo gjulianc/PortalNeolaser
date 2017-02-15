@@ -22,6 +22,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var usuarios = db.Usuarios.Include(u => u.Cliente);
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a Usuarios", DateTime.Now, User.Identity.Name)); //Escribimos en el log
             return View(usuarios.ToList());
         }
 
@@ -45,7 +46,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
         {
             ViewBag.FkCliente = new SelectList(db.Clientes, "Id", "Nombre");
             ViewBag.FkRol = new SelectList(db.webpages_Roles, "RoleName", "RoleName");
-
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a Crear Usuarios", DateTime.Now, User.Identity.Name)); //Escribimos en el log
             return View();
         }
 
@@ -60,6 +61,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             {                
                 WebSecurity.CreateUserAndAccount(usuario.UserName, usuario.Password, new {Email = usuario.Email, FkCliente = usuario.FkCliente}, false);
                 Roles.AddUserToRole(usuario.UserName, usuario.Rol);
+                MvcApplication.Log.WriteLog(String.Format("{0};Acceso Base Datos;{1};Inserta Usuario {2}", DateTime.Now, User.Identity.Name, usuario.UserName)); //Escribimos en el log
                 return RedirectToAction("Index");
             }
 
@@ -83,6 +85,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a Eliminar Usuario {2}", DateTime.Now, User.Identity.Name, id)); //Escribimos en el log
             return View(usuario);
         }
 
@@ -94,6 +97,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             Usuario usuario = db.Usuarios.Find(id);
             db.Usuarios.Remove(usuario);
             db.SaveChanges();
+            MvcApplication.Log.WriteLog(String.Format("{0};Acceso Base Datos;{1};Elimina al Usuario {2}", DateTime.Now, User.Identity.Name, id)); //Escribimos en el log
             return RedirectToAction("Index");
         }
 
@@ -132,6 +136,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                       
                         this.UpdateModel(modelItem);
                         db.SaveChanges();
+                        MvcApplication.Log.WriteLog(String.Format("{0};Acceso Base Datos;{1};Actualiza Usuario {2}", DateTime.Now, User.Identity.Name, item.UserName)); //Escribimos en el log
                     }
                 }
                 catch (Exception e)
@@ -155,6 +160,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                     if (item != null)
                         model.Remove(item);
                     db.SaveChanges();
+                    MvcApplication.Log.WriteLog(String.Format("{0};Acceso Base Datos;{1};Elimina Usuario {2}", DateTime.Now, User.Identity.Name, UserId)); //Escribimos en el log
                 }
                 catch (Exception e)
                 {
