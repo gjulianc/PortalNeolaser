@@ -11,7 +11,7 @@ namespace PortalNeolaser.Areas.Client.Controllers
         // GET: Client/Dashboard
         public ActionResult Index()
         {
-            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega al Dashboard.", DateTime.Now));
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega al Dashboard.", DateTime.Now, User.Identity.Name));
             return View();
         }
     }

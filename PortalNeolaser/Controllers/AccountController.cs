@@ -33,8 +33,6 @@ namespace PortalNeolaser.Controllers {
             if(ModelState.IsValid) {
                 if(WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe.Value)) {
 
-                    MvcApplication.Log.WriteLog(String.Format("{0};------------NUEVO ACCESO AL PORTAL------------", DateTime.Now, model.UserName));
-
                     //Obtener el usuario y logica para redirigirle al area correspondiente
                     if (Roles.IsUserInRole(model.UserName, "Administrador"))
                     {
@@ -66,7 +64,6 @@ namespace PortalNeolaser.Controllers {
 
         public ActionResult LogOff() {
             WebSecurity.Logout();
-            MvcApplication.Log.WriteLog(String.Format("{0};------------LOG OFF------------;{1}", DateTime.Now, User.Identity.Name));
             return Redirect("/");
         }
 
