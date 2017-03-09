@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Portal Neolaser</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
@@ -21,7 +21,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>                   
                 </button>
-                @Html.ActionLink("Portal NEOlaser", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -35,6 +35,10 @@
         <img src="~/Content/Images/Neolaser/logo2.png">
         <br />
         <small>Portal del Cliente</small>
+        <div>
+            <a href="@Url.Action("LogOff", "Account",new { area=""})"><span class="glyphicon glyphicon-log-out pull-right"></span></a>
+            <br />
+        </div>
     </div>
     <div class="container body-content">
         @RenderBody()
@@ -44,7 +48,7 @@
         </footer>
     </div>
     <div data-role="footer">
-        <p>&copy; @DateTime.Now.Year NEOlaser - Desarrollado por Qualimove SL</p>
+        <p>&copy; @DateTime.Now.Year NEOlaser - Desarrollado por Qualimove, SL</p>
     </div>
 
 

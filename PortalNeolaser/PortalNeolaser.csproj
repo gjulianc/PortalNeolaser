@@ -198,7 +198,13 @@
     <Content Include="Content\Images\unknown_photo.png" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Content\Logs\readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\site.css" />
+    <Content Include="Content\uploads\fotos_auditorias\readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -474,8 +480,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Client\Models\Dashboard\" />
     <Folder Include="Areas\Client\Views\Auditorias\" />
-    <Folder Include="Content\Logs\" />
-    <Folder Include="Content\uploads\fotos_auditorias\" />
     <Folder Include="Content\uploads\fotos_usuarios\" />
   </ItemGroup>
   <ItemGroup>
@@ -518,4 +522,8 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+</PostBuildEvent>
+  </PropertyGroup>
 </Project>
