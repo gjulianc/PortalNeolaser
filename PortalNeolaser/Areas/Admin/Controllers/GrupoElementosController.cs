@@ -63,7 +63,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                GruposElemento grupo = new GruposElemento { Nombre = item.Nombre, Descripcion = item.Descripcion };
+                GruposElemento grupo = new GruposElemento { Nombre = item.Nombre, Descripcion = item.Descripcion, Orden = item.Orden };
                 db.GruposElementos.Add(grupo);
                 db.SaveChanges();
                 return RedirectToAction("Index");

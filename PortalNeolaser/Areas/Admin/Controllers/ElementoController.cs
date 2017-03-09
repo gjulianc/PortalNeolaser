@@ -55,7 +55,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                Elemento elemento = new Elemento { Nombre = item.Nombre, Descripcion = item.Descripcion, FkGrupo = item.Grupo };
+                Elemento elemento = new Elemento { Nombre = item.Nombre, Descripcion = item.Descripcion, Orden = item.Orden, FkGrupo = item.Grupo };
                 db.Elementos.Add(elemento);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -1,0 +1,41 @@
+16/02/2017 0:13:54;------------NUEVO ACCESO AL PORTAL------------
+16/02/2017 0:13:54;Acceso;sergiogestor;Acceso al sistema.
+16/02/2017 0:15:10;------------NUEVO ACCESO AL PORTAL------------
+16/02/2017 0:15:10;Acceso;sergiogestor;Acceso al sistema.
+16/02/2017 0:49:23;------------NUEVO ACCESO AL PORTAL------------
+16/02/2017 0:49:23;Acceso;sergiogestor;Acceso al sistema.
+16/02/2017 10:33:11;------------NUEVO ACCESO AL PORTAL------------
+16/02/2017 10:33:11;Acceso;sergiogestor;Acceso al sistema.
+16/02/2017 10:33:23;------------NUEVO ACCESO AL PORTAL------------
+16/02/2017 10:33:23;Acceso;sergio;Acceso al sistema.
+16/02/2017 10:33:46;Navegación;sergio;Navega a la auditoria Abierta 53.
+16/02/2017 10:33:46;Navegación;sergio;Navega a los elementos auditados de la Audioria 53.
+16/02/2017 10:33:50;Navegación;sergio;Navega a editar elemento auditable.
+16/02/2017 10:34:04;------------NUEVO ACCESO AL PORTAL------------
+16/02/2017 10:34:04;Acceso;sergiogestor;Acceso al sistema.
+16/02/2017 10:34:18;Navegación;sergio;Navega a Elementos de Nueva Auditoria 53.
+16/02/2017 10:34:18;Navegación;sergio;Navega a los elementos auditados de la Audioria 53.
+16/02/2017 10:34:23;------------NUEVO ACCESO AL PORTAL------------
+16/02/2017 10:34:23;Acceso;sergio;Acceso al sistema.
+16/02/2017 10:34:33;Navegación;sergio;Navega a editar elemento auditable.
+16/02/2017 10:34:35;------------NUEVO ACCESO AL PORTAL------------
+16/02/2017 10:34:35;Acceso;gabriel;Acceso al sistema.
+16/02/2017 10:34:35;Navegación;gabriel;Navega al Dashboard de Administración
+16/02/2017 10:34:37;Acceso Base Datos;sergio;Actualiza Elemento con Id 468.
+16/02/2017 10:34:37;Navegación;sergio;Navega a los elementos auditados de la Audioria 53.
+16/02/2017 10:34:40;Navegación;gabriel;Navega a Usuarios
+16/02/2017 10:34:41;Navegación;sergio;Navega a editar elemento auditable.
+16/02/2017 10:34:43;Acceso Base Datos;sergio;Actualiza Elemento con Id 468.
+16/02/2017 10:34:43;Navegación;sergio;Navega a los elementos auditados de la Audioria 53.
+16/02/2017 10:35:04;------------LOG OFF------------;gabriel
+16/02/2017 10:36:03;------------NUEVO ACCESO AL PORTAL------------
+16/02/2017 10:36:03;Acceso;sergioadmin;Acceso al sistema.
+16/02/2017 10:36:03;Navegación;sergioadmin;Navega al Dashboard de Administración
+16/02/2017 10:36:09;Navegación;sergioadmin;Navega a Usuarios
+16/02/2017 10:36:16;Navegación;sergioadmin;Navega a Clientes
+16/02/2017 10:36:23;Navegación;sergioadmin;Navega a Clientes
+16/02/2017 10:36:31;Navegación;sergioadmin;Navega a Sucursales
+16/02/2017 10:36:54;Navegación;sergioadmin;Navega Comienzo de Auditoria ID 52
+16/02/2017 10:38:47;Acceso Base Datos;sergioadmin;Actualiza Elemento Auditado
+16/02/2017 10:38:48;Navegación;sergioadmin;Navega Comienzo de Auditoria ID 52
+16/02/2017 10:38:57;------------LOG OFF------------;sergioadmin

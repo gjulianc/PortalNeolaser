@@ -1,20 +1,44 @@
-15/02/2017 1:22:01;Acceso;gabriel;Acceso al sistema.
-15/02/2017 1:22:01;Navegación;gabriel;Navega al Dashboard de Administración
-15/02/2017 1:22:11;Navegación;gabriel;Navega a Usuarios
-15/02/2017 1:22:26;Acceso Base Datos;gabriel;Actualiza Usuario sergio
-15/02/2017 1:22:35;Navegación;gabriel;Navega a Clientes
-15/02/2017 1:22:54;Navegación;gabriel;Navega a Listado de Grupos
-15/02/2017 1:23:11;Navegación;gabriel;Navega a Sucursales
-15/02/2017 1:35:32;------------NUEVO ACCESO AL PORTAL------------
-15/02/2017 1:35:32;Acceso;gabriel;Acceso al sistema.
-15/02/2017 1:35:32;Navegación;gabriel;Navega al Dashboard de Administración
-15/02/2017 1:35:42;Navegación;gabriel;Navega a Usuarios
-15/02/2017 1:35:58;Acceso Base Datos;gabriel;Actualiza Usuario sergio
-15/02/2017 1:36:04;Navegación;gabriel;Navega a Clientes
-15/02/2017 1:36:31;Acceso Base Datos;gabriel;Actualiza el Cliente 1
-15/02/2017 1:36:43;Acceso Base Datos;gabriel;Actualiza el Cliente 2
-15/02/2017 1:36:52;Acceso Base Datos;gabriel;Actualiza el Cliente 5
-15/02/2017 1:37:04;Acceso Base Datos;gabriel;Elimina el Cliente 5
-15/02/2017 1:37:19;Navegación;gabriel;Navega a Listado de Grupos
-15/02/2017 1:37:33;Navegación;gabriel;Navega a Sucursales
-15/02/2017 1:37:52;------------LOG OFF------------;gabriel
+15/02/2017 2:02:59;------------NUEVO ACCESO AL PORTAL------------
+15/02/2017 2:02:59;Acceso;gabriel;Acceso al sistema.
+15/02/2017 2:02:59;Navegación;gabriel;Navega al Dashboard de Administración
+15/02/2017 2:03:17;Navegación;gabriel;Navega a Usuarios
+15/02/2017 2:03:24;Navegación;gabriel;Navega a Crear Usuarios
+15/02/2017 2:03:51;Acceso Base Datos;gabriel;Inserta Usuario teste
+15/02/2017 2:03:51;Navegación;gabriel;Navega a Usuarios
+15/02/2017 2:04:01;Acceso Base Datos;gabriel;Actualiza Usuario teste
+15/02/2017 2:04:09;Acceso Base Datos;gabriel;Elimina Usuario 13
+15/02/2017 2:04:11;Navegación;gabriel;Navega a Clientes
+15/02/2017 2:04:17;Navegación;gabriel;Navega a Sucursales
+15/02/2017 2:04:21;Navegación;gabriel;Navega a Nueva Sucursal
+15/02/2017 2:04:25;Navegación;gabriel;Navega a Sucursales
+15/02/2017 2:04:42;Navegación;gabriel;Navega a Listado de Grupos
+15/02/2017 2:04:47;Navegación;gabriel;Navega Elementos
+15/02/2017 2:04:56;Navegación;gabriel;Navega a Nuevo Auditoria.
+15/02/2017 2:05:02;------------LOG OFF------------;gabriel
+15/02/2017 2:05:16;------------NUEVO ACCESO AL PORTAL------------
+15/02/2017 2:05:16;Acceso;sergio;Acceso al sistema.
+15/02/2017 2:05:33;Navegación;sergio;Navega a la auditoria Abierta 51.
+15/02/2017 2:05:33;Navegación;sergio;Navega a los elementos auditados de la Audioria 51.
+15/02/2017 2:05:43;Navegación;sergio;Finaliza Auditoría la Audioria 51.
+15/02/2017 2:05:48;Navegación;sergio;Navega a la auditoria Abierta 52.
+15/02/2017 2:05:48;Navegación;sergio;Navega a los elementos auditados de la Audioria 52.
+15/02/2017 2:05:50;Navegación;sergio;Navega a editar elemento auditable.
+15/02/2017 2:06:06;Acceso Base Datos;sergio;Actualiza Elemento con Id 465.
+15/02/2017 2:06:06;Navegación;sergio;Navega a los elementos auditados de la Audioria 52.
+15/02/2017 2:06:12;Navegación;sergio;Finaliza Auditoría la Audioria 52.
+15/02/2017 2:08:53;------------LOG OFF------------;sergio
+15/02/2017 2:09:03;------------NUEVO ACCESO AL PORTAL------------
+15/02/2017 2:09:03;Acceso;gabriel;Acceso al sistema.
+15/02/2017 2:09:03;Navegación;gabriel;Navega al Dashboard de Administración
+15/02/2017 2:09:10;Navegación;gabriel;Navega Comienzo de Auditoria ID 51
+15/02/2017 2:09:41;Navegación;gabriel;Navega Comienzo de Auditoria ID 52
+15/02/2017 2:10:23;Navegación;gabriel;Navega Comienzo de Auditoria ID 52
+15/02/2017 2:10:35;Navegación;gabriel;Navega a Sucursales
+15/02/2017 2:10:38;Navegación;gabriel;Navega a Nueva Sucursal
+15/02/2017 2:10:41;------------LOG OFF------------;gabriel
+15/02/2017 9:37:35;------------NUEVO ACCESO AL PORTAL------------
+15/02/2017 9:37:35;Acceso;Gabriel;Acceso al sistema.
+15/02/2017 9:37:38;Navegación;Gabriel;Navega al Dashboard de Administración
+15/02/2017 9:38:18;Navegación;Gabriel;Navega a Usuarios
+15/02/2017 9:38:37;Navegación;Gabriel;Navega a Crear Usuarios
+15/02/2017 9:38:48;------------LOG OFF------------;Gabriel
