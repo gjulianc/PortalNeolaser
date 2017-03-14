@@ -63,7 +63,7 @@
 
         settings.Columns.Add("Nombre");
         settings.Columns.Add("Descripcion");
-        settings.Columns.Add("Orden");
+        settings.Columns.Add("Orden").SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
         //settings.Columns.Add("Surcusales_Grupos");
     });
     if (ViewData["EditError"] != null){

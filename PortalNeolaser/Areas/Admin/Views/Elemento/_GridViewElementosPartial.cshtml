@@ -34,7 +34,7 @@
         settings.SettingsPager.Position = System.Web.UI.WebControls.PagerPosition.Bottom;
         settings.SettingsPager.FirstPageButton.Visible = true;
         settings.SettingsPager.LastPageButton.Visible = true;
-        settings.SettingsPager.PageSize = 10;
+        settings.SettingsPager.PageSize = 25;
         settings.SettingsPager.PageSizeItemSettings.Items = new string[] { "10", "25", "50", "100" };
         settings.SettingsPager.AlwaysShowPager = true;
 
@@ -67,6 +67,7 @@
         {
             column.Caption = "Pertenece al Grupo";
             column.FieldName = "FkGrupo";
+            column.GroupIndex = 0;
 
             column.ColumnType = MVCxGridViewColumnType.ComboBox;
             column.Width = System.Web.UI.WebControls.Unit.Pixel(100);
@@ -80,7 +81,7 @@
             });
         });
 
-        settings.Columns.Add("Orden");
+        settings.Columns.Add("Orden").SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
     });
     if (ViewData["EditError"] != null){
         grid.SetEditErrorText((string)ViewData["EditError"]);

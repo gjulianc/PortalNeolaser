@@ -25,7 +25,7 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
             ViewBag.IdAuditoria = idAuditoria;           
             ViewBag.Estado = esNueva;
             MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a los elementos auditados de la Audioria {2}.", DateTime.Now, User.Identity.Name, idAuditoria));
-            return View(elementosAuditados.ToList());
+            return View(elementosAuditados.OrderBy(c => c.Elemento.GruposElemento.Orden).ToList());
         }
  
         // GET: Mobile/ElementoAuditado/Edit/5

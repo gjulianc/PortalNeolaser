@@ -62,6 +62,13 @@
         });
         settings.Columns.Add(col =>
         {
+            col.FieldName = "Elemento.GruposElemento.Orden";
+            col.Caption = "Orden";            
+            col.ReadOnly = true;
+            col.SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
+        });
+        settings.Columns.Add(col =>
+        {
             col.FieldName = "Elemento.GruposElemento.Nombre";
             col.Caption = "Grupo";
 
