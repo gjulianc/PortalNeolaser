@@ -46,6 +46,7 @@
         settings.SettingsPager.LastPageButton.Visible = true;
         settings.SettingsPager.PageSize = 10;
         settings.SettingsPager.PageSizeItemSettings.Items = new string[] { "10", "25","50","100" };
+        settings.SettingsPager.PageSizeItemSettings.Visible = true;
         settings.SettingsPager.AlwaysShowPager = true;
 
         //Filter
@@ -62,17 +63,17 @@
         settings.Columns.Add("Direccion");
         settings.Columns.Add("CodPostal");
         settings.Columns.Add("FechaAlta", MVCxGridViewColumnType.DateEdit);
-        //settings.Columns.Add(column =>
-        //{
-        //    column.Caption = "Acciones";
-        //    column.CellStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
-        //    column.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
-        //    column.SetDataItemTemplateContent(c =>
-        //    {
-        //        ViewContext.Writer.Write(
-        //            Html.ActionLink("Ver Grupos", "GetGroupsBySucursal", new { id = DataBinder.Eval(c.DataItem, "Id") }).ToHtmlString());
-        //    });
-        //});
+        settings.Columns.Add(column =>
+        {
+            column.Caption = "Acciones";
+            column.CellStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+            column.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+            column.SetDataItemTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(
+                    Html.ActionLink("Ver Grupos", "GetGroupsBySucursal", new { id = DataBinder.Eval(c.DataItem, "Id") }).ToHtmlString());
+            });
+        });
 
     });
     if (ViewData["EditError"] != null){
