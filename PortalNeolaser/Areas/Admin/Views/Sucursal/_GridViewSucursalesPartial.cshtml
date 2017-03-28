@@ -74,6 +74,24 @@
                     Html.ActionLink("Ver Grupos", "GetGroupsBySucursal", new { id = DataBinder.Eval(c.DataItem, "Id") }).ToHtmlString());
             });
         });
+        settings.Columns.Add(column =>
+        {
+            column.Caption = "Acciones";
+            column.SetDataItemTemplateContent(container =>
+            {
+                Html.DevExpress().HyperLink(hyperlink =>
+                {
+                    var visibleIndex = container.VisibleIndex;
+                    var keyValue = container.KeyValue;
+
+
+                    hyperlink.Name = "hl" + keyValue.ToString();
+                    hyperlink.Properties.Text = "Ver/Editar Grupos";
+                    hyperlink.NavigateUrl = Url.Action("Edit", "Sucursal", new { id = keyValue });
+                }).Render();
+            });
+
+        });
 
     });
     if (ViewData["EditError"] != null){

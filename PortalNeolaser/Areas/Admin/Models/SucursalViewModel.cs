@@ -17,7 +17,7 @@ namespace PortalNeolaser.Areas.Admin.Models
         public string Descripcion { get; set; }
 
         [Display(Name = "Fecha Alta")]
-        public DateTime FechaAlta { get; set; }
+        public DateTime? FechaAlta { get; set; }
 
         [Required(ErrorMessage = "Debe introducir Dirección")]
         public string Direccion { get; set; }
@@ -36,9 +36,9 @@ namespace PortalNeolaser.Areas.Admin.Models
         public string CodPostal { get; set; }
 
         [Required(ErrorMessage = "Debe introducir el Cliente")]
-        public int Cliente { get; set; }
+        public int? Cliente { get; set; }
 
-        public virtual GruposElemento GruposElemento { get; set; }
+        public virtual List<GruposElemento> GruposElemento { get; set; }
 
     }
 }

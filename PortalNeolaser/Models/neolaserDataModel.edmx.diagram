@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f1a0a8b5d02249c79fe6b0533f84fd90" Name="Diagram1" ZoomLevel="60">
+      <Diagram DiagramId="f1a0a8b5d02249c79fe6b0533f84fd90" Name="Diagram1" ZoomLevel="89">
         <EntityTypeShape EntityType="neolaserdbModel.Cliente" Width="1.5" PointX="7.625" PointY="0.5" />
         <EntityTypeShape EntityType="neolaserdbModel.Usuario" Width="2" PointX="4.5" PointY="0.5" />
         <EntityTypeShape EntityType="neolaserdbModel.webpages_Membership" Width="2" PointX="0.5" PointY="3" />

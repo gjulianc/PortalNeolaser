@@ -48,6 +48,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             ViewBag.Provincia = new SelectList(db.provincias, "nombre", "nombre");
             ViewBag.Municipio = new SelectList(db.municipios, "nombre", "nombre");
             ViewBag.FkCliente = new SelectList(db.Clientes, "Id", "Nombre");
+            ViewBag.AllGrupos = new SelectList(db.GruposElementos, "Id", "Nombre");
             MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a Nueva Sucursal", DateTime.Now, User.Identity.Name)); //Escribimos en el log
             return View();
         }
@@ -88,12 +89,33 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Sucursal sucursal = db.Sucursals.Find(id);
+            SucursalViewModel viewModel = new SucursalViewModel();
+            viewModel.Cliente = sucursal.FkCliente;
+            viewModel.CodigoSAP = sucursal.CodigoSAP;
+            viewModel.CodPostal = sucursal.CodPostal;
+            viewModel.ComunidadAutonoma = sucursal.ComunidadAutonoma;
+            viewModel.Descripcion = sucursal.Descripcion;
+            viewModel.Direccion = sucursal.Direccion;
+            viewModel.FechaAlta = sucursal.FechaAlta;
+            viewModel.GruposElemento = GetGrupoBySucursal(sucursal.Id);
+            viewModel.Poblacion = sucursal.Poblacion;
+            viewModel.Provincia = sucursal.Provincia;
+            ViewData["GruposSeleccionados"] = GetGrupoBySucursal(sucursal.Id);
             if (sucursal == null)
             {
                 return HttpNotFound();
             }
             ViewBag.FkCliente = new SelectList(db.Clientes, "Id", "Nombre", sucursal.FkCliente);
-            return View(sucursal);
+            ViewBag.AllGrupos = new SelectList(db.GruposElementos, "Id", "Nombre");
+            return View(viewModel);
+        }
+
+        private List<GruposElemento> GetGrupoBySucursal(int id)
+        {
+            var query = from g in db.GruposElementos
+                        where g.Id == id
+                        select g;
+            return query.ToList();
         }
 
         // POST: Admin/Sucursal/Edit/5
@@ -166,6 +188,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                 ViewData["EditError"] = "Please, correct all errors.";
             return PartialView("_GridViewSucursalesPartial", model.ToList());
         }
+
         [HttpPost, ValidateInput(false)]
         public ActionResult GridViewSucursalesPartialDelete(System.Int32 Id)
         {

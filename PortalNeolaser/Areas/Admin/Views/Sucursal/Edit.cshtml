@@ -1,85 +1,158 @@
-﻿@model PortalNeolaser.Models.Sucursal
+﻿@model PortalNeolaser.Areas.Admin.Models.SucursalViewModel
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edición de Sucursal";
 }
 
-<h2>Edit</h2>
+<h2>Editar Sucursal</h2>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    if(Boolean('@(ViewBag.SuccessValidation)'))
+        alert('La sucursal ha sido dada de alta');
+});
+</script>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Sucursal</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CodigoSAP, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CodigoSAP, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CodigoSAP, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    @Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "FormLayoutSucursal";
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    var groupItem = settings.Items.AddGroupItem(groupSettings =>
+    {
+        groupSettings.Caption = "Rellene los datos del Formulario para editar los datos de la Sucursal";
+        groupSettings.ShowCaption = DefaultBoolean.True;
+        groupSettings.GroupBoxDecoration = GroupBoxDecoration.HeadingLine;
+    });
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    groupItem.SettingsItems.ShowCaption = DefaultBoolean.True;
+    groupItem.SettingsItemCaptions.Location = LayoutItemCaptionLocation.Left;
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Poblacion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Poblacion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Poblacion, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    groupItem.SettingsItemHelpTexts.Position = HelpTextPosition.Auto;
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Provincia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Provincia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Provincia, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    groupItem.Items.Add(m => m.CodigoSAP, item =>
+    {
+        item.HelpText = "";
+    });
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CodPostal, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CodPostal, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CodPostal, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    groupItem.Items.Add(m => m.Descripcion, item =>
+    {
+        item.HelpText = "";
+    });
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FkCliente, "FkCliente", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("FkCliente", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.FkCliente, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    groupItem.Items.Add(m => m.FechaAlta, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Fecha Alta";
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+    });
+
+    groupItem.Items.Add(m => m.Cliente, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Cliente";
+        item.NestedExtension().ComboBox(s =>
+        {
+            s.Properties.DropDownStyle = DropDownStyle.DropDownList;
+            s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.StartsWith;
+            s.Properties.DataSource = ViewBag.FkCliente;
+
+        });
+    });
+
+    groupItem.Items.Add(m => m.ComunidadAutonoma, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Com. Autónoma";
+        item.NestedExtension().ComboBox(s =>
+        {
+            s.Properties.DropDownStyle = DropDownStyle.DropDownList;
+            s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.StartsWith;
+            s.Properties.DataSource = ViewBag.Comunidad;
+
+        });
+    });
+
+    groupItem.Items.Add(m => m.Provincia, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Provincia";
+        item.NestedExtension().ComboBox(s =>
+        {
+            s.Properties.DropDownStyle = DropDownStyle.DropDownList;
+            s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.StartsWith;
+            s.Properties.DataSource = ViewBag.Provincia;
+
+        });
+    });
+
+    groupItem.Items.Add(m => m.Poblacion, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Poblacion";
+        item.NestedExtension().ComboBox(s =>
+        {
+            s.Properties.DropDownStyle = DropDownStyle.DropDownList;
+            s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.StartsWith;
+            s.Properties.DataSource = ViewBag.Municipio;
+
+        });
+    });
+
+    groupItem.Items.Add(m => m.Direccion, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Direccion";
+
+    });
+
+    groupItem.Items.Add(m => m.CodPostal, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Código Postal";
+    });
+    groupItem.Items.Add(m => m.GruposElemento, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Grupos";
+        item.NestedExtension().CheckBoxList(s =>
+        {
+            s.Properties.RepeatLayout = System.Web.UI.WebControls.RepeatLayout.Table;
+            s.Properties.RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal;
+            s.Properties.RepeatColumns = 4;
+            settings.PreRender = (sender, e) =>
+            {
+                ASPxCheckBoxList cbl = (ASPxCheckBoxList)sender;
+                foreach (ListEditItem elemento in cbl.Items)
+                {
+
+                    elemento.Selected = (elemento.Value.ToString() == "FACHADA");
+                }
+            };
+            s.Properties.DataSource = ViewBag.AllGrupos;
+
+                
+        });
+    });
+    groupItem.Items.Add(i =>
+    {
+        i.Caption = " ";
+        i.NestedExtension().Button(s =>
+        {
+            s.Name = "btnEnviar";
+            s.Text = "Enviar";
+            s.UseSubmitBehavior = true;
+
+        });
+        @Html.ActionLink("Volver", "Index");
+
+
+    });
+
+
+
+}).GetHtml()
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

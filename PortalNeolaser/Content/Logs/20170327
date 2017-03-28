@@ -1,0 +1,196 @@
+27/03/2017 0:26:51;Acceso;gabriel;Acceso al sistema.
+27/03/2017 0:26:51;Navegación;gabriel;Navega al Dashboard de Administración
+27/03/2017 0:27:06;Navegación;gabriel;Navega a Nuevo Auditoria.
+27/03/2017 0:28:19;Inserción en Base Datos;68;Inserta Nuevo Auditoria
+27/03/2017 0:28:20;Actualización Base Datos;gabriel;Guarda Elementos Auditados de la Nueva Auditoria 68
+27/03/2017 0:28:20;Navegación;gabriel;Navega a los elementos auditados de la Nueva Auditoria 68
+27/03/2017 0:28:20;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 0:33:38;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 0:34:15;Navegación;gabriel;Navega a Usuarios
+27/03/2017 0:37:39;Navegación;gabriel;Navega al Dashboard de Administración
+27/03/2017 0:38:00;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 0:40:18;Navegación;gabriel;Navega al Dashboard de Administración
+27/03/2017 0:43:05;Navegación;gabriel;Navega al Dashboard de Administración
+27/03/2017 0:44:47;Navegación;gabriel;Navega al Dashboard de Administración
+27/03/2017 1:02:29;Navegación;gabriel;Navega al Dashboard de Administración
+27/03/2017 1:24:03;Navegación;gabriel;Navega al Dashboard de Administración
+27/03/2017 1:24:45;Actualiza Base Datos;gabriel;Guarda Edición Auditoria 55
+27/03/2017 1:24:58;Navegación;gabriel;Navega Comienzo de Auditoria ID 55
+27/03/2017 1:26:46;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 1:27:18;Acceso Base Datos;gabriel;Actualiza Elemento Auditado
+27/03/2017 1:27:18;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 1:33:26;Acceso Base Datos;gabriel;Actualiza Elemento Auditado
+27/03/2017 1:33:26;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 1:35:23;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 1:35:50;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 1:36:02;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 1:36:40;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 1:36:48;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 1:37:24;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 1:39:58;Acceso Base Datos;gabriel;Actualiza Elemento Auditado
+27/03/2017 1:39:58;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 1:41:44;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 1:44:01;Navegación;gabriel;Navega al Dashboard de Administración
+27/03/2017 1:44:19;Navegación;gabriel;Navega Comienzo de Auditoria ID 54
+27/03/2017 1:44:28;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 1:44:42;Acceso Base Datos;gabriel;Actualiza Elemento Auditado
+27/03/2017 1:44:42;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 1:48:19;Navegación;gabriel;Navega a Nuevo Auditoria.
+27/03/2017 1:48:44;Navegación;gabriel;Navega a Usuarios
+27/03/2017 1:48:49;Navegación;gabriel;Navega a Clientes
+27/03/2017 1:48:55;Navegación;gabriel;Navega a Sucursales
+27/03/2017 1:49:03;Navegación;gabriel;Navega a Grupo Elementos Asignados a Sucursal
+27/03/2017 1:51:06;Acceso;gabriel;Acceso al sistema.
+27/03/2017 1:51:06;Navegación;gabriel;Navega al Dashboard de Administración
+27/03/2017 1:51:15;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 1:59:22;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 13:28:58;Navegación;gabriel;Navega al Dashboard de Administración
+27/03/2017 13:29:14;Navegación;gabriel;Navega a Sucursales
+27/03/2017 13:31:18;Navegación;gabriel;Navega al Dashboard de Administración
+27/03/2017 13:33:02;Acceso;gabriel;Acceso al sistema.
+27/03/2017 13:33:47;Navegación;gabriel;Navega a Usuarios
+27/03/2017 13:34:06;Acceso Base Datos;gabriel;Elimina Usuario 7
+27/03/2017 13:34:09;Navegación;gabriel;Navega a Crear Usuarios
+27/03/2017 13:34:44;Acceso Base Datos;gabriel;Inserta Usuario neolaser
+27/03/2017 13:34:45;Navegación;gabriel;Navega a Usuarios
+27/03/2017 13:35:02;Acceso Base Datos;gabriel;Actualiza Usuario neolaser
+27/03/2017 13:35:13;Navegación;gabriel;Navega a Clientes
+27/03/2017 13:36:06;Acceso Base Datos;gabriel;Crea el Cliente A12345678
+27/03/2017 13:36:06;Navegación;gabriel;Navega a Clientes
+27/03/2017 13:36:26;Acceso Base Datos;gabriel;Actualiza el Cliente 7
+27/03/2017 13:36:36;Navegación;gabriel;Navega a Sucursales
+27/03/2017 13:36:41;Navegación;gabriel;Navega a Nueva Sucursal
+27/03/2017 13:37:02;Navegación;gabriel;Navega a Sucursales
+27/03/2017 13:37:41;Navegación;gabriel;Navega a Grupo Elementos Asignados a Sucursal
+27/03/2017 13:38:18;Navegación;gabriel;Navega a Clientes
+27/03/2017 13:38:25;Acceso Base Datos;gabriel;Elimina el Cliente 7
+27/03/2017 13:38:28;Navegación;gabriel;Navega a Sucursales
+27/03/2017 13:38:32;Navegación;gabriel;Navega a Nueva Sucursal
+27/03/2017 13:38:50;Navegación;gabriel;Navega a Listado de Grupos
+27/03/2017 13:39:00;Navegación;gabriel;Navega Elementos
+27/03/2017 13:39:26;Navegación;gabriel;Navega Comienzo de Auditoria ID 68
+27/03/2017 13:40:02;Navegación;gabriel;Navega a Usuarios
+27/03/2017 13:40:07;Navegación;gabriel;Navega a Crear Usuarios
+27/03/2017 13:40:12;Navegación;gabriel;Navega a Clientes
+27/03/2017 13:40:20;Navegación;gabriel;Navega a Sucursales
+27/03/2017 13:40:24;Navegación;gabriel;Navega a Nueva Sucursal
+27/03/2017 13:41:36;Navegación;gabriel;Navega a Usuarios
+27/03/2017 13:41:40;Navegación;gabriel;Navega a Crear Usuarios
+27/03/2017 13:42:33;Navegación;gabriel;Navega a Crear Usuarios
+27/03/2017 13:42:44;Navegación;gabriel;Navega a Crear Usuarios
+27/03/2017 13:42:49;Navegación;gabriel;Navega a Usuarios
+27/03/2017 13:42:54;Navegación;gabriel;Navega a Crear Usuarios
+27/03/2017 13:42:57;Navegación;gabriel;Navega a Usuarios
+27/03/2017 13:43:01;Navegación;gabriel;Navega a Clientes
+27/03/2017 13:43:40;Navegación;gabriel;Navega a Clientes
+27/03/2017 13:43:44;Navegación;gabriel;Navega a Sucursales
+27/03/2017 13:43:48;Navegación;gabriel;Navega a Nueva Sucursal
+27/03/2017 13:43:58;Navegación;gabriel;Navega a Listado de Grupos
+27/03/2017 13:45:45;Navegación;gabriel;Navega a Listado de Grupos
+27/03/2017 13:45:50;Navegación;gabriel;Navega Elementos
+27/03/2017 13:46:24;Navegación;gabriel;Navega Elementos
+27/03/2017 13:46:37;Navegación;gabriel;Navega a Nuevo Auditoria.
+27/03/2017 13:47:06;Navegación;gabriel;Navega a Nuevo Auditoria.
+27/03/2017 13:48:09;Actualiza Base Datos;gabriel;Guarda Edición Auditoria 54
+27/03/2017 13:48:27;Actualiza Base Datos;gabriel;Guarda Edición Auditoria 67
+27/03/2017 13:48:38;Actualiza Base Datos;gabriel;Guarda Edición Auditoria 67
+27/03/2017 13:48:44;Navegación;gabriel;Navega Comienzo de Auditoria ID 67
+27/03/2017 13:49:40;Acceso Base Datos;gabriel;Actualiza Elemento Auditado
+27/03/2017 13:49:41;Navegación;gabriel;Navega Comienzo de Auditoria ID 67
+27/03/2017 13:49:57;Acceso Base Datos;gabriel;Actualiza Elemento Auditado
+27/03/2017 13:49:58;Navegación;gabriel;Navega Comienzo de Auditoria ID 67
+27/03/2017 13:55:36;Navegación;gabriel;Navega a Nuevo Auditoria.
+27/03/2017 13:55:48;Inserción en Base Datos;69;Inserta Nuevo Auditoria
+27/03/2017 13:55:50;Actualización Base Datos;gabriel;Guarda Elementos Auditados de la Nueva Auditoria 69
+27/03/2017 13:55:50;Navegación;gabriel;Navega a los elementos auditados de la Nueva Auditoria 69
+27/03/2017 13:55:50;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 13:56:07;Acceso Base Datos;gabriel;Actualiza Elemento Auditado
+27/03/2017 13:56:08;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 13:56:19;Acceso Base Datos;gabriel;Actualiza Elemento Auditado
+27/03/2017 13:56:19;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 13:56:29;Acceso Base Datos;gabriel;Actualiza Elemento Auditado
+27/03/2017 13:56:29;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 13:57:03;Acceso Base Datos;gabriel;Actualiza Elemento Auditado
+27/03/2017 13:57:03;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 13:57:32;Acceso Base Datos;gabriel;Actualiza Elemento Auditado
+27/03/2017 13:57:32;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 13:58:28;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 13:58:41;Acceso Base Datos;gabriel;Actualiza Elemento Auditado
+27/03/2017 13:58:41;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 13:59:44;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 14:00:36;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 14:02:45;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 14:03:43;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 14:05:46;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 14:10:43;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 14:12:57;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 14:16:40;Navegación;gabriel;Navega al Dashboard de Administración
+27/03/2017 14:16:54;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 14:18:02;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 14:19:20;Navegación;gabriel;Navega al Dashboard de Administración
+27/03/2017 14:19:29;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 14:19:40;Acceso Base Datos;gabriel;Actualiza Elemento Auditado
+27/03/2017 14:19:40;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 14:19:51;Acceso Base Datos;gabriel;Actualiza Elemento Auditado
+27/03/2017 14:19:51;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 14:19:58;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 14:20:32;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 14:20:48;Acceso Base Datos;gabriel;Actualiza Elemento Auditado
+27/03/2017 14:20:49;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 14:21:48;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 14:22:44;Actualiza Base Datos;gabriel;Guarda Edición Auditoria 69
+27/03/2017 14:22:57;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 15:24:57;Navegación;gabriel;Navega Comienzo de Auditoria ID 70
+27/03/2017 15:26:49;Actualiza Base Datos;gabriel;Guarda Edición Auditoria 70
+27/03/2017 15:26:55;Navegación;gabriel;Navega Comienzo de Auditoria ID 70
+27/03/2017 15:28:29;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 15:28:39;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 15:30:14;Navegación;gabriel;Navega al Dashboard de Administración
+27/03/2017 15:30:23;Navegación;gabriel;Navega Comienzo de Auditoria ID 70
+27/03/2017 15:30:37;Actualiza Base Datos;gabriel;Guarda Edición Auditoria 70
+27/03/2017 15:30:42;Navegación;gabriel;Navega Comienzo de Auditoria ID 70
+27/03/2017 15:33:07;Navegación;gabriel;Navega Comienzo de Auditoria ID 70
+27/03/2017 15:33:17;Navegación;gabriel;Navega Comienzo de Auditoria ID 70
+27/03/2017 15:33:49;Acceso Base Datos;gabriel;Actualiza Elemento Auditado
+27/03/2017 15:33:50;Navegación;gabriel;Navega Comienzo de Auditoria ID 70
+27/03/2017 21:24:38;Acceso;gabriel;Acceso al sistema.
+27/03/2017 21:24:48;Navegación;gabriel;Navega Comienzo de Auditoria ID 70
+27/03/2017 21:25:09;Navegación;gabriel;Navega a Usuarios
+27/03/2017 21:25:28;Navegación;gabriel;Navega a Clientes
+27/03/2017 21:25:34;Navegación;gabriel;Navega a Usuarios
+27/03/2017 21:25:37;Navegación;gabriel;Navega a Crear Usuarios
+27/03/2017 21:25:51;Navegación;gabriel;Navega a Usuarios
+27/03/2017 21:25:54;Navegación;gabriel;Navega a Clientes
+27/03/2017 21:26:08;Navegación;gabriel;Navega a Sucursales
+27/03/2017 21:26:12;Navegación;gabriel;Navega a Nueva Sucursal
+27/03/2017 21:26:57;Navegación;gabriel;Navega a Sucursales
+27/03/2017 21:27:01;Navegación;gabriel;Navega a Listado de Grupos
+27/03/2017 21:27:09;Navegación;gabriel;Navega a Listado de Grupos
+27/03/2017 21:39:17;Navegación;gabriel;Navega a Clientes
+27/03/2017 21:39:33;Navegación;gabriel;Navega a Sucursales
+27/03/2017 21:42:04;Navegación;gabriel;Navega a Nueva Sucursal
+27/03/2017 21:42:51;Navegación;gabriel;Navega a Nueva Sucursal
+27/03/2017 21:43:48;Navegación;gabriel;Navega a Nueva Sucursal
+27/03/2017 21:44:30;Navegación;gabriel;Navega a Nueva Sucursal
+27/03/2017 21:45:25;Navegación;gabriel;Navega a Nueva Sucursal
+27/03/2017 21:46:30;Navegación;gabriel;Navega a Nueva Sucursal
+27/03/2017 21:47:21;Navegación;gabriel;Navega a Nueva Sucursal
+27/03/2017 21:48:25;Navegación;gabriel;Navega a Nueva Sucursal
+27/03/2017 21:49:16;Navegación;gabriel;Navega a Nueva Sucursal
+27/03/2017 21:49:58;Navegación;gabriel;Navega a Nueva Sucursal
+27/03/2017 21:50:07;Navegación;gabriel;Navega a Sucursales
+27/03/2017 21:50:37;Navegación;gabriel;Navega a Nuevo Auditoria.
+27/03/2017 21:50:55;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 21:51:30;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 21:51:38;Navegación;gabriel;Navega a Usuarios
+27/03/2017 21:51:45;Navegación;gabriel;Navega a Clientes
+27/03/2017 21:54:43;Acceso;sergiogestor;Acceso al sistema.
+27/03/2017 21:54:43;Navegación;sergiogestor;Navega al Dashboard.
+27/03/2017 21:55:03;Navegación;sergiogestor;Navega a Sucursales.
+27/03/2017 22:00:43;Navegación;sergiogestor;Navega al Dashboard.
+27/03/2017 22:05:22;Acceso;gabriel;Acceso al sistema.
+27/03/2017 22:13:46;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 22:14:45;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 22:15:26;Navegación;gabriel;Navega Comienzo de Auditoria ID 69
+27/03/2017 22:16:18;Navegación;sergiogestor;Navega al Dashboard.
+27/03/2017 22:16:29;Navegación;sergiogestor;Navega a Sucursales.

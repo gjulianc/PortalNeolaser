@@ -24,7 +24,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
         public ActionResult Index(int idAuditoria)
         {
             Session["AuditoriaID"] = idAuditoria;
-            Auditoria auditoria = new Auditoria();
+            PortalNeolaser.Models.Auditoria auditoria = new PortalNeolaser.Models.Auditoria();
             auditoria = db.Auditorias.Find(idAuditoria);
             TimeSpan ts = (DateTime)auditoria.FechaFin - (DateTime)auditoria.FechaInicio;
             //= db.Auditorias.Include(a => a.Sucursal).Include(a => a.Usuario).Where(a=>a.Id == idAuditoria) as Auditoria;
@@ -71,6 +71,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                 Estado = elementosAuditado.Estado,
                 FkAuditoria = elementosAuditado.FkAuditoria,
                 FkElemento = elementosAuditado.FkElemento,
+                Observaciones = elementosAuditado.Observaciones
                 //Foto = elementosAuditado.Foto
             };
             ViewBag.FkAuditoria = new SelectList(db.Auditorias, "Id", "Id", elementosAuditado.FkAuditoria);
@@ -98,6 +99,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                 modelItem.Estado = item.Estado;
                 modelItem.FkAuditoria = item.FkAuditoria;
                 modelItem.FkElemento = item.FkElemento;
+                modelItem.Observaciones = item.Observaciones;
                 db.Entry(modelItem).State = EntityState.Modified;
                 db.SaveChanges();
                 MvcApplication.Log.WriteLog(String.Format("{0};Acceso Base Datos;{1};Actualiza Elemento Auditado", DateTime.Now, User.Identity.Name)); //Escribimos en el log
@@ -107,6 +109,43 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             ViewBag.FkAuditoria = new SelectList(db.Auditorias, "Id", "Id", item.FkAuditoria);
             ViewBag.FkElemento = new SelectList(db.Elementos, "Id", "Nombre", item.FkElemento);
             return View(item);   
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult GridViewElementosAuditadosPartialUpdate([Bind(Include = "Id,Descripcion,Estado,Foto,FkAuditoria,FkElemento,Observaciones")] ElementoAuditadoViewModel item)
+        {
+            var model = db.GruposElementos;
+            if (ModelState.IsValid)
+            {
+
+                try
+                {
+                    if (ModelState.IsValid)
+                    {
+                        var modelItem = model.FirstOrDefault(it => it.Id == item.Id);
+                        try
+                        {
+                            this.UpdateModel(modelItem);
+                            MvcApplication.Log.WriteLog(String.Format("{0};Acceso Base Datos;{1};Acutaliza Sucursal ID: {2}", DateTime.Now, User.Identity.Name, item.Id)); //Escribimos en el log
+                            db.SaveChanges();
+                        }
+                        catch (Exception e)
+                        {
+                            ViewData["EditError"] = e.Message;
+                        }
+                    }
+                    else
+                        ViewData["EditError"] = "Por favor, corrija todos los errores.";
+                    return PartialView("_GridViewSucursalesPartial", model.ToList());
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            else
+                ViewData["EditError"] = "Please, correct all errors.";
+            return PartialView("_GridViewSucursalesPartial", model.ToList());
         }
 
         protected override void Dispose(bool disposing)

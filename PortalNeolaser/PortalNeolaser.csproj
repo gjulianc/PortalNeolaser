@@ -194,6 +194,7 @@
     <Content Include="Content\Images\Neolaser\logo2.png" />
     <Content Include="Content\Images\Neolaser\Slider\pinturanew.jpg" />
     <Content Include="Content\Images\NewContact_16x16.png" />
+    <Content Include="Content\Images\fondo.jpg" />
     <Content Include="Content\Images\smooth-ice.jpg" />
     <Content Include="Content\Images\unknown_photo.png" />
     <Content Include="Content\jquery-ui.css" />
@@ -524,6 +525,6 @@
   </ProjectExtensions>
   <PropertyGroup>
     <PostBuildEvent>
-</PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
