@@ -39,7 +39,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             ViewData["Inicio"] = auditoria.FechaInicio;
             ViewData["Fin"] = auditoria.FechaFin;
             ViewData["Duracion"] = ts.Duration();
-
+            ViewData["Estado"] = auditoria.Estado;
             MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega Comienzo de Auditoria ID {2}", DateTime.Now, User.Identity.Name,idAuditoria)); //Escribimos en el log
             return View();
         }
@@ -68,7 +68,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             {
                 Id = elementosAuditado.Id,
                 Descripcion = elementosAuditado.Descripcion,
-                Estado = elementosAuditado.Estado,
+                Estado = elementosAuditado.Estado ?? false,
                 FkAuditoria = elementosAuditado.FkAuditoria,
                 FkElemento = elementosAuditado.FkElemento,
                 Observaciones = elementosAuditado.Observaciones
@@ -93,9 +93,8 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                 {
                     fotoFileName = string.Format("~/Content/uploads/fotos_auditorias/{0}", item.Foto[0].FileName);
                     item.Foto[0].SaveAs(Server.MapPath(fotoFileName));
-                }
-
-                modelItem.Foto = item.Foto[0].FileName;
+                    modelItem.Foto = item.Foto[0].FileName;
+                }               
                 modelItem.Estado = item.Estado;
                 modelItem.FkAuditoria = item.FkAuditoria;
                 modelItem.FkElemento = item.FkElemento;

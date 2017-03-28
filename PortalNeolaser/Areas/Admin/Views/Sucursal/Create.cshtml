@@ -123,24 +123,24 @@ $(document).ready(function () {
         item.Caption = "Código Postal";
         item.NestedExtensionSettings.Width = System.Web.UI.WebControls.Unit.Percentage(50);
     });
-    groupItem.Items.Add(m => m.GruposElemento, item =>
-    {
-        item.HelpText = "";
-        item.Caption = "Grupos";
-        item.NestedExtensionSettings.Width = System.Web.UI.WebControls.Unit.Percentage(50);
-    
-        item.NestedExtension().CheckBoxList(s =>
-        {
+    //groupItem.Items.Add(m => m.GruposElemento, item =>
+    //{
+    //    item.HelpText = "";
+    //    item.Caption = "Grupos";
+    //    item.NestedExtensionSettings.Width = System.Web.UI.WebControls.Unit.Percentage(50);
 
-            s.Properties.RepeatLayout = System.Web.UI.WebControls.RepeatLayout.Table;
-            s.Properties.RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal;
-            s.Properties.RepeatColumns = 4;
-            s.Properties.DataSource = ViewBag.AllGrupos;
+    //    item.NestedExtension().CheckBoxList(s =>
+    //    {
+
+    //        s.Properties.RepeatLayout = System.Web.UI.WebControls.RepeatLayout.Table;
+    //        s.Properties.RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal;
+    //        s.Properties.RepeatColumns = 4;
+    //        s.Properties.DataSource = ViewBag.AllGrupos;
 
 
-        });
+    //    });
 
-});
+    //});
     groupItem.Items.Add(i =>
     {
         i.Caption = " ";
