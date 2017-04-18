@@ -91,14 +91,14 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             }
             ViewBag.FkSucursal = new SelectList(db.Sucursals, "Id", "CodigoSAP", auditoria.FkSucursal);
             ViewBag.FkUsuario = new SelectList(db.Usuarios, "UserId", "UserName", auditoria.FkUsuario);
-            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Edita Auditoria {2}", DateTime.Now,id)); //Escribimos en el log
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Edita Auditoria {2}", DateTime.Now,id, User.Identity.Name,id)); //Escribimos en el log
             return View(auditoria);
         }
 
        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([ModelBinder(typeof(DevExpressEditorsBinder))] Models.AuditoriaViewModel item)//[Bind(Include = "Id,FechaInicio,FechaFin,FkUsuario,FkSucursal")] Auditoria auditoria
+        public ActionResult Edit([Bind(Include = "Id,FechaInicio,FechaFin,FkUsuario,FkSucursal")] Auditoria item)// [ModelBinder(typeof(DevExpressEditorsBinder))] Models.AuditoriaViewModel item
         {
             if (ModelState.IsValid)
             {
@@ -193,7 +193,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             }
             else
                 ViewData["EditError"] = "Por favor, debe corregir todos los errores.";
-            return RedirectToAction("Index"); //PartialView("_GridViewAuditoriaPartial", model);
+            return PartialView("_GridViewAuditoriaPartial"); // RedirectToAction("Index");
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult GridViewAuditoriaPartialDelete(System.Int32 Id)

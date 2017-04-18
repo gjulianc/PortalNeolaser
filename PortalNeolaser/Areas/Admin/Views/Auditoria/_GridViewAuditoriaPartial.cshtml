@@ -7,7 +7,7 @@
         settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Auditoria", Action = "GridViewAuditoriaPartialAddNew" };
         settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Auditoria", Action = "GridViewAuditoriaPartialUpdate" };
         settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Auditoria", Action = "GridViewAuditoriaPartialDelete" };
-        settings.SettingsEditing.Mode = GridViewEditingMode.Inline;
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
         settings.SettingsBehavior.ConfirmDelete = true;
 
         //Command Column
@@ -61,6 +61,7 @@
             col.Width = 50;
             col.Visible = false;
         });
+
         settings.Columns.Add(col =>
         {
             col.FieldName = "FechaInicio";
@@ -129,6 +130,17 @@
                     hyperlink.Name = "hl" + keyValue.ToString();
                     hyperlink.Properties.Text = "+Info";
                     hyperlink.NavigateUrl = Url.Action("Index", "ElementoAuditado", new { idAuditoria = keyValue });
+                }).Render();
+
+                Html.DevExpress().HyperLink(hyperlink =>
+                {
+                    var visibleIndex = container.VisibleIndex;
+                    var keyValue = container.KeyValue;
+
+
+                    hyperlink.Name = "hlEdit" + keyValue.ToString();
+                    hyperlink.Properties.Text = "Editar";
+                    hyperlink.NavigateUrl = Url.Action("Edit", "Auditoria", new { id = keyValue });
                 }).Render();
             });
 

@@ -1,77 +1,150 @@
-﻿@model PortalNeolaser.Models.Auditoria
+﻿@using System.Globalization
+@model PortalNeolaser.Models.Auditoria
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Nueva Auditoría";
 }
+<h2>Nueva Auditoría</h2>
 
-<h2>Edit</h2>
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+
+    Action<MVCxFormLayoutItem> AuthorizationDataTextBoxSettingsMethod = (item) =>
+    {
+        item.NestedExtension().TextBox(s =>
+        {
+            s.Properties.Password = s.Name.Contains("Password");
+            s.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Right;
+            s.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithText;
+            s.Properties.ValidationSettings.Display = Display.Dynamic;
+            s.ShowModelErrors = true;
+        });
+    };
+}
+<script type="text/javascript">
+$(document).ready(function () {
+    if(Boolean('@(ViewBag.SuccessValidation)'))
+        alert('La auditoria ha sido dado de alta');
+});
+</script>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Auditoria</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FechaInicio, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FechaInicio, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FechaInicio, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    @Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "FormLayoutUsuario";
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FechaFin, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FechaFin, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FechaFin, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    var groupItem = settings.Items.AddGroupItem(groupSettings =>
+    {
+        groupSettings.Caption = "Rellene los datos del Formulario para dar alta la nueva Auditoría";
+        groupSettings.ShowCaption = DefaultBoolean.True;
+        groupSettings.GroupBoxDecoration = GroupBoxDecoration.HeadingLine;
+    });
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.HoraInicio, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HoraInicio, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HoraInicio, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    groupItem.SettingsItems.ShowCaption = DefaultBoolean.True;
+    groupItem.SettingsItemCaptions.Location = LayoutItemCaptionLocation.Left;
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.HoraFin, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HoraFin, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HoraFin, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    groupItem.SettingsItemHelpTexts.Position = HelpTextPosition.Auto;
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FkUsuario, "FkUsuario", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("FkUsuario", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.FkUsuario, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    groupItem.Items.Add(m => m.Sucursal.CodigoSAP, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Sucursal";
+        item.NestedExtension().ComboBox(s =>
+        {
+            s.Properties.DropDownStyle = DropDownStyle.DropDownList;
+            s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.StartsWith;
+            s.Properties.DataSource = ViewBag.FkSucursal;
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FkSucursal, "FkSucursal", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("FkSucursal", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.FkSucursal, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        });
+    });
+    groupItem.Items.Add(m => m.Usuario.UserName, item =>
+    {
+        item.HelpText = "";
+        item.Caption = "Usuario";
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+        item.NestedExtension().ComboBox(s =>
+        {
+            s.Properties.DropDownStyle = DropDownStyle.DropDownList;
+            s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.StartsWith;
+            s.Properties.DataSource = ViewBag.FkUsuario;
+
+
+        });
+    });
+
+    //groupItem.Items.Add(m => m.Sucursal.CodigoSAP, item =>
+    //{
+    //    item.HelpText = "";
+    //    item.Caption = "Sucursal";
+
+    //});
+    //groupItem.Items.Add(m => m.Usuario.UserName, item =>
+    //{
+    //    item.HelpText = "";
+    //    item.Caption = "Usuario";
+
+
+    //});
+    groupItem.Items.Add(m => m.FechaInicio, item =>
+    {
+        item.HelpText = "";
+        item.NestedExtension().DateEdit(s =>
+        {
+            s.Properties.UseMaskBehavior = true;
+            s.Properties.EditFormat = EditFormat.Custom;
+
+            s.Properties.EditFormatString = "dd/MM/yyyy HH:mm tt";
+            s.Properties.TimeSectionProperties.Visible = true;
+            s.Properties.TimeSectionProperties.TimeEditProperties.EditFormat = EditFormat.Custom;
+            s.Properties.TimeSectionProperties.TimeEditProperties.EditFormatString = "HH:mm tt";
+            s.Date = DateTime.Now;
+
+        });
+    });
+
+    groupItem.Items.Add(m => m.FechaFin, item =>
+    {
+        item.HelpText = "";
+        item.NestedExtension().DateEdit(s =>
+        {
+            s.Properties.UseMaskBehavior = true;
+            s.Properties.EditFormat = EditFormat.Custom;
+            s.Properties.EditFormatString = "dd/MM/yyyy HH:mm tt";
+
+            s.Properties.TimeSectionProperties.Visible = true;
+            s.Properties.TimeSectionProperties.TimeEditProperties.EditFormat = EditFormat.Custom;
+            s.Properties.TimeSectionProperties.TimeEditProperties.EditFormatString = "HH:mm tt";
+            s.Date = DateTime.Now;
+
+        });
+    });
+
+
+    groupItem.Items.Add(i =>
+    {
+        i.Caption = " ";
+        i.NestedExtension().Button(s =>
+        {
+            s.Name = "btnEnviar";
+            s.Text = "Enviar";
+            s.UseSubmitBehavior = true;
+
+
+
+        });
+
+    });
+
+
+
+}).GetHtml()
+
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver", "Index")
 </div>
