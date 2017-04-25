@@ -4,7 +4,6 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using PortalNeolaser.Models;
 using PortalNeolaser.Areas.Admin.Models;
@@ -85,6 +84,14 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PortalNeolaser.Models.Auditoria auditoria = db.Auditorias.Find(id);
+            AuditoriaViewModel vm = new AuditoriaViewModel();
+            vm.Id = auditoria.Id;
+            vm.Estado = auditoria.Estado;
+            vm.FechaFin = auditoria.FechaFin;
+            vm.FechaInicio = auditoria.FechaInicio;
+            vm.Sucursal = auditoria.Sucursal.Id;
+            vm.Usuario = auditoria.Usuario.UserId;
+            
             if (auditoria == null)
             {
                 return HttpNotFound();
@@ -92,17 +99,24 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             ViewBag.FkSucursal = new SelectList(db.Sucursals, "Id", "CodigoSAP", auditoria.FkSucursal);
             ViewBag.FkUsuario = new SelectList(db.Usuarios, "UserId", "UserName", auditoria.FkUsuario);
             MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Edita Auditoria {2}", DateTime.Now,id, User.Identity.Name,id)); //Escribimos en el log
-            return View(auditoria);
+            return View(vm);
         }
 
        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FechaInicio,FechaFin,FkUsuario,FkSucursal")] Auditoria item)// [ModelBinder(typeof(DevExpressEditorsBinder))] Models.AuditoriaViewModel item
+        public ActionResult Edit([ModelBinder(typeof(DevExpressEditorsBinder))] Models.AuditoriaViewModel item)// [ModelBinder(typeof(DevExpressEditorsBinder))] Models.AuditoriaViewModel item
         {
             if (ModelState.IsValid)
             {
-                db.Entry(item).State = EntityState.Modified;
+                var auditoria = db.Auditorias.Find(item.Id);
+                auditoria.FechaFin = item.FechaFin;
+                auditoria.FechaInicio = item.FechaInicio;
+                auditoria.FkSucursal = item.Sucursal;
+                auditoria.FkUsuario = item.Usuario;
+                auditoria.Estado = item.Estado;
+
+                db.Entry(auditoria).State = EntityState.Modified;
                 db.SaveChanges();
                 MvcApplication.Log.WriteLog(String.Format("{0};Actualiza Base Datos;{1};Gurda Edición Auditoria", DateTime.Now,User.Identity.Name)); //Escribimos en el log
                 return RedirectToAction("Index");

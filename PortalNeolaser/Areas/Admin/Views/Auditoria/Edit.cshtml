@@ -1,5 +1,5 @@
 ﻿@using System.Globalization
-@model PortalNeolaser.Models.Auditoria
+@model PortalNeolaser.Areas.Admin.Models.AuditoriaViewModel
 
 @{
     ViewBag.Title = "Nueva Auditoría";
@@ -49,7 +49,7 @@ $(document).ready(function () {
 
     groupItem.SettingsItemHelpTexts.Position = HelpTextPosition.Auto;
 
-    groupItem.Items.Add(m => m.Sucursal.CodigoSAP, item =>
+    groupItem.Items.Add(m => m.Sucursal, item =>
     {
         item.HelpText = "";
         item.Caption = "Sucursal";
@@ -61,7 +61,7 @@ $(document).ready(function () {
 
         });
     });
-    groupItem.Items.Add(m => m.Usuario.UserName, item =>
+    groupItem.Items.Add(m => m.Usuario, item =>
     {
         item.HelpText = "";
         item.Caption = "Usuario";
@@ -76,19 +76,7 @@ $(document).ready(function () {
         });
     });
 
-    //groupItem.Items.Add(m => m.Sucursal.CodigoSAP, item =>
-    //{
-    //    item.HelpText = "";
-    //    item.Caption = "Sucursal";
 
-    //});
-    //groupItem.Items.Add(m => m.Usuario.UserName, item =>
-    //{
-    //    item.HelpText = "";
-    //    item.Caption = "Usuario";
-
-
-    //});
     groupItem.Items.Add(m => m.FechaInicio, item =>
     {
         item.HelpText = "";
@@ -119,6 +107,21 @@ $(document).ready(function () {
             s.Properties.TimeSectionProperties.TimeEditProperties.EditFormat = EditFormat.Custom;
             s.Properties.TimeSectionProperties.TimeEditProperties.EditFormatString = "HH:mm tt";
             s.Date = DateTime.Now;
+
+        });
+    });
+
+    groupItem.Items.Add(m => m.Estado, item =>
+    {
+        item.HelpText = "";
+        item.NestedExtension().RadioButtonList(s =>
+        {
+            s.Properties.ValueField = "Value";
+            s.Properties.TextField = "TextField";
+            s.Properties.RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal;
+            s.Properties.Items.Add("Finalizada",true);
+            s.Properties.Items.Add("No Finalizada",false);
+            s.SelectedIndex= 1;
 
         });
     });

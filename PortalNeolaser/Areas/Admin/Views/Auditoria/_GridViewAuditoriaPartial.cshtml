@@ -131,7 +131,7 @@
                     hyperlink.Properties.Text = "+Info";
                     hyperlink.NavigateUrl = Url.Action("Index", "ElementoAuditado", new { idAuditoria = keyValue });
                 }).Render();
-
+                
                 Html.DevExpress().HyperLink(hyperlink =>
                 {
                     var visibleIndex = container.VisibleIndex;
