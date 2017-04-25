@@ -63,6 +63,9 @@ $(document).ready(function () {
     {
         item.HelpText = "";
     });
+
+    
+
     groupItem.Items.Add(i =>
     {
         i.Caption = " ";
@@ -75,7 +78,15 @@ $(document).ready(function () {
         });
     });
 
-    @Html.ActionLink("Volver", "Index");
-
 }).GetHtml()
 }
+
+@*<div class="details">
+    <h2>
+        Elementos Pertenecientes al grupo
+    </h2>
+  
+</div>*@
+<div>
+    @Html.ActionLink("Volver", "Index")
+</div>

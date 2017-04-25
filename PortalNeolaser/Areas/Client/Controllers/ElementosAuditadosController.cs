@@ -39,7 +39,7 @@ namespace PortalNeolaser.Areas.Client.Controllers
         }
 
         [ValidateInput(false)]
-        public ActionResult GridViewElementoAuditadoPartial(int idAuditoria)
+        public ActionResult GridViewElementoAuditadoPartial(int? idAuditoria)
         {
             ViewData["AuditoriaID"] = idAuditoria;
             var model = db.ElementosAuditados.Where(m => m.FkAuditoria == idAuditoria);

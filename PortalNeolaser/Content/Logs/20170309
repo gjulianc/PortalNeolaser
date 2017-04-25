@@ -1,40 +1,178 @@
-09/03/2017 10:27:55;Acceso;gabriel;Acceso al sistema.
-09/03/2017 10:27:55;Navegación;gabriel;Navega al Dashboard de Administración
-09/03/2017 10:28:08;Navegación;gabriel;Navega a Listado de Grupos
-09/03/2017 10:28:32;Actualziación Base Datos;gabriel;Actualiza el Grupo 9
-09/03/2017 10:28:41;Actualziación Base Datos;gabriel;Actualiza el Grupo 8
-09/03/2017 10:29:07;Navegación;gabriel;Navega a Listado de Grupos
-09/03/2017 10:29:25;Navegación;gabriel;Navega a Listado de Grupos
-09/03/2017 10:29:43;Navegación;gabriel;Navega a Listado de Grupos
-09/03/2017 10:30:00;Navegación;gabriel;Navega a Listado de Grupos
-09/03/2017 10:30:14;Navegación;gabriel;Navega a Listado de Grupos
-09/03/2017 10:30:18;Navegación;gabriel;Navega Elementos
-09/03/2017 10:30:58;Actualiza Base Datos;gabriel;Actualiza Elemento 13
-09/03/2017 10:31:54;Actualiza Base Datos;gabriel;Actualiza Elemento 14
-09/03/2017 10:32:52;Actualiza Base Datos;gabriel;Actualiza Elemento 15
-09/03/2017 10:33:37;Navegación;gabriel;Navega Elementos
-09/03/2017 10:33:59;Actualiza Base Datos;gabriel;Actualiza Elemento 16
-09/03/2017 10:35:16;Navegación;gabriel;Navega Elementos
-09/03/2017 10:35:54;Navegación;gabriel;Navega Elementos
-09/03/2017 10:36:46;Navegación;gabriel;Navega Elementos
-09/03/2017 10:37:11;Navegación;gabriel;Navega Elementos
-09/03/2017 10:37:45;Navegación;gabriel;Navega Elementos
-09/03/2017 10:38:34;Navegación;gabriel;Navega Elementos
-09/03/2017 10:39:28;Navegación;gabriel;Navega Elementos
-09/03/2017 10:40:21;Navegación;gabriel;Navega Elementos
-09/03/2017 10:40:46;Navegación;gabriel;Navega Elementos
-09/03/2017 10:41:28;Navegación;gabriel;Navega Elementos
-09/03/2017 10:42:12;Navegación;gabriel;Navega Elementos
-09/03/2017 10:42:54;Navegación;gabriel;Navega Elementos
-09/03/2017 10:43:05;Actualiza Base Datos;gabriel;Actualiza Elemento 28
-09/03/2017 10:44:30;Navegación;gabriel;Navega Elementos
-09/03/2017 10:48:34;Acceso;gabriel;Acceso al sistema.
-09/03/2017 10:48:34;Navegación;gabriel;Navega al Dashboard de Administración
-09/03/2017 10:48:45;Navegación;gabriel;Navega a Listado de Grupos
-09/03/2017 10:49:59;Acceso;gabriel;Acceso al sistema.
-09/03/2017 10:49:59;Navegación;gabriel;Navega al Dashboard de Administración
-09/03/2017 10:51:19;Navegación;gabriel;Navega al Dashboard de Administración
-09/03/2017 10:51:23;Navegación;gabriel;Navega a Listado de Grupos
-09/03/2017 10:55:15;Navegación;gabriel;Navega al Dashboard de Administración
-09/03/2017 10:55:23;Navegación;gabriel;Navega a Listado de Grupos
-09/03/2017 10:56:20;Navegación;gabriel;Navega a Listado de Grupos
+09/03/2017 12:47:32;Acceso;gabriel;Acceso al sistema.
+09/03/2017 12:47:32;Navegación;gabriel;Navega al Dashboard de Administración
+09/03/2017 12:53:22;Navegación;gabriel;Navega a Listado de Grupos
+09/03/2017 12:53:29;Navegación;gabriel;Navega Elementos
+09/03/2017 12:53:50;Actualiza Base Datos;gabriel;Actualiza Elemento 30
+09/03/2017 12:53:55;Actualiza Base Datos;gabriel;Actualiza Elemento 31
+09/03/2017 12:54:00;Actualiza Base Datos;gabriel;Actualiza Elemento 32
+09/03/2017 12:54:06;Actualiza Base Datos;gabriel;Actualiza Elemento 33
+09/03/2017 12:54:12;Actualiza Base Datos;gabriel;Actualiza Elemento 34
+09/03/2017 12:54:20;Actualiza Base Datos;gabriel;Actualiza Elemento 35
+09/03/2017 12:54:24;Actualiza Base Datos;gabriel;Actualiza Elemento 36
+09/03/2017 12:54:28;Actualiza Base Datos;gabriel;Actualiza Elemento 37
+09/03/2017 12:54:32;Actualiza Base Datos;gabriel;Actualiza Elemento 38
+09/03/2017 12:54:35;Actualiza Base Datos;gabriel;Actualiza Elemento 39
+09/03/2017 12:54:39;Actualiza Base Datos;gabriel;Actualiza Elemento 40
+09/03/2017 12:54:47;Actualiza Base Datos;gabriel;Actualiza Elemento 41
+09/03/2017 12:54:53;Actualiza Base Datos;gabriel;Actualiza Elemento 42
+09/03/2017 12:54:57;Actualiza Base Datos;gabriel;Actualiza Elemento 43
+09/03/2017 12:55:07;Actualiza Base Datos;gabriel;Actualiza Elemento 44
+09/03/2017 12:55:12;Actualiza Base Datos;gabriel;Actualiza Elemento 45
+09/03/2017 12:55:17;Actualiza Base Datos;gabriel;Actualiza Elemento 46
+09/03/2017 12:55:23;Actualiza Base Datos;gabriel;Actualiza Elemento 47
+09/03/2017 12:55:28;Actualiza Base Datos;gabriel;Actualiza Elemento 48
+09/03/2017 12:55:33;Actualiza Base Datos;gabriel;Actualiza Elemento 49
+09/03/2017 12:55:39;Actualiza Base Datos;gabriel;Actualiza Elemento 50
+09/03/2017 12:55:47;Actualiza Base Datos;gabriel;Actualiza Elemento 51
+09/03/2017 12:55:52;Actualiza Base Datos;gabriel;Actualiza Elemento 52
+09/03/2017 12:55:56;Actualiza Base Datos;gabriel;Actualiza Elemento 53
+09/03/2017 12:56:01;Actualiza Base Datos;gabriel;Actualiza Elemento 54
+09/03/2017 12:56:05;Actualiza Base Datos;gabriel;Actualiza Elemento 55
+09/03/2017 12:56:09;Actualiza Base Datos;gabriel;Actualiza Elemento 56
+09/03/2017 12:56:13;Actualiza Base Datos;gabriel;Actualiza Elemento 57
+09/03/2017 12:56:20;Actualiza Base Datos;gabriel;Actualiza Elemento 58
+09/03/2017 12:56:27;Actualiza Base Datos;gabriel;Actualiza Elemento 59
+09/03/2017 12:56:34;Actualiza Base Datos;gabriel;Actualiza Elemento 60
+09/03/2017 12:56:38;Actualiza Base Datos;gabriel;Actualiza Elemento 61
+09/03/2017 12:56:42;Actualiza Base Datos;gabriel;Actualiza Elemento 62
+09/03/2017 12:56:48;Actualiza Base Datos;gabriel;Actualiza Elemento 63
+09/03/2017 12:56:53;Actualiza Base Datos;gabriel;Actualiza Elemento 64
+09/03/2017 12:56:57;Actualiza Base Datos;gabriel;Actualiza Elemento 65
+09/03/2017 12:57:03;Actualiza Base Datos;gabriel;Actualiza Elemento 66
+09/03/2017 12:57:07;Actualiza Base Datos;gabriel;Actualiza Elemento 67
+09/03/2017 12:57:11;Actualiza Base Datos;gabriel;Actualiza Elemento 68
+09/03/2017 12:57:21;Actualiza Base Datos;gabriel;Actualiza Elemento 69
+09/03/2017 12:57:25;Actualiza Base Datos;gabriel;Actualiza Elemento 70
+09/03/2017 12:57:31;Actualiza Base Datos;gabriel;Actualiza Elemento 71
+09/03/2017 12:57:36;Actualiza Base Datos;gabriel;Actualiza Elemento 72
+09/03/2017 12:57:40;Actualiza Base Datos;gabriel;Actualiza Elemento 73
+09/03/2017 12:57:45;Actualiza Base Datos;gabriel;Actualiza Elemento 74
+09/03/2017 12:57:49;Actualiza Base Datos;gabriel;Actualiza Elemento 75
+09/03/2017 12:57:54;Actualiza Base Datos;gabriel;Actualiza Elemento 78
+09/03/2017 12:57:58;Actualiza Base Datos;gabriel;Actualiza Elemento 79
+09/03/2017 12:58:04;Actualiza Base Datos;gabriel;Actualiza Elemento 81
+09/03/2017 12:58:10;Actualiza Base Datos;gabriel;Actualiza Elemento 76
+09/03/2017 12:58:15;Actualiza Base Datos;gabriel;Actualiza Elemento 82
+09/03/2017 12:58:21;Actualiza Base Datos;gabriel;Actualiza Elemento 83
+09/03/2017 12:58:25;Actualiza Base Datos;gabriel;Actualiza Elemento 84
+09/03/2017 12:58:28;Actualiza Base Datos;gabriel;Actualiza Elemento 85
+09/03/2017 12:58:33;Actualiza Base Datos;gabriel;Actualiza Elemento 86
+09/03/2017 12:58:36;Actualiza Base Datos;gabriel;Actualiza Elemento 87
+09/03/2017 12:58:40;Actualiza Base Datos;gabriel;Actualiza Elemento 88
+09/03/2017 12:58:47;Actualiza Base Datos;gabriel;Actualiza Elemento 89
+09/03/2017 12:58:51;Actualiza Base Datos;gabriel;Actualiza Elemento 90
+09/03/2017 12:58:55;Actualiza Base Datos;gabriel;Actualiza Elemento 91
+09/03/2017 12:59:00;Actualiza Base Datos;gabriel;Actualiza Elemento 92
+09/03/2017 12:59:04;Actualiza Base Datos;gabriel;Actualiza Elemento 93
+09/03/2017 12:59:11;Actualiza Base Datos;gabriel;Actualiza Elemento 77
+09/03/2017 12:59:14;Actualiza Base Datos;gabriel;Actualiza Elemento 80
+09/03/2017 12:59:17;Actualiza Base Datos;gabriel;Actualiza Elemento 94
+09/03/2017 12:59:21;Actualiza Base Datos;gabriel;Actualiza Elemento 95
+09/03/2017 12:59:26;Navegación;gabriel;Navega a Listado de Grupos
+09/03/2017 12:59:31;Navegación;gabriel;Navega Elementos
+09/03/2017 13:01:32;Navegación;gabriel;Navega Elementos
+09/03/2017 13:02:57;Navegación;gabriel;Navega a Listado de Grupos
+09/03/2017 13:03:01;Navegación;gabriel;Navega Elementos
+09/03/2017 13:06:46;Navegación;gabriel;Navega Elementos
+09/03/2017 13:08:19;Navegación;gabriel;Navega a Usuarios
+09/03/2017 13:08:30;Navegación;gabriel;Navega a Sucursales
+09/03/2017 13:08:42;Navegación;gabriel;Navega a Clientes
+09/03/2017 13:08:59;Navegación;gabriel;Navega Comienzo de Auditoria ID 54
+09/03/2017 13:13:05;Navegación;gabriel;Navega Elementos
+09/03/2017 13:13:18;Actualiza Base Datos;gabriel;Actualiza Elemento 96
+09/03/2017 13:13:30;Actualiza Base Datos;gabriel;Actualiza Elemento 97
+09/03/2017 13:13:44;Actualiza Base Datos;gabriel;Actualiza Elemento 94
+09/03/2017 13:13:51;Actualiza Base Datos;gabriel;Actualiza Elemento 95
+09/03/2017 13:14:01;Actualiza Base Datos;gabriel;Actualiza Elemento 96
+09/03/2017 13:14:19;Actualiza Base Datos;gabriel;Actualiza Elemento 97
+09/03/2017 13:14:29;Actualiza Base Datos;gabriel;Actualiza Elemento 98
+09/03/2017 13:14:37;Actualiza Base Datos;gabriel;Actualiza Elemento 99
+09/03/2017 13:14:42;Actualiza Base Datos;gabriel;Actualiza Elemento 100
+09/03/2017 13:16:18;Actualiza Base Datos;gabriel;Actualiza Elemento 77
+09/03/2017 13:17:36;Navegación;gabriel;Navega Elementos
+09/03/2017 13:18:01;Actualiza Base Datos;gabriel;Actualiza Elemento 77
+09/03/2017 13:18:17;Actualiza Base Datos;gabriel;Actualiza Elemento 78
+09/03/2017 13:19:30;Actualiza Base Datos;gabriel;Actualiza Elemento 79
+09/03/2017 13:20:02;Navegación;gabriel;Navega Elementos
+09/03/2017 13:20:24;Actualiza Base Datos;gabriel;Actualiza Elemento 81
+09/03/2017 13:25:00;Actualiza Base Datos;gabriel;Actualiza Elemento 76
+09/03/2017 18:23:58;Navegación;gabriel;Navega Elementos
+09/03/2017 18:24:16;Actualiza Base Datos;gabriel;Actualiza Elemento 103
+09/03/2017 18:24:33;Actualiza Base Datos;gabriel;Actualiza Elemento 40
+09/03/2017 18:24:53;Actualiza Base Datos;gabriel;Actualiza Elemento 58
+09/03/2017 18:25:00;Actualiza Base Datos;gabriel;Actualiza Elemento 57
+09/03/2017 18:25:06;Actualiza Base Datos;gabriel;Actualiza Elemento 56
+09/03/2017 18:25:12;Actualiza Base Datos;gabriel;Actualiza Elemento 55
+09/03/2017 18:25:25;Actualiza Base Datos;gabriel;Actualiza Elemento 54
+09/03/2017 18:25:31;Actualiza Base Datos;gabriel;Actualiza Elemento 53
+09/03/2017 18:25:41;Actualiza Base Datos;gabriel;Actualiza Elemento 52
+09/03/2017 18:25:48;Actualiza Base Datos;gabriel;Actualiza Elemento 51
+09/03/2017 18:25:57;Actualiza Base Datos;gabriel;Actualiza Elemento 50
+09/03/2017 18:26:05;Actualiza Base Datos;gabriel;Actualiza Elemento 49
+09/03/2017 18:26:11;Actualiza Base Datos;gabriel;Actualiza Elemento 48
+09/03/2017 18:26:20;Actualiza Base Datos;gabriel;Actualiza Elemento 47
+09/03/2017 18:26:27;Actualiza Base Datos;gabriel;Actualiza Elemento 46
+09/03/2017 18:26:33;Actualiza Base Datos;gabriel;Actualiza Elemento 45
+09/03/2017 18:26:39;Actualiza Base Datos;gabriel;Actualiza Elemento 44
+09/03/2017 18:26:46;Actualiza Base Datos;gabriel;Actualiza Elemento 43
+09/03/2017 18:26:52;Actualiza Base Datos;gabriel;Actualiza Elemento 42
+09/03/2017 18:26:58;Actualiza Base Datos;gabriel;Actualiza Elemento 41
+09/03/2017 18:27:03;Navegación;gabriel;Navega a Usuarios
+09/03/2017 18:27:22;Navegación;gabriel;Navega a Clientes
+09/03/2017 18:27:27;Navegación;gabriel;Navega a Sucursales
+09/03/2017 20:25:48;Navegación;gabriel;Navega al Dashboard de Administración
+09/03/2017 20:26:14;Acceso;sergio;Acceso al sistema.
+09/03/2017 20:26:41;Navegación;sergio;Navega a la auditoria Abierta 57.
+09/03/2017 20:26:42;Navegación;sergio;Navega a los elementos auditados de la Audioria 57.
+09/03/2017 20:28:20;Navegación;sergio;Navega a Elementos de Nueva Auditoria 57.
+09/03/2017 20:28:20;Navegación;sergio;Navega a los elementos auditados de la Audioria 57.
+09/03/2017 20:29:38;Navegación;sergio;Navega a los elementos auditados de la Audioria 57.
+09/03/2017 20:33:16;Navegación;sergio;Navega a la auditoria Abierta 58.
+09/03/2017 20:33:17;Navegación;sergio;Navega a los elementos auditados de la Audioria 58.
+09/03/2017 20:33:24;Navegación;sergio;Navega a editar elemento auditable.
+09/03/2017 20:33:48;Acceso Base Datos;sergio;Actualiza Elemento con Id 653.
+09/03/2017 20:33:48;Navegación;sergio;Navega a los elementos auditados de la Audioria 58.
+09/03/2017 20:34:35;Navegación;sergio;Navega a editar elemento auditable.
+09/03/2017 20:34:37;Acceso Base Datos;sergio;Actualiza Elemento con Id 654.
+09/03/2017 20:34:37;Navegación;sergio;Navega a los elementos auditados de la Audioria 58.
+09/03/2017 20:34:39;Navegación;sergio;Navega a editar elemento auditable.
+09/03/2017 20:34:41;Acceso Base Datos;sergio;Actualiza Elemento con Id 655.
+09/03/2017 20:34:41;Navegación;sergio;Navega a los elementos auditados de la Audioria 58.
+09/03/2017 20:34:42;Navegación;sergio;Navega a editar elemento auditable.
+09/03/2017 20:34:49;Acceso Base Datos;sergio;Actualiza Elemento con Id 656.
+09/03/2017 20:34:49;Navegación;sergio;Navega a los elementos auditados de la Audioria 58.
+09/03/2017 20:34:51;Acceso Base Datos;sergio;Actualiza Elemento con Id 656.
+09/03/2017 20:34:52;Navegación;sergio;Navega a editar elemento auditable.
+09/03/2017 20:34:54;Acceso Base Datos;sergio;Actualiza Elemento con Id 657.
+09/03/2017 20:34:54;Navegación;sergio;Navega a los elementos auditados de la Audioria 58.
+09/03/2017 20:34:56;Navegación;sergio;Navega a editar elemento auditable.
+09/03/2017 20:35:19;Navegación;sergio;Navega a editar elemento auditable.
+09/03/2017 20:35:21;Acceso Base Datos;sergio;Actualiza Elemento con Id 658.
+09/03/2017 20:35:21;Navegación;sergio;Navega a los elementos auditados de la Audioria 58.
+09/03/2017 20:35:32;Navegación;sergio;Navega a editar elemento auditable.
+09/03/2017 20:35:35;Acceso Base Datos;sergio;Actualiza Elemento con Id 659.
+09/03/2017 20:35:35;Navegación;sergio;Navega a los elementos auditados de la Audioria 58.
+09/03/2017 20:35:39;Navegación;sergio;Navega a editar elemento auditable.
+09/03/2017 20:35:42;Acceso Base Datos;sergio;Actualiza Elemento con Id 660.
+09/03/2017 20:35:42;Navegación;sergio;Navega a los elementos auditados de la Audioria 58.
+09/03/2017 20:35:46;Navegación;sergio;Navega a editar elemento auditable.
+09/03/2017 20:35:48;Acceso Base Datos;sergio;Actualiza Elemento con Id 661.
+09/03/2017 20:35:48;Navegación;sergio;Navega a los elementos auditados de la Audioria 58.
+09/03/2017 20:35:51;Navegación;sergio;Navega a editar elemento auditable.
+09/03/2017 20:35:53;Acceso Base Datos;sergio;Actualiza Elemento con Id 662.
+09/03/2017 20:35:53;Navegación;sergio;Navega a los elementos auditados de la Audioria 58.
+09/03/2017 20:35:59;Navegación;sergio;Navega a editar elemento auditable.
+09/03/2017 20:36:01;Acceso Base Datos;sergio;Actualiza Elemento con Id 663.
+09/03/2017 20:36:01;Navegación;sergio;Navega a los elementos auditados de la Audioria 58.
+09/03/2017 20:36:05;Navegación;sergio;Navega a editar elemento auditable.
+09/03/2017 20:36:07;Acceso Base Datos;sergio;Actualiza Elemento con Id 664.
+09/03/2017 20:36:07;Navegación;sergio;Navega a los elementos auditados de la Audioria 58.
+09/03/2017 20:36:10;Navegación;sergio;Navega a editar elemento auditable.
+09/03/2017 20:36:13;Acceso Base Datos;sergio;Actualiza Elemento con Id 665.
+09/03/2017 20:36:13;Navegación;sergio;Navega a los elementos auditados de la Audioria 58.
+09/03/2017 20:36:20;Navegación;sergio;Finaliza Auditoría la Audioria 58.
+09/03/2017 20:37:17;Acceso;gabriel;Acceso al sistema.
+09/03/2017 20:37:17;Navegación;gabriel;Navega al Dashboard de Administración
+09/03/2017 20:37:38;Navegación;gabriel;Navega Comienzo de Auditoria ID 58
+09/03/2017 20:55:26;Navegación;gabriel;Navega Comienzo de Auditoria ID 58
+09/03/2017 20:57:03;Navegación;gabriel;Navega Comienzo de Auditoria ID 58

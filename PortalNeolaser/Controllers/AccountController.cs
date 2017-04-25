@@ -37,7 +37,7 @@ namespace PortalNeolaser.Controllers {
                     if (Roles.IsUserInRole(model.UserName, "Administrador"))
                     {
                         MvcApplication.Log.WriteLog(String.Format("{0};Acceso;{1};Acceso al sistema.", DateTime.Now, model.UserName));
-                        return RedirectToAction("Index", "Dashboard", new { Area = "Admin" });
+                        return RedirectToAction("Index", "Auditoria", new { Area = "Admin" });
                     }
                     else if (Roles.IsUserInRole(model.UserName, "Mantenimiento"))
                     {

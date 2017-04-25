@@ -1,7 +1,7 @@
 @{
     var grid = Html.DevExpress().GridView(settings => {
         settings.Name = "GridViewElementoAuditado";
-        settings.CallbackRouteValues = new { Controller = "ElementosAuditados", Action = "GridViewElementoAuditadoPartial" };
+        settings.CallbackRouteValues = new { Controller = "ElementosAuditados", Action = "GridViewElementoAuditadoPartial", idAuditoria = Session["AuditoriaID"] };
         settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
 
         settings.KeyFieldName = "Id";
@@ -103,7 +103,7 @@
 
             });
         });
-        
+
         settings.Columns.Add(col =>
         {
             col.FieldName = "Elemento.Nombre";

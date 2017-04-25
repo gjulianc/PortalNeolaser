@@ -36,18 +36,21 @@ $(document).ready(function () {
     groupItem.Items.Add(m => m.CodigoSAP, item =>
     {
         item.HelpText = "";
+        item.NestedExtensionSettings.Width = System.Web.UI.WebControls.Unit.Percentage(50);
     });
 
     groupItem.Items.Add(m => m.Descripcion, item =>
     {
         item.HelpText = "";
+        item.NestedExtensionType = FormLayoutNestedExtensionItemType.Memo;
+        item.NestedExtensionSettings.Width = System.Web.UI.WebControls.Unit.Percentage(50);
     });
 
     groupItem.Items.Add(m => m.FechaAlta, item =>
     {
         item.HelpText = "";
         item.Caption = "Fecha Alta";
-
+        item.NestedExtensionSettings.Width = System.Web.UI.WebControls.Unit.Percentage(50);
     });
 
     groupItem.Items.Add(m => m.Cliente, item =>
@@ -61,6 +64,7 @@ $(document).ready(function () {
             s.Properties.DataSource = ViewBag.FkCliente;
 
         });
+        item.NestedExtensionSettings.Width = System.Web.UI.WebControls.Unit.Percentage(50);
     });
 
     groupItem.Items.Add(m => m.ComunidadAutonoma, item =>
@@ -72,8 +76,9 @@ $(document).ready(function () {
             s.Properties.DropDownStyle = DropDownStyle.DropDownList;
             s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.StartsWith;
             s.Properties.DataSource = ViewBag.Comunidad;
-      
+
         });
+        item.NestedExtensionSettings.Width = System.Web.UI.WebControls.Unit.Percentage(50);
     });
 
     groupItem.Items.Add(m => m.Provincia , item =>
@@ -87,6 +92,7 @@ $(document).ready(function () {
             s.Properties.DataSource = ViewBag.Provincia;
 
         });
+        item.NestedExtensionSettings.Width = System.Web.UI.WebControls.Unit.Percentage(50);
     });
 
     groupItem.Items.Add(m => m.Poblacion, item =>
@@ -100,21 +106,41 @@ $(document).ready(function () {
             s.Properties.DataSource = ViewBag.Municipio;
 
         });
+        item.NestedExtensionSettings.Width = System.Web.UI.WebControls.Unit.Percentage(50);
     });
 
     groupItem.Items.Add(m => m.Direccion, item =>
     {
         item.HelpText = "";
         item.Caption = "Direccion";
-
+        item.NestedExtensionType = FormLayoutNestedExtensionItemType.Memo;
+        item.NestedExtensionSettings.Width = System.Web.UI.WebControls.Unit.Percentage(50);
     });
 
     groupItem.Items.Add(m => m.CodPostal, item =>
     {
         item.HelpText = "";
         item.Caption = "Código Postal";
+        item.NestedExtensionSettings.Width = System.Web.UI.WebControls.Unit.Percentage(50);
     });
+    //groupItem.Items.Add(m => m.GruposElemento, item =>
+    //{
+    //    item.HelpText = "";
+    //    item.Caption = "Grupos";
+    //    item.NestedExtensionSettings.Width = System.Web.UI.WebControls.Unit.Percentage(50);
 
+    //    item.NestedExtension().CheckBoxList(s =>
+    //    {
+
+    //        s.Properties.RepeatLayout = System.Web.UI.WebControls.RepeatLayout.Table;
+    //        s.Properties.RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal;
+    //        s.Properties.RepeatColumns = 4;
+    //        s.Properties.DataSource = ViewBag.AllGrupos;
+
+
+    //    });
+
+    //});
     groupItem.Items.Add(i =>
     {
         i.Caption = " ";

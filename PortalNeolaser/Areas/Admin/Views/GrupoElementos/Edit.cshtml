@@ -1,37 +1,50 @@
 ﻿@model PortalNeolaser.Models.GruposElemento
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edición";
 }
 
-<h2>Edit</h2>
-
+<div>
+    <h2>Grupo de Elementos: <strong>@Model.Nombre</strong></h2>
+    <h4>Descripción: <strong>@Model.Descripcion</strong></h4>
+</div>
+<br />
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>GruposElemento</h4>
+        <h4>Elementos:</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
+        <div class="form-group hidden">
             @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                <h4><span class="label label-info">@Model.Nombre</span></h4>
+                @*@Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group hidden" >
             @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <div class="form-group" style="border:inset">
+            @foreach (var e in Model.Elementos)
+            {
+                <span>
+                    <input type="checkbox" class="checkbox" name="selectedElementos" value="@e.Nombre" id="@e.Nombre" /><label for="@e.Nombre">@e.Nombre</label>
+                    
+                </span>
+            }
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />

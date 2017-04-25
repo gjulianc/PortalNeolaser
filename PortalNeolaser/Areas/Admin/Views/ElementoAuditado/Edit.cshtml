@@ -35,7 +35,7 @@ $(document).ready(function () {
     @Html.DevExpress().FormLayout(settings =>
 {
     settings.Name = "FormLayoutUsuario";
-
+    settings.Width = System.Web.UI.WebControls.Unit.Percentage(50);
     var groupItem = settings.Items.AddGroupItem(groupSettings =>
     {
         groupSettings.Caption = "Rellene los datos del Formulario para dar alta al nuevo Elemento";
@@ -54,17 +54,23 @@ $(document).ready(function () {
         item.HelpText = "";
 
     });
+
     groupItem.Items.Add(m => m.Descripcion, item =>
     {
         item.HelpText = "";
+        item.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox;
+        item.NestedExtensionSettings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
     });
     groupItem.Items.Add(m => m.Estado, item =>
     {
         item.HelpText = "";
-        item.Caption = "Correcto?";
+        item.Caption = "¿Esta Correcto?";
     });
     groupItem.Items.Add(m => m.Observaciones, item =>
     {
+        item.NestedExtensionType = FormLayoutNestedExtensionItemType.Memo;
+        item.NestedExtensionSettings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+        item.NestedExtensionSettings.Height = 60;
         item.HelpText = "";
     });
     groupItem.Items.Add(item =>
@@ -84,9 +90,12 @@ $(document).ready(function () {
             s.Text = "Enviar";
             s.UseSubmitBehavior = true;
         });
+
     });
 
 }).GetHtml()
 }
 
-
+<div>
+    @Html.ActionLink("Volver", "Index", new { idAuditoria = Model.FkAuditoria })
+</div>

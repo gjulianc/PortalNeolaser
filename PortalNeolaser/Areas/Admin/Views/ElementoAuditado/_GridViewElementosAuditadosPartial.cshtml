@@ -6,9 +6,9 @@
         settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
 
         settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Auditoria", Action = "GridViewElementosAuditadosPartialAddNew" };
-        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Auditoria", Action = "GridViewElementosAuditadosPartialUpdate" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "ElementoAuditado", Action = "GridViewElementosAuditadosPartialUpdate" };
         settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Auditoria", Action = "GridViewElementosAuditadosPartialDelete" };
-        settings.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
+        settings.SettingsEditing.Mode = GridViewEditingMode.Inline;
         settings.SettingsBehavior.ConfirmDelete = true;
 
         settings.CommandColumn.Visible = false;
@@ -35,8 +35,9 @@
         settings.SettingsPager.Position = System.Web.UI.WebControls.PagerPosition.Bottom;
         settings.SettingsPager.FirstPageButton.Visible = true;
         settings.SettingsPager.LastPageButton.Visible = true;
-        settings.SettingsPager.PageSize = 10;
-        settings.SettingsPager.PageSizeItemSettings.Items = new string[] { "10", "25", "50", "100" };
+        settings.SettingsPager.PageSize = 100;
+        settings.SettingsPager.PageSizeItemSettings.Items = new string[] { "10", "25", "50", "100","200" };
+        settings.SettingsPager.PageSizeItemSettings.Visible = true;
         settings.SettingsPager.AlwaysShowPager = true;
 
 
@@ -48,28 +49,39 @@
             col.ReadOnly = true;
             col.Visible = false;
         });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Elemento.GruposElemento.Nombre";
+            col.Caption = "Grupo";
+            //col.GroupIndex = 0;
+            col.ReadOnly = true;
+        });
 
-        settings.Columns.Add("Descripcion");
-
-        //settings.Columns.Add("FkAuditoria");
-        //settings.Columns.Add("FkElemento");
-        //settings.Columns.Add("Auditoria");
         settings.Columns.Add(col =>
         {
             col.FieldName = "Elemento.Nombre";
             col.Caption = "Elemento";
             col.ReadOnly = true;
         });
+
+        settings.Columns.Add("Elemento.Descripcion");
+
+        //settings.Columns.Add("FkAuditoria");
+        //settings.Columns.Add("FkElemento");
+        //settings.Columns.Add("Auditoria");
+
         settings.Columns.Add(col =>
         {
-            col.FieldName = "Elemento.GruposElemento.Nombre";
-            col.Caption = "Grupo";
-
+            col.FieldName = "Elemento.GruposElemento.Orden";
+            col.Caption = "Orden";
             col.ReadOnly = true;
+            col.SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
         });
+
         settings.Columns.Add(col =>
         {
             col.FieldName = "Estado";
+           
             col.CellStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
             col.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
             col.SetDataItemTemplateContent(c =>
@@ -106,7 +118,7 @@
                 var celltext = c.Text;
 
                 //ViewContext.Writer.Write(c.Text);
-                if (celltext == "&nbsp;")
+                if (celltext == "&nbsp;" || celltext == "unknown_photo.png")
                 {
                     Html.DevExpress().Image(imgSettings =>
                     {
@@ -140,7 +152,7 @@
             col.FieldName = "Observaciones";
             col.Caption = "Observaciones";
 
-            col.ReadOnly = true;
+            //col.ReadOnly = true;
         });
         settings.Columns.Add(column =>
         {
@@ -160,3 +172,6 @@
     }
 }
 @grid.Bind(Model).GetHtml()
+
+<br />
+<br />

@@ -31,7 +31,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Auditoria auditoria = db.Auditorias.Find(id);
+            PortalNeolaser.Models.Auditoria auditoria = db.Auditorias.Find(id);
             if (auditoria == null)
             {
                 return HttpNotFound();
@@ -42,7 +42,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
         // GET: Admin/Auditoria/Create
         public ActionResult Create()
         {
-            AuditoriaViewModel model = new AuditoriaViewModel();
+            Models.AuditoriaViewModel model = new Models.AuditoriaViewModel();
             model.FechaInicio = DateTime.Now;
             model.FechaFin = DateTime.Now;
             ViewBag.FkSucursal = new SelectList(db.Sucursals, "Id", "CodigoSAP");
@@ -53,11 +53,11 @@ namespace PortalNeolaser.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([ModelBinder(typeof(DevExpressEditorsBinder))] AuditoriaViewModel item)
+        public ActionResult Create([ModelBinder(typeof(DevExpressEditorsBinder))] Models.AuditoriaViewModel item)
         {
             if (ModelState.IsValid)
             {
-                Auditoria auditoria = new Auditoria
+                PortalNeolaser.Models.Auditoria auditoria = new PortalNeolaser.Models.Auditoria
                 {
                     FechaInicio = item.FechaInicio,
                     FechaFin = item.FechaFin,
@@ -67,7 +67,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                 };
                 db.Auditorias.Add(auditoria);
                 db.SaveChanges();
-                MvcApplication.Log.WriteLog(String.Format("{0};Inserción en Base Datos;{1};Inserta Nuevo Auditoria", DateTime.Now)); //Escribimos en el log
+                MvcApplication.Log.WriteLog(String.Format("{0};Inserción en Base Datos;{1};Inserta Nuevo Auditoria", DateTime.Now,auditoria.Id)); //Escribimos en el log
                 return RedirectToAction("NewAuditoria", auditoria);
 
             }
@@ -84,32 +84,32 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Auditoria auditoria = db.Auditorias.Find(id);
+            PortalNeolaser.Models.Auditoria auditoria = db.Auditorias.Find(id);
             if (auditoria == null)
             {
                 return HttpNotFound();
             }
             ViewBag.FkSucursal = new SelectList(db.Sucursals, "Id", "CodigoSAP", auditoria.FkSucursal);
             ViewBag.FkUsuario = new SelectList(db.Usuarios, "UserId", "UserName", auditoria.FkUsuario);
-            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Edita Auditoria {2}", DateTime.Now,id)); //Escribimos en el log
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Edita Auditoria {2}", DateTime.Now,id, User.Identity.Name,id)); //Escribimos en el log
             return View(auditoria);
         }
 
        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FechaInicio,FechaFin,FkUsuario,FkSucursal")] Auditoria auditoria)
+        public ActionResult Edit([Bind(Include = "Id,FechaInicio,FechaFin,FkUsuario,FkSucursal")] Auditoria item)// [ModelBinder(typeof(DevExpressEditorsBinder))] Models.AuditoriaViewModel item
         {
             if (ModelState.IsValid)
             {
-                db.Entry(auditoria).State = EntityState.Modified;
+                db.Entry(item).State = EntityState.Modified;
                 db.SaveChanges();
-                MvcApplication.Log.WriteLog(String.Format("{0};Actualiza Base Datos;{1};Gurda Edición Auditoria {2}", DateTime.Now, auditoria.Id)); //Escribimos en el log
+                MvcApplication.Log.WriteLog(String.Format("{0};Actualiza Base Datos;{1};Gurda Edición Auditoria", DateTime.Now,User.Identity.Name)); //Escribimos en el log
                 return RedirectToAction("Index");
             }
-            ViewBag.FkSucursal = new SelectList(db.Sucursals, "Id", "CodigoSAP", auditoria.FkSucursal);
-            ViewBag.FkUsuario = new SelectList(db.Usuarios, "UserId", "UserName", auditoria.FkUsuario);
-            return View(auditoria);
+            ViewBag.FkSucursal = new SelectList(db.Sucursals, "Id", "CodigoSAP", item.Sucursal);
+            ViewBag.FkUsuario = new SelectList(db.Usuarios, "UserId", "UserName", item.Usuario);
+            return View(item);
         }
 
         // GET: Admin/Auditoria/Delete/5
@@ -119,7 +119,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Auditoria auditoria = db.Auditorias.Find(id);
+            PortalNeolaser.Models.Auditoria auditoria = db.Auditorias.Find(id);
             if (auditoria == null)
             {
                 return HttpNotFound();
@@ -133,7 +133,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Auditoria auditoria = db.Auditorias.Find(id);
+            PortalNeolaser.Models.Auditoria auditoria = db.Auditorias.Find(id);
             db.Auditorias.Remove(auditoria);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -177,12 +177,14 @@ namespace PortalNeolaser.Areas.Admin.Controllers
         [HttpPost, ValidateInput(false)]
         public ActionResult GridViewAuditoriaPartialUpdate(PortalNeolaser.Models.Auditoria item)
         {
-            var model = new object[0];
+            
             if (ModelState.IsValid)
             {
                 try
                 {
-                    // Insert here a code to update the item in your model
+                    db.Entry(item).State = EntityState.Modified;
+                    db.SaveChanges();
+                    MvcApplication.Log.WriteLog(String.Format("{0};Actualiza Base Datos;{1};Guarda Edición Auditoria {2}", DateTime.Now, User.Identity.Name, item.Id)); //Escribimos en el log                    
                 }
                 catch (Exception e)
                 {
@@ -190,8 +192,8 @@ namespace PortalNeolaser.Areas.Admin.Controllers
                 }
             }
             else
-                ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_GridViewAuditoriaPartial", model);
+                ViewData["EditError"] = "Por favor, debe corregir todos los errores.";
+            return PartialView("_GridViewAuditoriaPartial"); // RedirectToAction("Index");
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult GridViewAuditoriaPartialDelete(System.Int32 Id)
@@ -211,13 +213,13 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             return PartialView("_GridViewAuditoriaPartial", model);
         }
 
-        public ActionResult GetElementosByAuditoria(Auditoria AuditoriaID)
+        public ActionResult GetElementosByAuditoria(PortalNeolaser.Models.Auditoria AuditoriaID)
         {            
             return RedirectToAction("Index", "ElementoAuditado", new { idAuditoria = AuditoriaID.Id });
         }
 
         //Comienzo de Auditoria
-        public ActionResult NewAuditoria(Auditoria auditoria)
+        public ActionResult NewAuditoria(PortalNeolaser.Models.Auditoria auditoria)
         {
             List<ElementosAuditado> listaElementos = new List<ElementosAuditado>();
             string cadenaConexion = (@"server=82.98.161.118;user id = qualimove;password=mzprAh1r;database = neolaserdb");
@@ -242,11 +244,11 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             try
             {
                 db.SaveChanges();
-                MvcApplication.Log.WriteLog(String.Format("{0};Actualización Base Datos;{1};Guarda Elementos Auditados de la Nueva Auditoria {2}", DateTime.Now, auditoria.Id)); //Escribimos en el log
+                MvcApplication.Log.WriteLog(String.Format("{0};Actualización Base Datos;{1};Guarda Elementos Auditados de la Nueva Auditoria {2}", DateTime.Now, User.Identity.Name, auditoria.Id)); //Escribimos en el log
             }
             catch { }
 
-            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a los elementos auditados de la Nueva Auditoria {2}", DateTime.Now, auditoria.Id)); //Escribimos en el log
+            MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a los elementos auditados de la Nueva Auditoria {2}", DateTime.Now, User.Identity.Name, auditoria.Id)); //Escribimos en el log
             return RedirectToAction("Index", "ElementoAuditado", new { IdAuditoria = auditoria.Id });
         }
 

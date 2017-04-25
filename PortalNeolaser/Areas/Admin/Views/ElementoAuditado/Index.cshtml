@@ -37,23 +37,37 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div>
-                    <h5><span class="label label-success pull-right">Auditoria Realizada por: @ViewData["Empleado"]</span></h5>
+                    <h5><span class="label label-success pull-right">Auditoria Realizada por: @ViewData["Empleado"] </span></h5>
+                        @{
+                            var texto = "";
+                            if (@ViewData["Estado"].ToString() == "True")
+                            {
+                                texto = "FINALIZADA";
+                            }
+                            else
+                            {
+                                texto = "NO FINALIZADA";
+                            }
+                        }
+                    <label class="label label-warning pull-left">Estado: @texto</label>
+
                 </div>
+                <br />
                 <div>
+                    
                     <ul style="list-style:none">
-                        <li><h4><strong>Fecha</strong></h4></li>
+                        <li><br /></li>
                         <li>Comienzo: <strong>@ViewData["Inicio"]</strong> </li>
                         <li>Finalización: <strong>@ViewData["Fin"]</strong></li>
                         <li>Duración: <strong>@ViewData["Duracion"]</strong> (d.HH:mm:ss)</li>
-                        <li><br /></li>
+                        
                     </ul>
                 </div>
 
 
-                @*<div>
-                        <p><strong>13/38</strong></p>
-                        <div class="stat-percent font-bold text-success">Sucursal: Toledo</div>
-                    </div>*@
+                <div>                        
+                     <div class="stat-percent font-bold text-success"></div>
+                </div>
             </div>
         </div>
     </div>

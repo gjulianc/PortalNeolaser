@@ -13,7 +13,7 @@
         //Command Column
         settings.CommandColumn.Visible = true;
         settings.CommandColumn.ShowNewButton = false;
-        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowDeleteButton = false;
         settings.CommandColumn.ShowEditButton = true;
         settings.CommandColumn.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
         settings.CommandColumn.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
@@ -43,11 +43,11 @@
         settings.SettingsPager.Position = System.Web.UI.WebControls.PagerPosition.Bottom;
         settings.SettingsPager.FirstPageButton.Visible = true;
         settings.SettingsPager.LastPageButton.Visible = true;
-        settings.SettingsPager.PageSize = 10;
+        settings.SettingsPager.PageSize = 50;
         settings.SettingsPager.PageSizeItemSettings.Items = new string[] { "10", "25", "50", "100" };
+        settings.SettingsPager.PageSizeItemSettings.Visible = true;
         settings.SettingsPager.AlwaysShowPager = true;
 
-        //Filter
         //Filter
         settings.Settings.ShowHeaderFilterButton = true;
         settings.SettingsSearchPanel.Visible = true;
@@ -61,8 +61,21 @@
             col.Width = 50;
             col.Visible = false;
         });
-        settings.Columns.Add("FechaInicio");
-        settings.Columns.Add("FechaFin");
+
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "FechaInicio";
+            col.ColumnType = MVCxGridViewColumnType.TimeEdit;
+            col.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy HH:mm tt";
+
+
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "FechaFin";
+            col.ColumnType = MVCxGridViewColumnType.TimeEdit;
+            col.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy HH:mm tt";
+        });
 
         settings.Columns.Add(column =>
         {
@@ -86,7 +99,22 @@
             });
         });
 
-        settings.Columns.Add("Usuario.UserName");
+        settings.Columns.Add(col=>
+        {
+            col.Caption = "Usuario";
+            col.FieldName = "FkUsuario";
+
+            col.ColumnType = MVCxGridViewColumnType.ComboBox;
+            col.EditorProperties().ComboBox(p =>
+            {
+                p.DropDownStyle = DropDownStyle.DropDownList;
+                p.TextField = "UserName";
+                p.ValueField = "UserId";
+                p.DataSource = new PortalNeolaser.Models.neolaserdbEntities().Usuarios.ToList();
+
+            });
+
+        });
 
         settings.Columns.Add(column =>
         {
@@ -102,6 +130,17 @@
                     hyperlink.Name = "hl" + keyValue.ToString();
                     hyperlink.Properties.Text = "+Info";
                     hyperlink.NavigateUrl = Url.Action("Index", "ElementoAuditado", new { idAuditoria = keyValue });
+                }).Render();
+
+                Html.DevExpress().HyperLink(hyperlink =>
+                {
+                    var visibleIndex = container.VisibleIndex;
+                    var keyValue = container.KeyValue;
+
+
+                    hyperlink.Name = "hlEdit" + keyValue.ToString();
+                    hyperlink.Properties.Text = "Editar";
+                    hyperlink.NavigateUrl = Url.Action("Edit", "Auditoria", new { id = keyValue });
                 }).Render();
             });
 

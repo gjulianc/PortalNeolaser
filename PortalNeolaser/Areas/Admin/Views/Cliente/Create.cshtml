@@ -62,6 +62,7 @@ $(document).ready(function () {
     groupItem.Items.Add(m => m.Direccion, item =>
     {
         item.HelpText = "";
+        item.NestedExtensionType = FormLayoutNestedExtensionItemType.Memo;
     });
     groupItem.Items.Add(m => m.Poblacion, item =>
     {
@@ -104,12 +105,12 @@ $(document).ready(function () {
             s.UseSubmitBehavior = true;
 
         });
-        @Html.ActionLink("Volver", "Index");
-
-
     });
 
 
 
 }).GetHtml()
 }
+<div>
+    @Html.ActionLink("Volver", "Index")
+</div>

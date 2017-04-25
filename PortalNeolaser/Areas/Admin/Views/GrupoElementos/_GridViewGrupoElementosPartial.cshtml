@@ -45,9 +45,11 @@
         settings.SettingsPager.Position = System.Web.UI.WebControls.PagerPosition.Bottom;
         settings.SettingsPager.FirstPageButton.Visible = true;
         settings.SettingsPager.LastPageButton.Visible = true;
-        settings.SettingsPager.PageSize = 10;
+        settings.SettingsPager.PageSize = 25;
         settings.SettingsPager.PageSizeItemSettings.Items = new string[] { "10", "25", "50", "100" };
+        settings.SettingsPager.PageSizeItemSettings.Visible = true;
         settings.SettingsPager.AlwaysShowPager = true;
+        
 
         settings.Columns.Add(column =>
         {
@@ -63,7 +65,7 @@
 
         settings.Columns.Add("Nombre");
         settings.Columns.Add("Descripcion");
-        settings.Columns.Add("Orden");
+        settings.Columns.Add("Orden").SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
         //settings.Columns.Add("Surcusales_Grupos");
     });
     if (ViewData["EditError"] != null){
@@ -71,3 +73,4 @@
     }
 }
 @grid.Bind(Model).GetHtml()
+

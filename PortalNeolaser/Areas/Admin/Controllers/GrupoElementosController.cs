@@ -24,7 +24,10 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             {
                 ViewBag.Titulo = "Listado de grupos asignados a la sucursal " + id;
                 MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Navega a Grupo Elementos Asignados a Sucursal", DateTime.Now, User.Identity.Name)); //Escribimos en el log
-                return View(db.GruposElementos.ToList().Where(x => x.Id == id).ToList());
+                var model  = from g in db.GruposElementos
+                             where g.Surcusales_Grupos.Any(c=>c.FkSucursal == id) /*.Any(c => c.Category_ID == cat_id)*/
+                             select g;
+                return View(model.ToList());
             }                
             else
             {
