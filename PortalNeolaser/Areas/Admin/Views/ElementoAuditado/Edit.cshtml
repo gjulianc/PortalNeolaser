@@ -64,7 +64,16 @@ $(document).ready(function () {
     groupItem.Items.Add(m => m.Estado, item =>
     {
         item.HelpText = "";
-        item.Caption = "¿Esta Correcto?";
+        item.NestedExtension().RadioButtonList(s =>
+        {
+            s.Properties.ValueField = "Value";
+            s.Properties.TextField = "TextField";
+            s.Properties.RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal;
+            s.Properties.Items.Add("Buen Estado", true);
+            s.Properties.Items.Add("Mal Estado", false);
+            s.SelectedIndex = 0;
+
+        });
     });
     groupItem.Items.Add(m => m.Observaciones, item =>
     {

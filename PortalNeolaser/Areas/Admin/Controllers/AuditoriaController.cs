@@ -105,7 +105,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([ModelBinder(typeof(DevExpressEditorsBinder))] Models.AuditoriaViewModel item)// [ModelBinder(typeof(DevExpressEditorsBinder))] Models.AuditoriaViewModel item
+        public ActionResult Edit([ModelBinder(typeof(DevExpressEditorsBinder))] Models.AuditoriaViewModel item)
         {
             if (ModelState.IsValid)
             {
@@ -266,6 +266,27 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             return RedirectToAction("Index", "ElementoAuditado", new { IdAuditoria = auditoria.Id });
         }
 
-       
+        //Comienzo de Auditoria
+        public ActionResult FinalizarAuditoria(int Id)
+        {
+            PortalNeolaser.Models.Auditoria auditoria = db.Auditorias.Find(Id);
+            if (auditoria == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                auditoria.Estado = true;
+                auditoria.FechaFin = DateTime.Now;
+                try
+                {
+                    db.Entry(auditoria).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch { }
+                MvcApplication.Log.WriteLog(String.Format("{0};Actualiza Base Datos;{1};Finaliza Auditoria", DateTime.Now, User.Identity.Name)); //Escribimos en el log
+            }
+            return View("Index");
+        }
     }
 }

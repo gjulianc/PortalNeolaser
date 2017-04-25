@@ -17,6 +17,14 @@
         settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
         settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
 
+        settings.SettingsPager.Position = System.Web.UI.WebControls.PagerPosition.Bottom;
+        settings.SettingsPager.FirstPageButton.Visible = true;
+        settings.SettingsPager.LastPageButton.Visible = true;
+        settings.SettingsPager.PageSize = 50;
+        settings.SettingsPager.PageSizeItemSettings.Items = new string[] { "10", "25", "50", "100", "200" };
+        settings.SettingsPager.PageSizeItemSettings.Visible = true;
+        settings.SettingsPager.AlwaysShowPager = true;
+
         settings.Columns.Add(col =>
         {
             col.FieldName = "Id";
@@ -24,6 +32,32 @@
             col.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
             col.ReadOnly = true;
             col.Visible = false;
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Auditoria.Id";
+            col.Caption = "ID Auditoria";
+            col.ReadOnly = true;
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Auditoria.Sucursal.CodigoSAP";
+            col.Caption = "Sucursal";
+            col.ReadOnly = true;
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Auditoria.FechaInicio";
+            col.Caption = "Fecha Auditoría";
+            col.ReadOnly = true;
+            col.ColumnType = MVCxGridViewColumnType.DateEdit;
+            col.Width = 70;
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Elemento.GruposElemento.Nombre";
+            col.Caption = "Grupo Elemento";
+            col.ReadOnly = true;
         });
         settings.Columns.Add("Descripcion");
         settings.Columns.Add(col =>
@@ -66,7 +100,7 @@
                 var celltext = c.Text;
 
                 //ViewContext.Writer.Write(c.Text);
-                if (celltext == "&nbsp;")
+                if (celltext == "&nbsp;" || celltext == "unknown_photo.png")
                 {
                     Html.DevExpress().Image(imgSettings =>
                     {
@@ -84,8 +118,8 @@
                         imgSettings.ShowHintText = false;
                         imgSettings.SettingsZoomMode.ZoomWindowWidth = System.Web.UI.WebControls.Unit.Pixel(500);
                         imgSettings.SettingsZoomMode.ZoomWindowHeight = System.Web.UI.WebControls.Unit.Pixel(350);
-                        imgSettings.ImageUrl = Url.Content(celltext.ToString());
-                        imgSettings.LargeImageUrl = Url.Content(celltext.ToString());
+                        imgSettings.ImageUrl = Url.Content("~/Content/uploads/fotos_auditorias/" + celltext.ToString());
+                        imgSettings.LargeImageUrl = Url.Content("~/Content/uploads/fotos_auditorias/" + celltext.ToString());
                         imgSettings.Height = 30;
                         imgSettings.Width = 30;
 
@@ -96,16 +130,12 @@
             });
         });
 
-        settings.Columns.Add(col =>
-        {
-            col.FieldName = "Elemento.Nombre";
-            col.Caption = "Elemento";
-            col.ReadOnly = true;
-        });
+
         //settings.Columns.Add("FkAuditoria");
         settings.Columns.Add(column =>
         {
             column.Caption = "Acciones";
+            column.Width = 100;
             column.SetDataItemTemplateContent(container =>
             {
                 Html.DevExpress().HyperLink(hyperlink =>

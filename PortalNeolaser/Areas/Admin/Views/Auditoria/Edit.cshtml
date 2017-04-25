@@ -2,9 +2,9 @@
 @model PortalNeolaser.Areas.Admin.Models.AuditoriaViewModel
 
 @{
-    ViewBag.Title = "Nueva Auditoría";
+    ViewBag.Title = "Edición de Auditoría";
 }
-<h2>Nueva Auditoría</h2>
+<h2>Edición de Auditoría</h2>
 
 @{
     Html.EnableClientValidation();
@@ -25,7 +25,7 @@
 <script type="text/javascript">
 $(document).ready(function () {
     if(Boolean('@(ViewBag.SuccessValidation)'))
-        alert('La auditoria ha sido dado de alta');
+        alert('La auditoria ha sido actualizada');
 });
 </script>
 
@@ -39,7 +39,7 @@ $(document).ready(function () {
 
     var groupItem = settings.Items.AddGroupItem(groupSettings =>
     {
-        groupSettings.Caption = "Rellene los datos del Formulario para dar alta la nueva Auditoría";
+        groupSettings.Caption = "Formulario de edición de Auditoría";
         groupSettings.ShowCaption = DefaultBoolean.True;
         groupSettings.GroupBoxDecoration = GroupBoxDecoration.HeadingLine;
     });
@@ -135,9 +135,6 @@ $(document).ready(function () {
             s.Name = "btnEnviar";
             s.Text = "Enviar";
             s.UseSubmitBehavior = true;
-
-
-
         });
 
     });

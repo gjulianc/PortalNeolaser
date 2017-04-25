@@ -47,7 +47,7 @@ namespace PortalNeolaser.Controllers {
                     else if (Roles.IsUserInRole(model.UserName, "Gestor"))
                     {
                         MvcApplication.Log.WriteLog(String.Format("{0};Acceso;{1};Acceso al sistema.", DateTime.Now, model.UserName));
-                        return RedirectToAction("Index", "Dashboard", new { Area = "Client" });
+                        return RedirectToAction("Index", "Sucursales", new { Area = "Client" });
                     }
                     else
                         return Redirect(returnUrl ?? "/");

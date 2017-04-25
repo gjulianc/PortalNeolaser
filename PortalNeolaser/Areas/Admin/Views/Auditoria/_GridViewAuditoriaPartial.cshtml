@@ -11,10 +11,10 @@
         settings.SettingsBehavior.ConfirmDelete = true;
 
         //Command Column
-        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.Visible = false;
         settings.CommandColumn.ShowNewButton = false;
         settings.CommandColumn.ShowDeleteButton = false;
-        settings.CommandColumn.ShowEditButton = true;
+        settings.CommandColumn.ShowEditButton = false;
         settings.CommandColumn.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
         settings.CommandColumn.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
         //Command column solo con iconos
@@ -51,6 +51,24 @@
         //Filter
         settings.Settings.ShowHeaderFilterButton = true;
         settings.SettingsSearchPanel.Visible = true;
+
+        settings.Columns.Add(column =>
+        {
+            column.Caption = "#";
+            column.SetDataItemTemplateContent(container =>
+            {
+                Html.DevExpress().HyperLink(hyperlink =>
+                {
+                    var visibleIndex = container.VisibleIndex;
+                    var keyValue = container.KeyValue;
+
+
+                    hyperlink.Name = "hlEdit" + keyValue.ToString();
+                    hyperlink.Properties.Text = "Editar";
+                    hyperlink.NavigateUrl = Url.Action("Edit", "Auditoria", new { id = keyValue });
+                }).Render();
+            });
+        });
 
         settings.Columns.Add(col =>
         {
@@ -131,20 +149,12 @@
                     hyperlink.Properties.Text = "+Info";
                     hyperlink.NavigateUrl = Url.Action("Index", "ElementoAuditado", new { idAuditoria = keyValue });
                 }).Render();
-                
-                Html.DevExpress().HyperLink(hyperlink =>
-                {
-                    var visibleIndex = container.VisibleIndex;
-                    var keyValue = container.KeyValue;
 
-
-                    hyperlink.Name = "hlEdit" + keyValue.ToString();
-                    hyperlink.Properties.Text = "Editar";
-                    hyperlink.NavigateUrl = Url.Action("Edit", "Auditoria", new { id = keyValue });
-                }).Render();
             });
 
         });
+
+        
     });
     if (ViewData["EditError"] != null){
         grid.SetEditErrorText((string)ViewData["EditError"]);
