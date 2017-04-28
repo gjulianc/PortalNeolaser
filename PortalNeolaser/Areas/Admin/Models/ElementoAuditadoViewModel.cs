@@ -11,6 +11,9 @@ namespace PortalNeolaser.Areas.Admin.Models
     {
         public int Id { get; set;}
 
+        [Required(ErrorMessage = "Debe asignarle un elemento")]
+        public string Elemento { get; set; }
+
         [Required(ErrorMessage = "Debe introducir la Descripción")]
         [Display(Name = "Descripcion")]
         public string Descripcion { get; set; }

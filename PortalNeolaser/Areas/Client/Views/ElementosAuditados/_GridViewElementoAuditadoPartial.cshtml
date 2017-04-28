@@ -41,7 +41,13 @@
             col.Caption = "Grupo Elemento";
             col.ReadOnly = true;
         });
-        settings.Columns.Add("Descripcion");
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Elemento.Nombre";
+            col.Caption = "Elemento";
+            col.ReadOnly = true;
+        });
+        settings.Columns.Add("Elemento.Descripcion");
         settings.Columns.Add(col =>
         {
             col.FieldName = "Estado";

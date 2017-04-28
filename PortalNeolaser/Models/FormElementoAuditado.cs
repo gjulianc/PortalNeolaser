@@ -25,6 +25,10 @@ namespace PortalNeolaser.Models
 
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Debe introducir el Elemento")]
+        [Display(Name = "Elemento")]
+        public string Elemento { get; set; }
+
         [Required(ErrorMessage = "Debe introducir la Descripción")]
         [Display(Name = "Descripcion")]
         public string Descripcion { get; set; }

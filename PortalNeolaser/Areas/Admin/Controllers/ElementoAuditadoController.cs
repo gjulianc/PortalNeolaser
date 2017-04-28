@@ -67,7 +67,8 @@ namespace PortalNeolaser.Areas.Admin.Controllers
             ElementoAuditadoViewModel e = new Models.ElementoAuditadoViewModel()
             {
                 Id = elementosAuditado.Id,
-                Descripcion = elementosAuditado.Descripcion,
+                Elemento = elementosAuditado.Elemento.Nombre,
+                Descripcion = elementosAuditado.Elemento.Descripcion,
                 Estado = elementosAuditado.Estado ?? false,
                 FkAuditoria = elementosAuditado.FkAuditoria,
                 FkElemento = elementosAuditado.FkElemento,
@@ -81,7 +82,7 @@ namespace PortalNeolaser.Areas.Admin.Controllers
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Descripcion,Estado,Foto,FkAuditoria,FkElemento,Observaciones")] ElementoAuditadoViewModel item)
+        public ActionResult Edit([Bind(Include = "Id,Elemento,Descripcion,Estado,Foto,FkAuditoria,FkElemento,Observaciones")] ElementoAuditadoViewModel item)
         {
             string fotoFileName = string.Empty;
             var model = db.ElementosAuditados;

@@ -55,10 +55,17 @@ $(document).ready(function () {
 
     });
 
-    groupItem.Items.Add(m => m.Descripcion, item =>
+    groupItem.Items.Add(m => m.Elemento, item =>
     {
         item.HelpText = "";
         item.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox;
+        item.NestedExtensionSettings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+    });
+    groupItem.Items.Add(m => m.Descripcion, item =>
+    {
+        item.HelpText = "";
+        item.NestedExtensionType = FormLayoutNestedExtensionItemType.Memo;
+        item.NestedExtensionSettings.Height = 60;
         item.NestedExtensionSettings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
     });
     groupItem.Items.Add(m => m.Estado, item =>

@@ -1,0 +1,69 @@
+20/04/2017 10:14:06;Acceso;Traian;Acceso al sistema.
+20/04/2017 10:16:00;Navegación;Traian;Navega a Elementos de Nueva Auditoria 75.
+20/04/2017 10:16:01;Navegación;Traian;Navega a los elementos auditados de la Audioria 75.
+20/04/2017 10:16:34;Navegación;Traian;Finaliza Auditoría la Audioria 75.
+20/04/2017 10:17:25;Navegación;Traian;Navega a Elementos de Nueva Auditoria 77.
+20/04/2017 10:17:25;Navegación;Traian;Navega a los elementos auditados de la Audioria 77.
+20/04/2017 10:17:41;Navegación;Traian;Navega a editar elemento auditable.
+20/04/2017 10:18:05;Acceso Base Datos;Traian;Actualiza Elemento con Id 1900.
+20/04/2017 10:18:05;Navegación;Traian;Navega a los elementos auditados de la Audioria 77.
+20/04/2017 10:18:18;Navegación;Traian;Navega a editar elemento auditable.
+20/04/2017 10:18:55;Acceso Base Datos;Traian;Actualiza Elemento con Id 1901.
+20/04/2017 10:18:55;Navegación;Traian;Navega a los elementos auditados de la Audioria 77.
+20/04/2017 10:19:10;Navegación;Traian;Navega a editar elemento auditable.
+20/04/2017 10:19:17;Acceso Base Datos;Traian;Actualiza Elemento con Id 1903.
+20/04/2017 10:19:17;Navegación;Traian;Navega a los elementos auditados de la Audioria 77.
+20/04/2017 10:19:27;Navegación;Traian;Navega a editar elemento auditable.
+20/04/2017 10:20:03;Acceso Base Datos;Traian;Actualiza Elemento con Id 1904.
+20/04/2017 10:20:03;Navegación;Traian;Navega a los elementos auditados de la Audioria 77.
+20/04/2017 10:20:17;Navegación;Traian;Navega a editar elemento auditable.
+20/04/2017 10:20:41;Acceso Base Datos;Traian;Actualiza Elemento con Id 1908.
+20/04/2017 10:20:41;Navegación;Traian;Navega a los elementos auditados de la Audioria 77.
+20/04/2017 10:21:27;Navegación;Traian;Finaliza Auditoría la Audioria 77.
+20/04/2017 10:22:19;Acceso;gabriel;Acceso al sistema.
+20/04/2017 10:22:38;Acceso;INMA;Acceso al sistema.
+20/04/2017 10:22:40;Navegación;gabriel;Navega a Usuarios
+20/04/2017 10:22:41;Navegación;gabriel;Navega a Usuarios
+20/04/2017 10:22:51;Navegación;INMA;Navega a Usuarios
+20/04/2017 10:23:04;Navegación;gabriel;Navega a Clientes
+20/04/2017 10:23:10;Navegación;gabriel;Navega a Sucursales
+20/04/2017 10:25:06;Acceso;inma;Acceso al sistema.
+20/04/2017 10:25:22;Navegación;inma;Navega a Nuevo Auditoria.
+20/04/2017 10:25:45;Inserción en Base Datos;78;Inserta Nuevo Auditoria
+20/04/2017 10:25:45;Actualización Base Datos;inma;Guarda Elementos Auditados de la Nueva Auditoria 78
+20/04/2017 10:25:45;Navegación;inma;Navega a los elementos auditados de la Nueva Auditoria 78
+20/04/2017 10:25:45;Navegación;inma;Navega Comienzo de Auditoria ID 78
+20/04/2017 10:26:13;Acceso;inma;Acceso al sistema.
+20/04/2017 10:52:37;Acceso;inma;Acceso al sistema.
+20/04/2017 10:57:53;Acceso;traian;Acceso al sistema.
+20/04/2017 10:58:10;Navegación;traian;Navega a la auditoria Abierta 79.
+20/04/2017 10:58:11;Navegación;traian;Navega a los elementos auditados de la Audioria 79.
+20/04/2017 10:58:17;Navegación;traian;Navega a editar elemento auditable.
+20/04/2017 10:58:21;Acceso Base Datos;traian;Actualiza Elemento con Id 2082.
+20/04/2017 10:58:22;Navegación;traian;Navega a los elementos auditados de la Audioria 79.
+20/04/2017 10:58:25;Navegación;traian;Navega a editar elemento auditable.
+20/04/2017 10:58:29;Acceso Base Datos;traian;Actualiza Elemento con Id 2083.
+20/04/2017 10:58:29;Navegación;traian;Navega a los elementos auditados de la Audioria 79.
+20/04/2017 10:58:39;Acceso;inma;Acceso al sistema.
+20/04/2017 10:58:44;Navegación;traian;Finaliza Auditoría la Audioria 79.
+20/04/2017 10:59:18;Actualiza Base Datos;inma;Guarda Edición Auditoria 79
+20/04/2017 10:59:35;Acceso;inma;Acceso al sistema.
+20/04/2017 14:12:51;Acceso;Neolaser;Acceso al sistema.
+20/04/2017 14:13:08;Navegación;Neolaser;Navega a la auditoria Abierta 80.
+20/04/2017 14:13:09;Navegación;Neolaser;Navega a los elementos auditados de la Audioria 80.
+20/04/2017 14:13:13;Navegación;Neolaser;Navega a editar elemento auditable.
+20/04/2017 14:13:20;Acceso Base Datos;Neolaser;Actualiza Elemento con Id 2173.
+20/04/2017 14:13:20;Navegación;Neolaser;Navega a los elementos auditados de la Audioria 80.
+20/04/2017 14:13:25;Navegación;Neolaser;Navega a editar elemento auditable.
+20/04/2017 14:13:41;Acceso Base Datos;Neolaser;Actualiza Elemento con Id 2174.
+20/04/2017 14:13:41;Navegación;Neolaser;Navega a los elementos auditados de la Audioria 80.
+20/04/2017 14:13:47;Navegación;Neolaser;Navega a editar elemento auditable.
+20/04/2017 14:14:00;Acceso Base Datos;Neolaser;Actualiza Elemento con Id 2180.
+20/04/2017 14:14:00;Navegación;Neolaser;Navega a los elementos auditados de la Audioria 80.
+20/04/2017 14:14:23;Acceso;gabriel;Acceso al sistema.
+20/04/2017 14:14:39;Navegación;gabriel;Navega Comienzo de Auditoria ID 80
+20/04/2017 14:15:42;Acceso;sergiogestor;Acceso al sistema.
+20/04/2017 14:15:42;Navegación;sergiogestor;Navega al Dashboard.
+20/04/2017 14:15:46;Navegación;sergiogestor;Navega a Sucursales.
+20/04/2017 14:16:44;Navegación;sergiogestor;Navega a los Elementos Auditados con incidencias.
+20/04/2017 15:44:18;Navegación;;Finaliza Auditoría la Audioria 80.

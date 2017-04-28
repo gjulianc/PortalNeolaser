@@ -39,11 +39,11 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
             FormElementoAuditado viewmodel = new FormElementoAuditado();
             viewmodel.Id = elementosAuditado.Id;
             viewmodel.Estado = elementosAuditado.Estado;
-            viewmodel.Descripcion = elementosAuditado.Descripcion;
+            viewmodel.Descripcion = elementosAuditado.Elemento.Descripcion;
             viewmodel.FkAuditoria = elementosAuditado.FkAuditoria;
             viewmodel.FkElemento = elementosAuditado.FkElemento;
             viewmodel.Observaciones = elementosAuditado.Observaciones;
-            
+            viewmodel.Elemento = elementosAuditado.Elemento.Nombre;
 
             if (elementosAuditado == null)
             {
@@ -81,7 +81,7 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
                 e.FkElemento = model.FkElemento;
                 e.FkAuditoria = model.FkAuditoria;
                 e.Observaciones = model.Observaciones;
-            
+                
 
                 db.Entry(e).State = EntityState.Modified;
                 db.SaveChanges();
@@ -100,6 +100,7 @@ namespace PortalNeolaser.Areas.Mobile.Controllers
             {
                 Auditoria a = new Auditoria();
                 a = db.Auditorias.Find(idAuditoria);
+                a.FechaFin = DateTime.Now;
                 a.Estado = true;
                 db.SaveChanges();
                 MvcApplication.Log.WriteLog(String.Format("{0};Navegación;{1};Finaliza Auditoría la Audioria {2}.", DateTime.Now, User.Identity.Name, idAuditoria));
